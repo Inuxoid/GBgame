@@ -6,6 +6,12 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private GameObject player;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameObject placed;
+    [SerializeField] private GameObject heart;
+
     [Header("Settings")]
     [SerializeField] private float maxHP;
     [SerializeField] private float hp;
@@ -18,9 +24,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int flip = 1;
     [SerializeField] private float currentStrikeTimer;
     [SerializeField] private float maxStrikeTimer;
-    [SerializeField] private GameObject player;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject placed;
     [SerializeField] private int enemySpeed;
     [SerializeField] private bool strikesNow;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
@@ -29,7 +32,7 @@ public class Enemy : MonoBehaviour
         set
         {
             canSeePlayer = value;
-            Controller();
+            Controller();   
         }
     }
 
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour
         this.onHpChanged?.Invoke(dto);
         if (hp <= 0)
         {
+            Instantiate(heart, this.transform.position, Quaternion.identity);
             Death();
         }
     }
@@ -84,7 +88,8 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        Destroy(gameObject);
+        
+        Destroy(this.gameObject);
     }
 
     private void Start()

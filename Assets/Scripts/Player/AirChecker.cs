@@ -5,18 +5,31 @@ using UnityEngine.Events;
 
 public class AirChecker : MonoBehaviour
 {
+
+    [Header("Components")]
     [SerializeField] PlayerMovement playerMovement;
 
-    private void Awake()
-    {
-        
-    }
+    [Header("Settings")]
+    [SerializeField] private float standDistance;
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Ground"))
+        RaycastHit hit;
+        Ray crouchRayRight = new Ray(transform.position, Vector3.right);
+        Ray crouchRayLeft = new Ray(transform.position, Vector3.left);
+        if ((Physics.Raycast(crouchRayRight, out hit, standDistance) ||
+            Physics.Raycast(crouchRayLeft, out hit, standDistance)) &&
+            hit.collider.CompareTag("Ground"))
         {
-            playerMovement.AirCollision(other.gameObject);
+            playerMovement.AirCollision(hit.collider.gameObject);
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Ground")) 
+    //    {
+    //        playerMovement.AirCollision(other.gameObject);
+    //    }
+    //}
 }
