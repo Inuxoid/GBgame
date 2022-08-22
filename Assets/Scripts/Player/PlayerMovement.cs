@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
 	[Header("Components")]
 	[SerializeField] private Rigidbody rb;
-	[SerializeField] private Collider headCollider;
 	[SerializeField] private Collider airCollider;
 	[SerializeField] private GameObject body;
 
@@ -102,16 +101,14 @@ public class PlayerMovement : MonoBehaviour
 	public void StartCrouch()
 	{
 		crouch = true;
-		headCollider.isTrigger = true;
 		currentSpeed = crouchSpeed;
 		body.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 		airCollider.enabled = false;
 	}
-
+		
 	public void EndCrouch()
 	{
 		crouch = false;
-		headCollider.isTrigger = false;
 		currentSpeed = runSpeed;
 		body.transform.localScale = new Vector3(1f, 1f, 1f);
 		airCollider.enabled = true;

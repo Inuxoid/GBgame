@@ -13,14 +13,11 @@ public class ScoreCounter : MonoBehaviour
 
     public int ScoreCount { get => scoreCount; set => scoreCount = value; }
 
+
     public void Count()
     {
         ScoreCount++;
         IntNumberDto dto = new IntNumberDto() { value = this.ScoreCount };
         this.onCounted?.Invoke(dto);
-        if (ScoreCount == 10)
-        {
-            this.onAllScoreTaken?.Invoke();
-        }
     }
 }

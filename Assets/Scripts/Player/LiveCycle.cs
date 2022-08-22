@@ -41,9 +41,11 @@ public class LiveCycle : MonoBehaviour
         }
 	}
 
-	public void GetHeart()
+	public void GetHeart(int addHp)
 	{
-		Hp++;
+		Hp += addHp;
+		FloatNumberDto dto = new FloatNumberDto() { value = this.Hp / this.maxHp };
+		this.onCounted?.Invoke(dto);
 	}
 
 	public void Death()
