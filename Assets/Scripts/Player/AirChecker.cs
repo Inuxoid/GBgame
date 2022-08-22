@@ -10,26 +10,18 @@ public class AirChecker : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
 
     [Header("Settings")]
-    [SerializeField] private float standDistance;
+    [SerializeField] private float airDistance;
 
     private void Update()
     {
         RaycastHit hit;
         Ray crouchRayRight = new Ray(transform.position, Vector3.right);
         Ray crouchRayLeft = new Ray(transform.position, Vector3.left);
-        if ((Physics.Raycast(crouchRayRight, out hit, standDistance) ||
-            Physics.Raycast(crouchRayLeft, out hit, standDistance)) &&
+        if ((Physics.Raycast(crouchRayRight, out hit, airDistance) ||
+            Physics.Raycast(crouchRayLeft, out hit, airDistance)) &&
             hit.collider.CompareTag("Ground"))
         {
             playerMovement.AirCollision(hit.collider.gameObject);
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Ground")) 
-    //    {
-    //        playerMovement.AirCollision(other.gameObject);
-    //    }
-    //}
 }
