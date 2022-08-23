@@ -20,7 +20,7 @@ public class CrouchHeadChecker : MonoBehaviour
         if ((Physics.Raycast(crouchRayUp, out hit, standDistance) || 
             Physics.Raycast(crouchRayRightUp, out hit, standDistance) || 
             Physics.Raycast(crouchRayLeftUp, out hit, standDistance)) && 
-            hit.collider.CompareTag("Ground"))
+            hit.collider.CompareTag("Ceil"))
         {
             this.onCantStandUp?.Invoke();
         }
