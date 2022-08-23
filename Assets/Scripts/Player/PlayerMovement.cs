@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-	public void AirCollision(GameObject go)
+	public void AirGroundCollision(GameObject go)
 	{
 		if (!crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
@@ -47,10 +47,19 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
+	public void AirWallCollision(GameObject go)
+	{
+		if (!isGrounded)
+		{
+			airControl = false;
+		}
+	}
+
 	public void ToGround()
 	{
 		isGrounded = true;
 		WReleased = false;
+		airControl = true;
 	}
 
 	public void ToAir()

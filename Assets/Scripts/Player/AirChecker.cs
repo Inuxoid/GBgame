@@ -15,13 +15,32 @@ public class AirChecker : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        Ray crouchRayRight = new Ray(transform.position, Vector3.right);
-        Ray crouchRayLeft = new Ray(transform.position, Vector3.left);
-        if ((Physics.Raycast(crouchRayRight, out hit, airDistance) ||
-            Physics.Raycast(crouchRayLeft, out hit, airDistance)) &&
-            hit.collider.CompareTag("Ground"))
+        Ray airRayTopRight = new Ray(new Vector3(transform.position.x, transform.position.y + 0.4f), Vector3.right);
+        Ray airRayBotRight = new Ray(new Vector3(transform.position.x, transform.position.y - 0.4f), Vector3.right);
+        Ray airRayRight = new Ray(transform.position, Vector3.right);
+        Ray airRayTopLeft = new Ray(new Vector3(transform.position.x, transform.position.y + 0.4f), Vector3.left);
+        Ray airRayBotLeft = new Ray(new Vector3(transform.position.x, transform.position.y - 0.4f), Vector3.left);
+        Ray airRayLeft = new Ray(transform.position, Vector3.left);
+        if (Physics.Raycast(airRayRight, out hit, airDistance) ||
+            Physics.Raycast(airRayLeft, out hit, airDistance) ||
+            Physics.Raycast(airRayTopRight, out hit, airDistance) ||
+            Physics.Raycast(airRayBotRight, out hit, airDistance) ||
+            Physics.Raycast(airRayTopLeft, out hit, airDistance) ||
+            Physics.Raycast(airRayBotLeft, out hit, airDistance)
+            )
         {
-            playerMovement.AirCollision(hit.collider.gameObject);
+            if (hit.collider.CompareTag("Ground"))
+            {
+                Debug.Log("Hoba");
+                playerMovement.AirGroundCollision(hit.collider.gameObject);
+            }
+            else
+            {
+                if (Input.GetAxisRaw("Horizontal") * (hit.transform.position.x - this.transform.position.x) > 0)
+                {
+                    playerMovement.AirWallCollision(hit.collider.gameObject);
+                }
+            }
         }
     }
 }

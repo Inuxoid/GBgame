@@ -32,19 +32,19 @@ public class MovingPlarform : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            other.gameObject.transform.parent.parent = this.transform;
+            collision.collider.gameObject.transform.parent.parent = this.transform;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player"))
         {
-            other.gameObject.transform.parent.parent = null;
+            collision.collider.gameObject.transform.parent.parent = null;
         }
     }
 }
