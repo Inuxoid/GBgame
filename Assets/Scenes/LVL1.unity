@@ -7227,7 +7227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 961554460}
-  airDistance: 0.5
+  airDistance: 0.6
 --- !u!136 &713441615
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -12863,7 +12863,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.8024132, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -15234,7 +15234,7 @@ GameObject:
   - component: {fileID: 1741938683}
   m_Layer: 2
   m_Name: Cube (3)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
