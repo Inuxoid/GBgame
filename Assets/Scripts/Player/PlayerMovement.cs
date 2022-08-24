@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AirWallCollision(GameObject go)
 	{
-		Debug.Log(Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0);	
 		if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
 			currentSpeed = 0;

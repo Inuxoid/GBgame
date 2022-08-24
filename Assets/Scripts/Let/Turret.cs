@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject tur;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -46,10 +47,9 @@ public class Turret : MonoBehaviour
 
     public void Flip()
     {
+        Debug.Log("asf");
         flip *= -1;
-        Vector3 theScale = this.transform.localScale;
-        theScale.x *= -1;
-        this.transform.localScale = theScale;
+        tur.transform.Rotate(0, 180, 0);
     }
 
     public void Strike()
@@ -59,6 +59,7 @@ public class Turret : MonoBehaviour
 
     public void MoveToPlayer()
     {
+        Debug.Log(flip * (player.transform.position.x - this.transform.position.x));
         if (flip * (player.transform.position.x - this.transform.position.x) < 0)
         {
             Flip();
@@ -95,8 +96,9 @@ public class Turret : MonoBehaviour
         while (canSeePlayer)
         {
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity);
-            go.GetComponent<Rigidbody>().AddForce((player.transform.position - transform.position).normalized * bulletSpeed, ForceMode.Impulse);
-            yield return new WaitForSeconds(attackSpeed);
+            go.GetComponent<Rigidbody>().AddForce(new Vector3((player.transform.position.x - transform.position.x),
+                                                              0, 0).normalized * bulletSpeed, ForceMode.Impulse);
+            yield return new WaitForSeconds(attackSpeed);   
         }
         isStrikes = false;
         yield return null;
@@ -117,7 +119,7 @@ public class Turret : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask) &&
-                                    Mathf.Abs(transform.position.y - target.position.y) < 0.7f)
+                                    Mathf.Abs(transform.position.y - target.position.y) < radius)
                 {
                     CanSeePlayer = true;
                 }
