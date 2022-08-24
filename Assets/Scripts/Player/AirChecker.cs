@@ -26,20 +26,16 @@ public class AirChecker : MonoBehaviour
             Physics.Raycast(airRayTopRight, out hit, airDistance) ||
             Physics.Raycast(airRayBotRight, out hit, airDistance) ||
             Physics.Raycast(airRayTopLeft, out hit, airDistance) ||
-            Physics.Raycast(airRayBotLeft, out hit, airDistance)
-            )
+            Physics.Raycast(airRayBotLeft, out hit, airDistance))
         {
             if (hit.collider.CompareTag("Ground"))
             {
                 Debug.Log("Hoba");
                 playerMovement.AirGroundCollision(hit.collider.gameObject);
             }
-            else
+            if (hit.collider.CompareTag("Wall"))
             {
-                if (Input.GetAxisRaw("Horizontal") * (hit.transform.position.x - this.transform.position.x) > 0)
-                {
-                    playerMovement.AirWallCollision(hit.collider.gameObject);
-                }
+                playerMovement.AirWallCollision(hit.collider.gameObject);
             }
         }
     }

@@ -9403,7 +9403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 961554460}
-  airDistance: 0.5
+  airDistance: 0.6
 --- !u!136 &713441615
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19441,7 +19441,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.9149922, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

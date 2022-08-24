@@ -49,9 +49,13 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AirWallCollision(GameObject go)
 	{
-		if (!isGrounded)
+		if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
-			airControl = false;
+			currentSpeed = 0;
+		}
+        else
+        {
+			currentSpeed = runSpeed;
 		}
 	}
 
@@ -59,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		isGrounded = true;
 		WReleased = false;
-		airControl = true;
 	}
 
 	public void ToAir()
