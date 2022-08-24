@@ -9,7 +9,10 @@ public class Gate : MonoBehaviour
     [SerializeField] private Settings settings;
     private void OnTriggerEnter(Collider other)
     {
-        scorePanel.SetActive(true);
-        settings.Pause();
+        if (other.CompareTag("Player"))
+        {
+            scorePanel.SetActive(true);
+            settings.Pause();
+        }
     }
 }

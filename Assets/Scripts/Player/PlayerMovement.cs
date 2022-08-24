@@ -49,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AirWallCollision(GameObject go)
 	{
+		Debug.Log(Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0);	
 		if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
 			currentSpeed = 0;
@@ -115,7 +116,6 @@ public class PlayerMovement : MonoBehaviour
 		crouch = true;
 		currentSpeed = crouchSpeed;
 		body.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-		airCollider.enabled = false;
 	}
 		
 	public void EndCrouch()
@@ -123,7 +123,6 @@ public class PlayerMovement : MonoBehaviour
 		crouch = false;
 		currentSpeed = runSpeed;
 		body.transform.localScale = new Vector3(1f, 1f, 1f);
-		airCollider.enabled = true;
 	}
 
 	private void Flip()
