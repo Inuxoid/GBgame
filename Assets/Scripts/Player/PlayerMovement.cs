@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float maxJumpTimer = 0.3f;
 	[SerializeField] private float currentJumpTimer = 0f;
 	[Range(1, 2f)]
-	[SerializeField] private float distance = 1.5f;
 	[SerializeField] private bool canStandUp = true;
 	[SerializeField] private bool WReleased;
 	[SerializeField] private bool SReleased;
@@ -42,8 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
-			Vector3 delta = (go.transform.position - this.transform.position) / distance;
-			this.transform.position = new Vector3(go.transform.position.x - delta.x, go.transform.position.y + 1.5f);
+			this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f);
 		}
 	}
 
