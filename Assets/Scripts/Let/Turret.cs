@@ -9,7 +9,10 @@ public class Turret : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject tur;
+    [SerializeField] private GameObject turRotate;
+    [SerializeField] private GameObject mainObj;
+    [SerializeField] private GameObject canHp;
+    [SerializeField] private Material lens;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -17,6 +20,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private int enemyDamage;
     [SerializeField] private bool canSeePlayer;
     [SerializeField] private bool isStrikes;
+    [SerializeField] private bool isRotating;
     [SerializeField] private LayerMask targetMask;
     [SerializeField] private LayerMask obstructionMask;
     [SerializeField] private float radius;
@@ -24,6 +28,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private int flip = 1;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
     [SerializeField] private float bulletSpeed;
+    [SerializeField] private float rotateSpeed;
 
     public bool CanSeePlayer
     {
@@ -47,9 +52,8 @@ public class Turret : MonoBehaviour
 
     public void Flip()
     {
-        Debug.Log("asf");
         flip *= -1;
-        tur.transform.Rotate(0, 180, 0);
+        turRotate.transform.Rotate(0, 180, 0);
     }
 
     public void Strike()
@@ -59,7 +63,6 @@ public class Turret : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        Debug.Log(flip * (player.transform.position.x - this.transform.position.x));
         if (flip * (player.transform.position.x - this.transform.position.x) < 0)
         {
             Flip();
@@ -68,7 +71,10 @@ public class Turret : MonoBehaviour
 
     public void Death()
     {
-        Destroy(this.gameObject);
+        mainObj.transform.Rotate(new Vector3(0, 0, -40));
+        lens.SetColor("_EmissionColor", new Color(0, 0, 0, 1.0F));
+        Destroy(canHp);
+        Destroy(this);
     }
 
     private void Start()
@@ -78,9 +84,9 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (CanSeePlayer)
+        if (CanSeePlayer && !isRotating)
         {
-            MoveToPlayer();
+            StartCoroutine(RotateTimer());
         }
 
         if (canSeePlayer && !isStrikes)
@@ -93,14 +99,23 @@ public class Turret : MonoBehaviour
     private IEnumerator StrikeTimer()
     {
         isStrikes = true;
-        while (canSeePlayer)
+        while (canSeePlayer && flip * (player.transform.position.x - this.transform.position.x) > 0)
         {
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity);
             go.GetComponent<Rigidbody>().AddForce(new Vector3((player.transform.position.x - transform.position.x),
                                                               0, 0).normalized * bulletSpeed, ForceMode.Impulse);
-            yield return new WaitForSeconds(attackSpeed);   
+            yield return new WaitForSeconds(attackSpeed);
         }
         isStrikes = false;
+        yield return null;
+    }
+
+    private IEnumerator RotateTimer()
+    {
+        isRotating = true;
+        yield return new WaitForSeconds(rotateSpeed);
+        MoveToPlayer();
+        isRotating = false;
         yield return null;
     }
 
@@ -108,7 +123,7 @@ public class Turret : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
             if (rangeChecks.Length != 0)
