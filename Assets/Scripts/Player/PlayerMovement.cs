@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
-			this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f);
+			this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 		}
 	}
 
