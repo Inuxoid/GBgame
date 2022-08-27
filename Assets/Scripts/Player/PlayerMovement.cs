@@ -53,6 +53,25 @@ public class PlayerMovement : MonoBehaviour
 		}
         else
         {
+            if (crouch)
+            {
+				currentSpeed = crouchSpeed;
+            }
+            else
+            {
+				currentSpeed = runSpeed;
+			}
+		}
+	}
+
+	public void AirWallUnCollision()
+	{
+		if (crouch)
+		{
+			currentSpeed = crouchSpeed;
+		}
+		else
+		{
 			currentSpeed = runSpeed;
 		}
 	}

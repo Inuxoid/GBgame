@@ -38,5 +38,9 @@ public class AirChecker : MonoBehaviour
                 playerMovement.AirWallCollision(hit.collider.gameObject);
             }
         }
+        else
+        {
+            playerMovement.AirWallUnCollision();
+        }
     }
 }
