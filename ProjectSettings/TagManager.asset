@@ -4,21 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Ceil
-  - Wall
+  - Shootable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
+  - 
+  - 
+  - Lighting
   - Ground
-  - Enemy
-  - 
-  - 
-  - 
+  - Postprocessing
   - 
   - 
   - 
@@ -41,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fire
+    uniqueID: 3804908061
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
