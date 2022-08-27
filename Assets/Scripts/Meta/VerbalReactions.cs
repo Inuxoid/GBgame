@@ -23,14 +23,13 @@ public class VerbalReactions : MonoBehaviour
     IEnumerator VerbalTimer()
     {
         isPlaying = true;
-        while (letterInd <= VerbalLib.texts[textInd].Length)
+        while (letterInd < VerbalLib.getInstance().texts[textInd].Length)
         {
-            currentText += VerbalLib.texts[textInd][letterInd];
+            currentText += VerbalLib.getInstance().texts[textInd][letterInd];
             uiText.text = currentText;
             letterInd++;
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.06f);
         }
-        isPlaying = false;
 		yield return null;
 	}
 }
