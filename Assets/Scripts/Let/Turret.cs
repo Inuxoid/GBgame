@@ -15,6 +15,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Material lens;
 
     [Header("Settings")]
+    [SerializeField] private bool canRotate;
     [SerializeField] private float maxHP;
     [SerializeField] private float hp;
     [SerializeField] private int enemyDamage;
@@ -63,7 +64,7 @@ public class Turret : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
+        if ((flip * (player.transform.position.x - this.transform.position.x) < 0) && canRotate)
         {
             Flip();
         }
