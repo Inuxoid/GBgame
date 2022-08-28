@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private bool canRotate;
+    [SerializeField] private float checkTimer;
     [SerializeField] private float maxHP;
     [SerializeField] private float hp;
     [SerializeField] private int enemyDamage;
@@ -80,7 +81,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(CheckPLayer());
+        StartCoroutine(CheckPlayer());
     }
 
     private void Update()
@@ -120,11 +121,11 @@ public class Turret : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator CheckPLayer()
+    private IEnumerator CheckPlayer()
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(checkTimer);
             Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
             if (rangeChecks.Length != 0)

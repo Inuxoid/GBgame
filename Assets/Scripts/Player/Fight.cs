@@ -13,7 +13,7 @@ public class Fight : MonoBehaviour
     public void Strike()
     {
         foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y), 
-                                                new Vector3 (1, 1, 1), 
+                                                new Vector3 (0.7f, 0.7f, 0.7f), 
                                                 Quaternion.identity, 128))
         {
             item?.GetComponent<Enemy>()?.GetStrike(damage);

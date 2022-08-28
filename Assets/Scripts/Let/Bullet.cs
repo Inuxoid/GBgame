@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponentInParent<LiveCycle>().GetDamage(damage);
-            Destroy(this.gameObject);
         }
+        Destroy(this.gameObject);
     }
 }

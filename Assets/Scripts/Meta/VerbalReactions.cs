@@ -30,6 +30,8 @@ public class VerbalReactions : MonoBehaviour
             letterInd++;
             yield return new WaitForSeconds(.06f);
         }
+        yield return new WaitForSeconds(5f);
+        Destroy(uiText);
 		yield return null;
 	}
 }

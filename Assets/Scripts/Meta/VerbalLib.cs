@@ -14,18 +14,33 @@ class VerbalLib
         return instance;
     }
 
+    
     public List<char[]> texts = new()
     {
-        FirstCrouch,
         FirstVHS,
         FirstPuddle,
         FirstTurret,
-        Elevator
+        Elevator,
+        Elevator1,
+        Elevator2,
+        Door,
+        Police1,
+        Police2,
+        Turret1,
+        Turret2,
+        StartDoor
     };
 
-    public static char[] FirstCrouch = "Протискиваться в глубь вонючей ямы,\nИменумой \"городской канализацией\"...\nНе самая приятная затея".ToCharArray();
-    public static char[] FirstVHS = "Классная кассета. И пусть катятся к черту те, кто сказал что Он умер в конце фильма".ToCharArray();
-    public static char[] FirstPuddle = "Ну и запашок...\nПравда, вода в городе не сильно лучше.".ToCharArray();
-    public static char[] FirstTurret = "Для защиты населения, говорили они.\nДа я прямо Ахиллес.\nПравда все тело – пята.".ToCharArray();
-    public static char[] Elevator = "На удивление, я не испытал радости освобождения.\nЯ все еще был заперт в темнице.\nВ тюрьме иного толка...".ToCharArray();
+    public static char[] FirstVHS = "Да не умер он в конце фильма".ToCharArray();
+    public static char[] FirstPuddle = "Ну и запашок...\nПравда, вода в городе не сильно лучше".ToCharArray();
+    public static char[] FirstTurret = "Для защиты населения, говорили они".ToCharArray();
+    public static char[] Elevator = "На удивление, я не испытал радости освобождения".ToCharArray();
+    public static char[] Elevator1 = "Я все еще был заперт в темнице".ToCharArray();
+    public static char[] Elevator2 = "В тюрьме иного толка...".ToCharArray();
+    public static char[] Door = "Не поддаётся".ToCharArray();
+    public static char[] Police1 = "И с ними я служил бок о бок...".ToCharArray();
+    public static char[] Police2 = "Здешним \"блюстителям закона\" принципы не ведомы...".ToCharArray();
+    public static char[] Turret1 = "Уязвимая точка – сзади".ToCharArray();
+    public static char[] Turret2 = "Неужели они думали, что меня остановит это ведро с гвоздями".ToCharArray();
+    public static char[] StartDoor = "Они отрезали мне путь...\nСбежал из одной клетки, чтобы быть запертым в другой...\nнадо же...".ToCharArray();
 }

@@ -10,6 +10,8 @@ public class DoorButton : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool isOpened;
     [SerializeField] private bool isTrying;
+    [SerializeField] private float y;
+    [SerializeField] private float x;
 
     public bool IsOpened { get => isOpened; set => isOpened = value; }
 
@@ -32,7 +34,7 @@ public class DoorButton : MonoBehaviour
         {
             if (!IsOpened && !otherButton.IsOpened)
             {
-                door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y - 5f);
+                door.transform.position = new Vector3(door.transform.position.x - x, door.transform.position.y - y);
                 otherButton.IsOpened = true;
                 IsOpened = true;
             }

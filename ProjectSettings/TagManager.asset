@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
+  - Wall
+  - Ground
+  - Ceil
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Bullet
+  - Turret
   - Lighting
   - Ground
   - Postprocessing
