@@ -10,11 +10,17 @@ public class Heart : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LiveCycle liveCycle = other.GetComponentInParent<LiveCycle>();
         if (other.CompareTag("Player"))
         {
             other.GetComponentInParent<LiveCycle>().GetHeart(hpRes);
-            Destroy(gameObject);
+            StartCoroutine(DestroyTimer());
         }
+    }
+
+    IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+        yield return null;
     }
 }
