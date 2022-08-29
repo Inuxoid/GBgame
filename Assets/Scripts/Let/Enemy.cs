@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         set
         {
             canSeePlayer = value;
-            Controller();   
+            Controller();
         }
     }
 
