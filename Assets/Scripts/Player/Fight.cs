@@ -25,7 +25,10 @@ public class Fight : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Strike();
+            if (!gameObject.GetComponent<PlayerMovement>().Crouch)
+            {
+                Strike();
+            }
         }
     }
 }

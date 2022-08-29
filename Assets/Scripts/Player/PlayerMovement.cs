@@ -35,11 +35,11 @@ public class PlayerMovement : MonoBehaviour
 
 	private Vector3 velocity = Vector3.zero;
 
+    public bool Crouch { get => crouch; set => crouch = value; }
 
-
-	public void AirGroundCollision(GameObject go)
+    public void AirGroundCollision(GameObject go)
 	{
-		if (!crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
+		if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
 			this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 		}
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
 		}
         else
         {
-            if (crouch)
+            if (Crouch)
             {
 				currentSpeed = crouchSpeed;
             }
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void AirWallUnCollision()
 	{
-		if (crouch)
+		if (Crouch)
 		{
 			currentSpeed = crouchSpeed;
 		}
@@ -120,7 +120,7 @@ public class PlayerMovement : MonoBehaviour
 			StartCoroutine(JumpTimer());
 			canDoubleJump = true;
 		}
-		else if (canDoubleJump && jump)
+		else if (canDoubleJump && jump && !crouch)
 		{
 			canDoubleJump = false;
 			StartCoroutine(JumpTimer());
@@ -129,14 +129,14 @@ public class PlayerMovement : MonoBehaviour
 
 	public void StartCrouch()
 	{
-		crouch = true;
+		Crouch = true;
 		currentSpeed = crouchSpeed;
 		body.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 	}
 		
 	public void EndCrouch()
 	{
-		crouch = false;
+		Crouch = false;
 		currentSpeed = runSpeed;
 		body.transform.localScale = new Vector3(1f, 1f, 1f);
 	}
@@ -175,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
 			SReleased = true;
 		}
 
-		if (crouch && SReleased && canStandUp)
+		if (Crouch && SReleased && canStandUp)
 		{
 			EndCrouch();
 		}
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+		Move(horizontalMove * Time.fixedDeltaTime, Crouch, jump);
 		jump = false;
 	}
 
