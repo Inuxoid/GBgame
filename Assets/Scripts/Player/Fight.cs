@@ -6,18 +6,21 @@ public class Fight : MonoBehaviour
 {
     [SerializeField] private int flip = 1;
     [SerializeField] private int damage;
+    [SerializeField] private Animator anim;
     public void Fliped()
     {
         flip = flip * -1;
     }
     public void Strike()
     {
+        StartCoroutine(StrikeTimer());
         foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y), 
                                                 new Vector3 (0.7f, 0.7f, 0.7f), 
                                                 Quaternion.identity, 128))
         {
             item?.GetComponent<Enemy>()?.GetStrike(damage);
             item?.GetComponent<Turret>()?.GetStrike(damage);
+
         }
     }
 
@@ -30,5 +33,13 @@ public class Fight : MonoBehaviour
                 Strike();
             }
         }
+    }
+
+    IEnumerator StrikeTimer()
+    {
+        anim.SetBool("isPunching", true);
+        yield return new WaitForSeconds(1.2f);
+        anim.SetBool("isPunching", false);
+        yield return null;
     }
 }

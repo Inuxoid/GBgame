@@ -10,6 +10,7 @@ public class Puddle : MonoBehaviour
 	[SerializeField] private float maxDamageTimer;
 	[SerializeField] private float step;
 	[SerializeField] private int damagePerCycle;
+	[SerializeField] private bool isExit;
 
 	public UnityEvent<int> onDamaged;
 
@@ -21,12 +22,18 @@ public class Puddle : MonoBehaviour
         }
     }
 
+	private void OnTriggerExit()
+    {
+		isExit = true;
+    }
+
 	IEnumerator DamageTimer(GameObject player)
 	{
 		currentDamageTimer = 0;
 		while (currentDamageTimer < maxDamageTimer)
 		{
-			currentDamageTimer += step;
+			if (isExit)
+				currentDamageTimer += step;
 			this.onDamaged?.Invoke(damagePerCycle);
 			yield return new WaitForSeconds(step);
 		}
