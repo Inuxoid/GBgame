@@ -1,0 +1,81 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DoorButton : MonoBehaviour
+{
+    [Header("Components")]
+    [SerializeField] private GameObject door;
+    [SerializeField] private DoorButton otherButton;
+    [Header("Settings")]
+    [SerializeField] private bool isOpened;
+    [SerializeField] private bool isTrying;
+    [SerializeField] private bool isOpening;
+    [SerializeField] private float y;
+    [SerializeField] private float x;
+
+    public bool IsOpened
+    {
+        get => isOpened; set
+        {
+            isOpened = value;
+            ColorChange();
+            DoorPositionChange();
+        }
+    }
+
+    private void ColorChange()
+    {
+        if (isOpened)
+        {
+            GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+        }
+        else
+        {
+            GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
+        }
+    }
+
+    private void DoorPositionChange()
+    {
+        if (isOpened)
+        {
+            door.transform.position = new Vector3(door.transform.position.x - x, door.transform.position.y - y);
+        }
+        else
+        {
+            door.transform.position = new Vector3(door.transform.position.x + x, door.transform.position.y + y);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            isTrying = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            isTrying = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && isTrying && !isOpening)
+        {
+            StartCoroutine(ButtonTimer());
+        }
+    }
+
+    IEnumerator ButtonTimer()
+    {
+        isOpening = true;
+        IsOpened = !IsOpened;
+        otherButton.IsOpened = !otherButton.IsOpened;
+        yield return new WaitForSeconds(1f);
+        isOpening = false;
+        yield return null;
+    }
+}
