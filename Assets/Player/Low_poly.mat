@@ -9,18 +9,12 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Low_poly
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-<<<<<<< Updated upstream
   m_ValidKeywords:
   - _EMISSION
   - _METALLICGLOSSMAP
   - _NORMALMAP
   m_InvalidKeywords: []
   m_LightmapFlags: 2
-=======
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
->>>>>>> Stashed changes
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -30,11 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-<<<<<<< Updated upstream
         m_Texture: {fileID: 2800000, guid: 714d75a1a018f49449d9256735dc954f, type: 3}
-=======
-        m_Texture: {fileID: 0}
->>>>>>> Stashed changes
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -50,7 +40,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-<<<<<<< Updated upstream
         m_Texture: {fileID: 2800000, guid: 325db3468bfdcc74d991b23124b45c9e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -60,17 +49,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: a730539142bf659489d1ed1528160fe2, type: 3}
-=======
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
->>>>>>> Stashed changes
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -100,11 +78,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< Updated upstream
     - _Color: {r: 0.7264151, g: 0.70829844, b: 0.48313457, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-=======
-    - _Color: {r: 0.8000001, g: 0.77350116, b: 0.43175352, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
->>>>>>> Stashed changes
   m_BuildTextureStacks: []
