@@ -169,12 +169,19 @@ public class PlayerMovement : MonoBehaviour
 			{
 				deltaSpeed += Time.deltaTime * deltaSpeedMult;
 			}
-			animator.SetFloat("hSpeed", deltaSpeed);
 		}
         else
         {
-			deltaSpeed = 0f;
+            if (deltaSpeed > Time.deltaTime * deltaSpeedMult)
+            {
+				deltaSpeed -= Time.deltaTime * deltaSpeedMult;
+            }
+            else
+            {
+				deltaSpeed = 0;
+			}
         }
+		animator.SetFloat("hSpeed", deltaSpeed);
 
 		if (Input.GetKeyDown(KeyCode.W))
 		{
