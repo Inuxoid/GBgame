@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Collider airCollider;
 	[SerializeField] private GameObject body;
-
+	[SerializeField] private Animator animator;
 
 	[Header("Settings")]
 	[SerializeField] private bool facingRight = true;
@@ -32,8 +33,9 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private bool WReleased;
 	[SerializeField] private bool SReleased;
 	[SerializeField] private UnityEvent flip;
-
-	private Vector3 velocity = Vector3.zero;
+	[SerializeField] private float deltaSpeed;
+	[SerializeField] private float deltaSpeedMult;
+	[SerializeField] private Vector3 velocity = Vector3.zero;
 
     public bool Crouch { get => crouch; set => crouch = value; }
 
@@ -102,8 +104,11 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (isGrounded || airControl)
 		{
-			Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
-			rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+			// Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
+			// rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+
+
+			rb.velocity = new Vector2(move * animator.GetFloat("hSpeed"), rb.velocity.y);
 
 			if (move > 0 && !facingRight)
 			{
@@ -154,7 +159,23 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-		horizontalMove = Input.GetAxisRaw("Horizontal") * currentSpeed;
+		horizontalMove = Input.GetAxisRaw("Horizontal");
+
+		animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
+
+        if (Math.Abs(Input.GetAxisRaw("Horizontal")) > 0)
+        {
+			if (deltaSpeed < currentSpeed * 10)
+			{
+				deltaSpeed += Time.deltaTime * deltaSpeedMult;
+			}
+			animator.SetFloat("hSpeed", deltaSpeed);
+		}
+        else
+        {
+			deltaSpeed = 0f;
+        }
+
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			jump = true;
