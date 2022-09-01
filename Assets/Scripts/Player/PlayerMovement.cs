@@ -83,11 +83,13 @@ public class PlayerMovement : MonoBehaviour
 	{
 		isGrounded = true;
 		WReleased = false;
+		animator.SetBool("isJumping", false);
 	}
 
 	public void ToAir()
 	{
 		isGrounded = false;
+		animator.SetBool("isJumping", true);
 	}
 
 	public void CanStandUp()
@@ -162,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
 		horizontalMove = Input.GetAxisRaw("Horizontal");
 
 		animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
+		animator.SetFloat("vSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.y));	
 
         if (Math.Abs(Input.GetAxisRaw("Horizontal")) > 0)
         {
