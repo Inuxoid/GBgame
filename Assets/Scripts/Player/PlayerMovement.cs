@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
 	[Header("Components")]
 	[SerializeField] private Rigidbody rb;
-	[SerializeField] private Collider airCollider;
-	[SerializeField] private GameObject body;
+	[SerializeField] private Collider bodyCollider;
+	[SerializeField] private Collider visionCollider;
 	[SerializeField] private Animator animator;
 
 	[Header("Settings")]
@@ -109,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
 			// Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
 			// rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-
 			rb.velocity = new Vector2(move * animator.GetFloat("hSpeed"), rb.velocity.y);
 
 			if (move > 0 && !facingRight)
@@ -139,14 +138,21 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Crouch = true;
 		currentSpeed = crouchSpeed;
-		body.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+		animator.SetBool("isCrouch", true);
+		deltaSpeed = 0;
+		bodyCollider.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+		visionCollider.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+		//body.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 	}
 		
 	public void EndCrouch()
 	{
 		Crouch = false;
 		currentSpeed = runSpeed;
-		body.transform.localScale = new Vector3(1f, 1f, 1f);
+		animator.SetBool("isCrouch", false);
+		bodyCollider.transform.localScale = new Vector3(1f, 1f, 1f);
+		visionCollider.transform.localScale = new Vector3(1f, 1f, 1f);
+		//body.transform.localScale = new Vector3(1f, 1f, 1f);
 	}
 
 	private void Flip()
