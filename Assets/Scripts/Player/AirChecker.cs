@@ -18,6 +18,7 @@ public class AirChecker : MonoBehaviour
         Ray airRayTopRight = new Ray(new Vector3(transform.position.x, transform.position.y + 0.4f), Vector3.right);
         Ray airRayBotRight = new Ray(new Vector3(transform.position.x, transform.position.y - 0.4f), Vector3.right);
         Ray airRayRight = new Ray(transform.position, Vector3.right);
+
         Ray airRayTopLeft = new Ray(new Vector3(transform.position.x, transform.position.y + 0.4f), Vector3.left);
         Ray airRayBotLeft = new Ray(new Vector3(transform.position.x, transform.position.y - 0.4f), Vector3.left);
         Ray airRayLeft = new Ray(transform.position, Vector3.left);
