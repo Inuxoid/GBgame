@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         }
 
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
-        rb.AddForce((player.transform.position - this.transform.position) * enemySpeed, ForceMode.Impulse); ;
+        rb.AddForce((player.transform.position - this.transform.position) * enemySpeed * 2, ForceMode.Impulse); ;
     }
 
     public void Controller()
@@ -139,10 +139,11 @@ public class Enemy : MonoBehaviour
 
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask) && 
-                                    Mathf.Abs(transform.position.y - target.position.y) < 0.7f)
+                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget * 2f, obstructionMask) && 
+                                    Mathf.Abs(transform.position.y - target.position.y) < 1.5f)
                 {
                     CanSeePlayer = true;
+                    Debug.Log("Can see u");
                 }
                 else
                 {
