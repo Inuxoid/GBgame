@@ -44,9 +44,12 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
-			climb.Point1 = go.GetComponent<ClimbData>().Point1;
-			climb.Point2 = go.GetComponent<ClimbData>().Point2;
-			animator.SetBool("isClimbing", true);
+			if (go.GetComponent<ClimbData>() != null)
+            {
+				climb.Point1 = go.GetComponent<ClimbData>().Point1;
+				climb.Point2 = go.GetComponent<ClimbData>().Point2;
+				animator.SetBool("isClimbing", true);
+			}
 			//this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 			//Debug.Log($"Target - {go.transform.position.x} Player - {transform.position.x}");
 		}
