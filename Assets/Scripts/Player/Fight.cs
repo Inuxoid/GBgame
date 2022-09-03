@@ -7,6 +7,14 @@ public class Fight : MonoBehaviour
     [SerializeField] private int flip = 1;
     [SerializeField] private int damage;
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerMovement playerMovement;
+    private db[] dbBeh;
+
+    private void Awake()
+    {
+        dbBeh = animator.GetBehaviours<db>();
+    }
+
     public void Fliped()
     {
         flip = flip * -1;
@@ -14,6 +22,7 @@ public class Fight : MonoBehaviour
     public void Strike()
     {
         animator.SetBool("isPunching", true);
+        Debug.Log("punched");
         foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y), 
                                                 new Vector3 (0.7f, 0.7f, 0.7f), 
                                                 Quaternion.identity, 128))
@@ -23,11 +32,21 @@ public class Fight : MonoBehaviour
         }
     }
 
+    private bool StateCheck()
+    {
+        foreach (var item in dbBeh)
+        {
+            if (item.Exited == false)
+                return false;
+        }
+        return true;
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") == 0)
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") == 0 && !animator.GetBool("isPunching") && StateCheck())
         {
-            if (!gameObject.GetComponent<PlayerMovement>().Crouch)
+            if (!playerMovement.Crouch)
             {
                 Strike();
             }
