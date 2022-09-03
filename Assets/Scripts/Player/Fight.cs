@@ -44,12 +44,6 @@ public class Fight : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") == 0 && !animator.GetBool("isPunching") && StateCheck())
-        {
-            if (!playerMovement.Crouch)
-            {
-                Strike();
-            }
-        }
+
     }
 }

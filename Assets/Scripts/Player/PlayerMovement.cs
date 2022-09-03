@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Collider visionCollider;
 	[SerializeField] private Animator animator;
 	[SerializeField] private Climb climb;
+	[SerializeField] private Fight fight;
 
 	[Header("Settings")]
 	[SerializeField] private bool facingRight = true;
@@ -174,6 +175,14 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") == 0 && !animator.GetBool("isPunching"))
+		{
+			if (!Crouch)
+			{
+				fight.Strike();
+			}
+		}
+
 		horizontalMove = Input.GetAxisRaw("Horizontal");
 
 		animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
