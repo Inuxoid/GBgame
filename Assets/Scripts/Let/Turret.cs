@@ -94,6 +94,7 @@ public class Turret : MonoBehaviour
         if (canSeePlayer && !isStrikes)
         {
             Strike();
+            Debug.Log("Strike");
         }
     }
 
@@ -135,7 +136,7 @@ public class Turret : MonoBehaviour
 
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask) &&
+                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget * 2, obstructionMask) &&
                                     Mathf.Abs(transform.position.y - target.position.y) < radius)
                 {
                     CanSeePlayer = true;
