@@ -6,29 +6,50 @@ public class Climb : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Transform player;
-    [SerializeField] private Transform point1;
-    [SerializeField] private Transform point2;
+    [SerializeField] private Vector3 point1;
+    [SerializeField] private Vector3 point2;
     [SerializeField] private float passDistance;
     [SerializeField] private float speed;
+    [SerializeField] private Vector3 target;
+    [SerializeField] private Transform colTransform;
+    [SerializeField] private Transform playerModel;
 
-    public Transform Point1 { get => point1; set => point1 = value; }
-    public Transform Point2 { get => point2; set => point2 = value; }
+    public Vector3 Point1 { get => point1; set => point1 = value; }
+    public Vector3 Point2 { get => point2; set => point2 = value; }
 
     public void FirstMove()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, Point1.position, Time.deltaTime * speed);
-        if (Vector3.Distance(this.transform.position, Point1.position) < passDistance)
-        {
-            SecondMove();
-        }
+        target = point1;
     }
 
     public void SecondMove()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, Point2.position, Time.deltaTime * speed);
-        if (Vector3.Distance(this.transform.position, Point2.position) < passDistance)
+        target = point2;
+    }
+
+    private void Update()
+    {
+        if (target != Vector3.zero)
         {
+            //player.transform.position = target.position;
+            player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(target.x, target.y, target.z), Time.deltaTime * speed);
+
+
+            //colTransform.position = Vector3.MoveTowards(player.transform.position, target.position, Time.deltaTime * speed);
+        }
+        if (Vector3.Distance(player.transform.position, Point1) < passDistance)
+        {
+            Debug.Log("FirstDone");
+            playerModel.localPosition = new Vector3(0, -0.949f, 0);
+            SecondMove();
+        }
+
+        if (Vector3.Distance(player.transform.position, Point2) < passDistance)
+        {
+            Debug.Log("SecondDone");
+            playerModel.localPosition = new Vector3(0, -0.949f, 0);
             animator.SetBool("isClimbing", false);
+            target = Vector3.zero;
         }
     }
 }
