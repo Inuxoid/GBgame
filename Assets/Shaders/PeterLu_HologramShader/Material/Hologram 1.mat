@@ -97,7 +97,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GlitchDirection: {r: 1, g: 1, b: 1, a: 0}
     - _GlitchValue: {r: 0, g: 0, b: 0, a: 0}
-    - _HoloColor: {r: 0.57254905, g: 0.078431346, b: 0.4235294, a: 0.043137256}
+    - _HoloColor: {r: 0.57254905, g: 0.078431286, b: 0.42352933, a: 0.02745098}
     - _HoloDir: {r: 0, g: 1, b: 0, a: 1}
     - _HoloDirection: {r: 1, g: 0, b: 0, a: 0}
     - _RimColor: {r: 0.5477066, g: 0, b: 1, a: 1}
