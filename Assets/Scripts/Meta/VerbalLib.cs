@@ -29,7 +29,8 @@ class VerbalLib
         Turret1,
         Turret2,
         StartDoor,
-        Police
+        Police,
+        Lvl2_Back
     };
 
     public static char[] FirstVHS = "Да не умер он в конце фильма".ToCharArray();
@@ -45,4 +46,5 @@ class VerbalLib
     public static char[] Turret2 = "Неужели они думали, что меня остановит это ведро с гвоздями".ToCharArray();
     public static char[] StartDoor = "Они отрезали мне путь...\nСбежал из одной клетки, чтобы быть запертым в другой...\nнадо же...".ToCharArray();
     public static char[] Police = "Ты что-нибудь слышал?".ToCharArray();
+    public static char[] Lvl2_Back = "Не отступать и не сдаваться".ToCharArray();
 }
