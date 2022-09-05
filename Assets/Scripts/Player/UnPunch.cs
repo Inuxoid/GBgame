@@ -8,7 +8,6 @@ public class UnPunch : MonoBehaviour
 
     public void EndPunch()
     {
-        Debug.Log("unpinched");
         animator.SetBool("isPunching", false);
         animator.SetBool("secondPunch", !animator.GetBool("secondPunch"));
     }
