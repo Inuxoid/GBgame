@@ -21,7 +21,6 @@ public class AudioColl : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             item.volume -= item.volume / 4;
-            Debug.Log(item.volume);
             yield return new WaitForSeconds(0.6f);
         }
         item.volume = 0;

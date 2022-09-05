@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float deltaSpeed;
 	[SerializeField] private float deltaSpeedMult;
 	[SerializeField] private Vector3 velocity = Vector3.zero;
+	[SerializeField] private float speedMod;
 
     public bool Crouch { get => crouch; set => crouch = value; }
 
@@ -50,7 +51,11 @@ public class PlayerMovement : MonoBehaviour
 				climb.Point1 = go.GetComponent<ClimbData>().Point1;
 				climb.Point2 = go.GetComponent<ClimbData>().Point2;
 				animator.SetBool("isClimbing", true);
-			}
+            }
+            else
+            {
+				Debug.Log("Не туда лезешь");
+            }
 			//this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 			//Debug.Log($"Target - {go.transform.position.x} Player - {transform.position.x}");
 		}
@@ -61,9 +66,11 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
 			currentSpeed = 0;
+			speedMod = 0;
 		}
         else
         {
+			speedMod = 1;
             if (Crouch)
             {
 				currentSpeed = crouchSpeed;
@@ -80,10 +87,12 @@ public class PlayerMovement : MonoBehaviour
 		if (Crouch)
 		{
 			currentSpeed = crouchSpeed;
+			speedMod = 1;
 		}
 		else
 		{
 			currentSpeed = runSpeed;
+			speedMod = 1;
 		}
 	}
 
@@ -183,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		horizontalMove = Input.GetAxisRaw("Horizontal");
+		horizontalMove = Input.GetAxisRaw("Horizontal") * speedMod;
 
 		animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
 		animator.SetFloat("vSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.y));	

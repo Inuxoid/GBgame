@@ -31,7 +31,6 @@ public class AirChecker : MonoBehaviour
         {
             if (hit.collider.CompareTag("Ground"))
             {
-                Debug.Log("Hoba");
                 playerMovement.AirGroundCollision(hit.collider.gameObject);
             }
             if (hit.collider.CompareTag("Wall"))
