@@ -1,4 +1,5 @@
 using Dto;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -129,7 +130,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        animator.SetFloat("hSpeed", GetComponent<Rigidbody>().velocity.x);
+        animator.SetFloat("hSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.x));
     }
 
     private IEnumerator CheckPLayer()
