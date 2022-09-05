@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorButton : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class DoorButton : MonoBehaviour
     [SerializeField] private bool isOpening;
     [SerializeField] private float y;
     [SerializeField] private float x;
+    [SerializeField] private UnityEvent onPushed;
 
     public bool IsOpened
     {
@@ -74,6 +76,7 @@ public class DoorButton : MonoBehaviour
         isOpening = true;
         IsOpened = !IsOpened;
         otherButton.IsOpened = !otherButton.IsOpened;
+        onPushed?.Invoke();
         yield return new WaitForSeconds(1f);
         isOpening = false;
         yield return null;
