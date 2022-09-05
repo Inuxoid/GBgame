@@ -16,6 +16,17 @@ public class AudioColl : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            foreach (var item in audioSources)
+            {
+                item.Play();
+            }
+        }
+    }
+
     IEnumerator soundTimer(AudioSource item)
     {
         for (int i = 0; i < 5; i++)
