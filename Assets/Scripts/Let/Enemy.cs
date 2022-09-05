@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject placed;
     [SerializeField] private GameObject heart;
+    [SerializeField] private Animator animator;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -63,13 +64,13 @@ public class Enemy : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        if (!(player.transform.position.x - this.transform.position.x > 0))
+        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
         {
             Flip();
         }
 
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
-        rb.AddForce((player.transform.position - this.transform.position) * enemySpeed * 2, ForceMode.Impulse); ;
+        rb.AddForce((player.transform.position - this.transform.position) * enemySpeed * 16, ForceMode.Impulse); ;
     }
 
     public void Controller()
@@ -119,10 +120,16 @@ public class Enemy : MonoBehaviour
                                     new Vector3(1, 1, 1),
                                     Quaternion.identity, 8))
             {
+                animator.SetBool("isPunching", true);
                 item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
             }
             yield return new WaitForSeconds(attackSpeed);
         }
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("hSpeed", GetComponent<Rigidbody>().velocity.x);
     }
 
     private IEnumerator CheckPLayer()
