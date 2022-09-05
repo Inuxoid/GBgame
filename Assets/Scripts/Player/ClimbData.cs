@@ -20,7 +20,7 @@ public class ClimbData : MonoBehaviour
     public Vector3 Point1 { get => point1; set => point1 = value; }
     public Vector3 Point2 { get => point2; set => point2 = value; }
 
-    private void Start()
+    private void Start() 
     {
         if (fromTransform)
         {
