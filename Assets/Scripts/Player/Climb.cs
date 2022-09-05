@@ -39,14 +39,12 @@ public class Climb : MonoBehaviour
         }
         if (Vector3.Distance(player.transform.position, Point1) < passDistance)
         {
-            Debug.Log("FirstDone");
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
             SecondMove();
         }
 
         if (Vector3.Distance(player.transform.position, Point2) < passDistance)
         {
-            Debug.Log("SecondDone");
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
             animator.SetBool("isClimbing", false);
             target = Vector3.zero;

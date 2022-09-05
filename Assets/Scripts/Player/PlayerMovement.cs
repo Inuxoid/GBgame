@@ -248,7 +248,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (WReleased)
 			{
-				Debug.Log("rel");
 				break;
 			}
 			currentJumpTimer += 0.1f;

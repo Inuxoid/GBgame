@@ -135,10 +135,11 @@ public class Enemy : MonoBehaviour
             if (rangeChecks.Length != 0)
             {
                 Transform target = rangeChecks[0].transform;
+
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
-
+                RaycastHit hit;
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
+                Debug.Log($"{Physics.Raycast(transform.position, directionToTarget, out hit, distanceToTarget * 2f, obstructionMask)} + {hit.collider}");
                 if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget * 2f, obstructionMask) && 
                                     Mathf.Abs(transform.position.y - target.position.y) < 1.5f)
                 {
