@@ -11,12 +11,12 @@ public class Allarm : MonoBehaviour
     public void StartAlarm()
     {
         IsAlarming = true;
-        unAlarmButton.DoorPositionChange();
+        unAlarmButton.IsOpened = true;
     }
 
     public void EndAlarm()
     {
         IsAlarming = false;
-        unAlarmButton.DoorPositionChange();
+        unAlarmButton.IsOpened = false;
     }
 }

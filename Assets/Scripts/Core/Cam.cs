@@ -40,7 +40,7 @@ public class Cam : MonoBehaviour
             onTimerChanged?.Invoke(dto);
         }
 
-        if (Timer <= maxTimer && !inZone && !done)
+        if (Timer <= maxTimer && !inZone)
         {
             Timer += Time.deltaTime;
             FloatNumberDto dto = new FloatNumberDto { value = Timer / maxTimer };
@@ -50,7 +50,20 @@ public class Cam : MonoBehaviour
         if (Timer <= 0 && !done)
         {
             done = true;
+            Timer = maxTimer;
             allarm.StartAlarm();
         }
+
+        if (Timer >= maxTimer && done)
+        {
+            StartCoroutine(PauseCamTimer());
+        }
+    }
+
+    IEnumerator PauseCamTimer()
+    {
+        yield return new WaitForSeconds(3f);
+        done = false;
+        yield return null;
     }
 }
