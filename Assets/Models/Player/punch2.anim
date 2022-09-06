@@ -42009,6 +42009,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0.13333334
+    functionName: PlayOnce
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 5aba140be7b1b5b45b2b27a5dea3355e,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.96666664
     functionName: EndPunch
     data: 
