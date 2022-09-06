@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Ground
   - Ceil
+  - MainPlayer
+  - Cyborg
   layers:
   - Default
   - TransparentFX

@@ -70,9 +70,10 @@ public class UnAlarmButton : MonoBehaviour
     {
         isOpening = true;
         IsOpened = !IsOpened;
+        StopAlarm();
         yield return new WaitForSeconds(1f);
         allarm.IsAlarming = false;
-   
+           
         isOpening = false;
         yield return null;
     }

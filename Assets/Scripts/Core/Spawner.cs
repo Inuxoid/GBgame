@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 {
     
     [SerializeField] private bool isSpawning;
-
+    [SerializeField] private GameObject spawningGameObject;
     public bool IsSpawning { get => isSpawning; set => isSpawning = value; }
 
     private void Awake()
@@ -16,16 +16,16 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(gameObject);
+        Instantiate(spawningGameObject);
     }
 
     IEnumerator SpawningTimer()
     {
-        while (IsSpawning)
+        while (true)
         {
-            Spawn();
+            if (isSpawning)
+                Spawn();
             yield return new WaitForSeconds(3f);
         }
-        yield return null;
     }
 }

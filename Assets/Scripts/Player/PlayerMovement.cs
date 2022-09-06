@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float speedMod;
 
     public bool Crouch { get => crouch; set => crouch = value; }
+    public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
     public void AirGroundCollision(GameObject go)
 	{
@@ -98,14 +99,14 @@ public class PlayerMovement : MonoBehaviour
 
 	public void ToGround()
 	{
-		isGrounded = true;
+		IsGrounded = true;
 		WReleased = false;
 		animator.SetBool("isJumping", false);
 	}
 
 	public void ToAir()
 	{
-		isGrounded = false;
+		IsGrounded = false;
 		animator.SetBool("isJumping", true);
 	}
 
@@ -121,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
-		if (isGrounded || airControl)
+		if (IsGrounded || airControl)
 		{
 			// Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
 			// rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
@@ -139,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		if (isGrounded && jump && !crouch)
+		if (IsGrounded && jump && !crouch)
 		{
 			StartCoroutine(JumpTimer());
 			canDoubleJump = true;
@@ -149,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
 			canDoubleJump = false;
 			StartCoroutine(JumpTimer());
 		}
+		animator.SetBool("isPunching", false);
 	}
 
 	public void StartCrouch()
@@ -188,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			if (!Crouch)
 			{
-				fight.Strike();
+				fight.Strike();	
 			}
 		}
 
