@@ -47610,7 +47610,7 @@ AnimationClip:
   - time: 0.3
     functionName: PlayOnce
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: c23c30ef33fb5d749b7a44dd71d91a10,
+    objectReferenceParameter: {fileID: 8300000, guid: 228e1075bc372b042999a597a3d14c53,
       type: 3}
     floatParameter: 0
     intParameter: 0
@@ -47618,7 +47618,7 @@ AnimationClip:
   - time: 0.8
     functionName: PlayOnce
     data: 
-    objectReferenceParameter: {fileID: 8300000, guid: c23c30ef33fb5d749b7a44dd71d91a10,
+    objectReferenceParameter: {fileID: 8300000, guid: ba3090aefebfd364c90254077f96a676,
       type: 3}
     floatParameter: 0
     intParameter: 0
