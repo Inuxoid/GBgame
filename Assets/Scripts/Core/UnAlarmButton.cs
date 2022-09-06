@@ -5,7 +5,7 @@ using UnityEngine;
 public class UnAlarmButton : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private GameObject door;
+    [SerializeField] private GameObject[] door;
     [SerializeField] private GameObject camColor;
     [Header("Settings")]
     [SerializeField] private bool isOpened;
@@ -27,13 +27,16 @@ public class UnAlarmButton : MonoBehaviour
 
     public void DoorPositionChange()
     {
-        if (isOpened)
+        foreach (var item in door)
         {
-            door.SetActive(true);
-        }
-        else
-        {
-            door.SetActive(false);
+            if (isOpened)
+            {
+                item.SetActive(true);
+            }
+            else
+            {
+                item.SetActive(false);
+            }
         }
     }
 
