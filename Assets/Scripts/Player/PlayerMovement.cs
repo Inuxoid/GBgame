@@ -39,8 +39,9 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float deltaSpeedMult;
 	[SerializeField] private Vector3 velocity = Vector3.zero;
 	[SerializeField] private float speedMod;
+	[SerializeField] private float airSpeed;
 
-    public bool Crouch { get => crouch; set => crouch = value; }
+	public bool Crouch { get => crouch; set => crouch = value; }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
 
     public void AirGroundCollision(GameObject go)
@@ -71,7 +72,15 @@ public class PlayerMovement : MonoBehaviour
 		}
         else
         {
-			speedMod = 1;
+            if (IsGrounded)
+            {
+				speedMod = 1;
+            }
+            else
+            {
+				speedMod = airSpeed;
+			}
+			
             if (Crouch)
             {
 				currentSpeed = crouchSpeed;
@@ -88,12 +97,26 @@ public class PlayerMovement : MonoBehaviour
 		if (Crouch)
 		{
 			currentSpeed = crouchSpeed;
-			speedMod = 1;
+			if (IsGrounded)
+			{
+				speedMod = 1;
+			}
+			else
+			{
+				speedMod = airSpeed;
+			}
 		}
 		else
 		{
 			currentSpeed = runSpeed;
-			speedMod = 1;
+			if (IsGrounded)
+			{
+				speedMod = 1;
+			}
+			else
+			{
+				speedMod = airSpeed;
+			}
 		}
 	}
 
@@ -102,12 +125,14 @@ public class PlayerMovement : MonoBehaviour
 		IsGrounded = true;
 		WReleased = false;
 		animator.SetBool("isJumping", false);
+		speedMod = 1;
 	}
 
 	public void ToAir()
 	{
 		IsGrounded = false;
 		animator.SetBool("isJumping", true);
+		speedMod = airSpeed;
 	}
 
 	public void CanStandUp()
