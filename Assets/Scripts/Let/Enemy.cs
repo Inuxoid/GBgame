@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxStrikeTimer;
     [SerializeField] private int enemySpeed;
     [SerializeField] private bool strikesNow;
+    [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
 
     public bool CanSeePlayer { get => canSeePlayer;
@@ -71,7 +72,13 @@ public class Enemy : MonoBehaviour
         }
 
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
-        rb.AddForce((player.transform.position - this.transform.position) * enemySpeed * 16, ForceMode.Impulse); ;
+        Debug.Log(Math.Abs(player.transform.position.x - transform.position.x));
+        if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
+        {
+            rb.AddForce((new Vector3((player.transform.position.x - transform.position.x),
+                transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Impulse);
+            animator.SetBool("isPunching", false);
+        }
     }
 
     public void Controller()
@@ -96,6 +103,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("MainPlayer");
         StartCoroutine(CheckPLayer());
     }
 
@@ -137,7 +145,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+
             Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
 
             if (rangeChecks.Length != 0)
@@ -162,6 +170,7 @@ public class Enemy : MonoBehaviour
             }
             else if (CanSeePlayer)
                 CanSeePlayer = false;
+            yield return new WaitForSeconds(1f);
         }
     }
 }

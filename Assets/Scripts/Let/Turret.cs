@@ -11,7 +11,6 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject turRotate;
     [SerializeField] private GameObject mainObj;
-    [SerializeField] private GameObject canHp;
     [SerializeField] private Material lens;
 
     [Header("Settings")]
@@ -75,14 +74,13 @@ public class Turret : MonoBehaviour
     {
         mainObj.transform.Rotate(new Vector3(0, 0, -40));
         lens.SetColor("_EmissionColor", new Color(0, 0, 0, 1.0F));
-        Destroy(canHp);
         Destroy(this);
     }
 
     private void Start()
     {
-        StartCoroutine(CheckPlayer());
         player = GameObject.FindGameObjectWithTag("MainPlayer");
+        StartCoroutine(CheckPlayer());
     }
 
     private void Update()
