@@ -22,7 +22,7 @@ public class EndLevel : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             scorePanel.SetActive(true);
-            Score = scoreCounter.ScoreCount * 3 + (int)liveCycle.Hp * 10;
+            Score = scoreCounter.VHSCount * 3 + (int)liveCycle.Hp * 10;
             textScore.text = Score.ToString();
             progress.GetSprite();
             CheckLevels();

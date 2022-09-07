@@ -12,6 +12,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private GameObject turRotate;
     [SerializeField] private GameObject mainObj;
     [SerializeField] private Material lens;
+    [SerializeField] private ScoreCounter scoreCounter;
 
     [Header("Settings")]
     [SerializeField] private bool canRotate;
@@ -72,6 +73,7 @@ public class Turret : MonoBehaviour
 
     public void Death()
     {
+        scoreCounter.CountScore(300);
         mainObj.transform.Rotate(new Vector3(0, 0, -40));
         lens.SetColor("_EmissionColor", new Color(0, 0, 0, 1.0F));
         Destroy(this);
@@ -79,6 +81,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
+        scoreCounter = FindObjectOfType<ScoreCounter>();
         player = GameObject.FindGameObjectWithTag("MainPlayer");
         StartCoroutine(CheckPlayer());
     }

@@ -79,6 +79,10 @@ public class Enemy : MonoBehaviour
                 transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Impulse);
             animator.SetBool("isPunching", false);
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     public void Controller()
@@ -111,8 +115,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player") && !strikesNow)
         {
-            Strike();
             strikesNow = true;
+            Strike();
         }
     }
 
@@ -122,18 +126,26 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator StrikeTimer()
-    {
-        while (true)
+    { 
+        while (strikesNow)
         {
-            foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
-                                    new Vector3(1, 1, 1),
-                                    Quaternion.identity, 8))
+            Debug.Log(Math.Abs(rb.velocity.x));
+            if (Math.Abs(rb.velocity.x) < 1f)
             {
-                animator.SetBool("isPunching", true);
-                item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+                foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
+                        new Vector3(1, 1, 1),
+                        Quaternion.identity, 8))
+                {
+                    animator.SetBool("isPunching", true);
+                    yield return new WaitForSeconds(0.5f);
+                    item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+                    break;
+                }
+                yield return new WaitForSeconds(attackSpeed);
             }
-            yield return new WaitForSeconds(attackSpeed);
+            yield return new WaitForSeconds(0.05f);
         }
+        yield return null;
     }
 
     private void Update()
