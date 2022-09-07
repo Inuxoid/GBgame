@@ -60,7 +60,7 @@ public class Turret : MonoBehaviour
 
     public void Strike()
     {
-        StartCoroutine(StrikeTimer());
+        StartCoroutine(StrikeTimer());  
     }
 
     public void MoveToPlayer()
@@ -82,6 +82,7 @@ public class Turret : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CheckPlayer());
+        player = GameObject.FindGameObjectWithTag("MainPlayer");
     }
 
     private void Update()
