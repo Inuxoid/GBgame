@@ -187,4 +187,9 @@ public class Cyborg : MonoBehaviour
                 CanSeePlayer = false;
         }
     }
+
+    private IEnumerator TpTimer()
+    {
+        yield return null;
+    }
 }

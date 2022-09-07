@@ -29,6 +29,7 @@ public class Fight : MonoBehaviour
         {
             item?.GetComponent<Enemy>()?.GetStrike(damage);
             item?.GetComponent<Turret>()?.GetStrike(damage);
+            item?.GetComponent<Cyborg>()?.GetStrike(damage);
         }
     }
 
