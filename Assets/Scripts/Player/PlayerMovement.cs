@@ -138,6 +138,10 @@ public class PlayerMovement : MonoBehaviour
 			{
 				Flip();
 			}
+            if (move > 0)
+            {
+				animator.SetBool("isPunching", false);
+			}
 		}
 
 		if (IsGrounded && jump && !crouch)
@@ -150,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 			canDoubleJump = false;
 			StartCoroutine(JumpTimer());
 		}
-		animator.SetBool("isPunching", false);
+		
 	}
 
 	public void StartCrouch()
