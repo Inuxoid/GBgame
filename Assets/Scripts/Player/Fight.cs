@@ -33,6 +33,12 @@ public class Fight : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(new Vector3(this.transform.position.x + flip, this.transform.position.y), new Vector3(0.7f, 0.7f, 0.7f));
+    }
+
     //private bool StateCheck()
     //{
     //    foreach (var item in dbBeh)
