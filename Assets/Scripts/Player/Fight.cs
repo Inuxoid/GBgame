@@ -8,11 +8,11 @@ public class Fight : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
-    private db[] dbBeh;
+    //private db[] dbBeh;
 
     private void Awake()
     {
-        dbBeh = animator.GetBehaviours<db>();
+        //dbBeh = animator.GetBehaviours<db>();
     }
 
     public void Fliped()
@@ -33,15 +33,15 @@ public class Fight : MonoBehaviour
         }
     }
 
-    private bool StateCheck()
-    {
-        foreach (var item in dbBeh)
-        {
-            if (item.Exited == false)
-                return false;
-        }
-        return true;
-    }
+    //private bool StateCheck()
+    //{
+    //    foreach (var item in dbBeh)
+    //    {
+    //        if (item.Exited == false)
+    //            return false;
+    //    }
+    //    return true;
+    //}
 
     private void Update()
     {
