@@ -17,7 +17,21 @@ public class LiveCycle : MonoBehaviour
 	[SerializeField] private UnityEvent<FloatNumberDto> onCounted;
 	[SerializeField] private Material mat;
 
-	public float Hp { get => hp; set => hp = value; }
+	public float Hp
+    {
+        get => hp; set
+        {
+            if (value <= maxHp)
+            {
+				hp = value;
+            }
+            else
+            {
+				hp = maxHp;
+            }
+            
+        }
+    }
 
     public void GetDamage(int amount)
 	{

@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Animator animator;
 	[SerializeField] private Climb climb;
 	[SerializeField] private Fight fight;
+	[SerializeField] private Settings settings;
+	[SerializeField] private GameObject pausePanel;
 
 	[Header("Settings")]
 	[SerializeField] private bool facingRight = true;
@@ -126,6 +128,15 @@ public class PlayerMovement : MonoBehaviour
 		WReleased = false;
 		animator.SetBool("isJumping", false);
 		speedMod = 1;
+        if (!Crouch)
+        {
+			bodyCollider.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+			StartCrouch();
+		}
+
 	}
 
 	public void ToAir()
@@ -133,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
 		IsGrounded = false;
 		animator.SetBool("isJumping", true);
 		speedMod = airSpeed;
+		bodyCollider.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 	}
 
 	public void CanStandUp()
@@ -174,11 +186,11 @@ public class PlayerMovement : MonoBehaviour
 			StartCoroutine(JumpTimer());
 			canDoubleJump = true;
 		}
-		else if (canDoubleJump && jump && !crouch)
-		{
-			canDoubleJump = false;
-			StartCoroutine(JumpTimer());
-		}
+		//else if (canDoubleJump && jump && !crouch)
+		//{
+		//	canDoubleJump = false;
+		//	StartCoroutine(JumpTimer());
+		//}
 		
 	}
 
@@ -251,6 +263,7 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.W))
 		{
 			jump = true;
+			WReleased = false;
 		}
 
 		if (Input.GetKeyUp(KeyCode.W))
@@ -268,6 +281,21 @@ public class PlayerMovement : MonoBehaviour
 		{
 			SReleased = true;
 		}
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+            if (pausePanel.activeInHierarchy)
+            {
+				settings.Unpause();
+				pausePanel.SetActive(false);
+            }
+            else
+            {
+				settings.Pause();
+				pausePanel.SetActive(true);
+			}
+		}
+
 
 		if (Crouch && SReleased && canStandUp)
 		{

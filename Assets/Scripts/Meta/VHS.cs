@@ -11,7 +11,6 @@ public class VHS : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            scoreCounter.CountVHS();
             scoreCounter.CountScore(100);
             this.onCoinTaken?.Invoke();
             Destroy(this.gameObject);

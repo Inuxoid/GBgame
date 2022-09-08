@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject placed;
     [SerializeField] private GameObject heart;
     [SerializeField] private Animator animator;
+    [SerializeField] private ScoreCounter scoreCounter;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -101,13 +102,14 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        
+        scoreCounter.CountScore(300);
         Destroy(this.gameObject);
     }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainPlayer");
+        scoreCounter = FindObjectOfType<ScoreCounter>();
         StartCoroutine(CheckPLayer());
     }
 
