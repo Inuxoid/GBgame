@@ -8,7 +8,6 @@ public class GroundChecker : MonoBehaviour
     [Header("Components")]
     [SerializeField] private UnityEvent onGrounded;
     [SerializeField] private UnityEvent onAired;
-    [SerializeField] private PlayerMovement playerMovement;
 
     [Header("Settings")]
     [SerializeField] private float standDistance;
@@ -24,13 +23,11 @@ public class GroundChecker : MonoBehaviour
             Physics.Raycast(crouchRayLeftUp, out hit, standDistance)) &&
             hit.collider.CompareTag("Ground"))
         {
-            if (!playerMovement.IsGrounded)
-                this.onGrounded?.Invoke();
+            this.onGrounded?.Invoke();
         }
         else
         {
-            if (playerMovement.IsGrounded)
-                this.onAired?.Invoke();
+            this.onAired?.Invoke();
         }
 
     }
