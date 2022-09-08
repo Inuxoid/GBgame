@@ -13,6 +13,7 @@ public class Heart : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponentInParent<LiveCycle>().GetHeart(hpRes);
+            Destroy(GetComponent<Collider>());
             StartCoroutine(DestroyTimer());
         }
     }
