@@ -327,10 +327,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.29935837
+  m_Radius: 0.26862717
   m_Height: 1.4313707
   m_Direction: 1
-  m_Center: {x: -0.018726349, y: 0.28431463, z: -0.00000011920929}
+  m_Center: {x: 0.12674332, y: 0.28431463, z: -0.00000011920929}
 --- !u!114 &6372621597176399014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +348,7 @@ MonoBehaviour:
   placed: {fileID: 0}
   heart: {fileID: 3761088728148435624, guid: 8cac65a23ded9214d959865766a461d8, type: 3}
   animator: {fileID: 655990892276847502}
+  scoreCounter: {fileID: 0}
   maxHP: 50
   hp: 50
   enemyDamage: 15
@@ -509,7 +510,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6372621597714892714}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 59.79, y: -23.23, z: -30.473711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
