@@ -11,6 +11,8 @@ public class Cyborg : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private Animator animator;
+    [SerializeField] private SpawnEffect effect;
+    [SerializeField] private GameObject effectGO;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -29,6 +31,7 @@ public class Cyborg : MonoBehaviour
     [SerializeField] private float yRange;
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
+    [SerializeField] private bool tpNow;
 
     private void Awake()
     {
@@ -71,10 +74,7 @@ public class Cyborg : MonoBehaviour
 
     public void Teleport()
     {
-        this.transform.position = player.transform.position + new Vector3(1, -1, 0);
-        MoveToPlayer();
-        animator.SetBool("isPunching", false);
-        Debug.Log("Tped");
+        StartCoroutine(TpTimer());
     }
 
     public void MoveToPlayer()
@@ -93,8 +93,11 @@ public class Cyborg : MonoBehaviour
         if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
         {
             rb.AddForce((new Vector3((player.transform.position.x - transform.position.x), 
-                transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Impulse);
-            animator.SetBool("isPunching", false);
+                transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -125,7 +128,7 @@ public class Cyborg : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !strikesNow)
+        if (other.CompareTag("Player") && !strikesNow && !tpNow)
         {
             Strike();
             strikesNow = true;
@@ -141,20 +144,29 @@ public class Cyborg : MonoBehaviour
     {
         while (true)
         {
-            animator.SetBool("isPunching", true);
-            foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
-                                    new Vector3(1, 1, 1),
-                                    Quaternion.identity, 8))
-            {          
-                item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+            if (Math.Abs(rb.velocity.x) < 0.2f && Math.Abs(player.transform.position.x - transform.position.x) < xRange)
+            {
+                animator.SetBool("isPunching", true);
+                foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
+                                        new Vector3(1, 1, 1),
+                                        Quaternion.identity, 8))
+                {
+                    item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+                    break;
+                }
+                yield return new WaitForSeconds(attackSpeed);
             }
-            yield return new WaitForSeconds(attackSpeed);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
     private void Update()
     {
         animator.SetFloat("hSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.x));
+        if (tpNow)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     private IEnumerator CheckPLayer()
@@ -164,7 +176,7 @@ public class Cyborg : MonoBehaviour
             yield return new WaitForSeconds(1f);
             Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
             
-            if (rangeChecks.Length != 0)
+            if (rangeChecks.Length != 0 && !tpNow)
             {
                 Transform target = rangeChecks[0].transform;
 
@@ -172,7 +184,7 @@ public class Cyborg : MonoBehaviour
                 RaycastHit hit;
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 Debug.Log($"{Physics.Raycast(transform.position, directionToTarget, out hit, distanceToTarget * 2f, obstructionMask)} + {hit.collider}");
-                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget * 2f, obstructionMask))
+                if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
                 {
                     CanSeePlayer = true;
                     Debug.Log("Can see u");
@@ -190,6 +202,17 @@ public class Cyborg : MonoBehaviour
 
     private IEnumerator TpTimer()
     {
+        
+        tpNow = true;
+        strikesNow = false;
+        this.transform.position = player.transform.position + new Vector3(1, -1, 0);
+        MoveToPlayer();
+        animator.SetBool("isPunching", false);
+        effect.PlaySp();
+        yield return new WaitForSeconds(1f);
+        effect.StopSP();
+        effectGO.SetActive(false);
+        tpNow = false;
         yield return null;
     }
 }
