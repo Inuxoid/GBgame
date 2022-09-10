@@ -131,7 +131,6 @@ public class Enemy : MonoBehaviour
     { 
         while (strikesNow)
         {
-            Debug.Log(Math.Abs(rb.velocity.x));
             if (Math.Abs(rb.velocity.x) < 1f)
             {
                 foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
