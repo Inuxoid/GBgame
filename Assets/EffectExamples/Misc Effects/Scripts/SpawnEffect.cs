@@ -16,15 +16,21 @@ public class SpawnEffect : MonoBehaviour {
 
     public void PlaySp()
     {
+        shaderProperty = Shader.PropertyToID("_cutoff");
+        _renderer = GetComponent<Renderer>();
+        ps = GetComponentInChildren<ParticleSystem>();
+
+        var main = ps.main;
+        main.duration = spawnEffectTime;
         ps.Play();
-        isPLaying = true;
+        //isPLaying = true;
     }
 
     public void StopSP()
     {
-        ps.Stop();
-        ps.Clear();
-        isPLaying = false;
+        //ps.Stop();
+        //ps.Clear();
+        //isPLaying = false;
     }
 
     void Start ()

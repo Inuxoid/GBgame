@@ -11,7 +11,9 @@ public class Cam : MonoBehaviour
     [SerializeField] private float timer;
     [SerializeField] private bool inZone;
     [SerializeField] private bool done;
+    [SerializeField] private float pause;
     [SerializeField] private UnityEvent<FloatNumberDto> onTimerChanged;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     public float Timer { get => timer; set => timer = value; }
 
@@ -33,14 +35,14 @@ public class Cam : MonoBehaviour
 
     private void Update()
     {
-        if (Timer >= 0 && inZone && !done)
+        if (Timer >= 0 && inZone && !done && !allarm.IsAlarming)
         {
             Timer -= Time.deltaTime;
             FloatNumberDto dto = new FloatNumberDto { value = Timer / maxTimer };
             onTimerChanged?.Invoke(dto);
         }
 
-        if (Timer <= maxTimer && !inZone)
+        if (Timer <= maxTimer && !inZone && !allarm.IsAlarming)
         {
             Timer += Time.deltaTime;
             FloatNumberDto dto = new FloatNumberDto { value = Timer / maxTimer };
@@ -54,15 +56,22 @@ public class Cam : MonoBehaviour
             allarm.StartAlarm();
         }
 
-        if (Timer >= maxTimer && done)
+        if (Timer >= maxTimer && done && !allarm.IsAlarming)
         {
             StartCoroutine(PauseCamTimer());
+        }
+
+        if (allarm.IsAlarming)
+        {
+            
         }
     }
 
     IEnumerator PauseCamTimer()
     {
-        yield return new WaitForSeconds(3f);
+        spriteRenderer.enabled = false;
+        yield return new WaitForSeconds(pause);
+        spriteRenderer.enabled = true;
         done = false;
         yield return null;
     }

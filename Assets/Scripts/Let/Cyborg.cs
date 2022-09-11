@@ -74,7 +74,7 @@ public class Cyborg : MonoBehaviour
 
     public void Teleport()
     {
-        StartCoroutine(TpTimer());
+        StartCoroutine(TpTimer(player.transform, false));
     }
 
     public void MoveToPlayer()
@@ -124,6 +124,7 @@ public class Cyborg : MonoBehaviour
     private void Start()
     {
         StartCoroutine(CheckPLayer());
+        StartCoroutine(TpTimer(transform, true));
     }
 
     private void OnTriggerStay(Collider other)
@@ -200,14 +201,17 @@ public class Cyborg : MonoBehaviour
         }
     }
 
-    private IEnumerator TpTimer()
+    private IEnumerator TpTimer(Transform newTransform, bool start)
     {
-        
         tpNow = true;
         strikesNow = false;
-        this.transform.position = player.transform.position + new Vector3(1, -1, 0);
+        if (!start)
+        {
+            this.transform.position = newTransform.position + new Vector3(1, -1, 0);
+        }
         MoveToPlayer();
         animator.SetBool("isPunching", false);
+        effectGO.SetActive(true);
         effect.PlaySp();
         yield return new WaitForSeconds(1f);
         effect.StopSP();

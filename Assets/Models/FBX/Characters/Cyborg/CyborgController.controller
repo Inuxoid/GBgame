@@ -222,6 +222,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: hSpeed
     m_EventTreshold: 1
+  - m_ConditionMode: 1
+    m_ConditionEvent: isPunching
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 255625721544439599}
   m_Solo: 0

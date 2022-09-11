@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(spawningGameObject);
+        Instantiate(spawningGameObject, transform);
     }
 
     IEnumerator SpawningTimer()
