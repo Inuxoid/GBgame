@@ -16,6 +16,7 @@ public class LiveCycle : MonoBehaviour
 	[SerializeField] private UnityEvent onDeath;
 	[SerializeField] private UnityEvent<FloatNumberDto> onCounted;
 	[SerializeField] private Material mat;
+	[SerializeField] private bool buyedSafe;
 
 	public float Hp
     {
@@ -39,16 +40,20 @@ public class LiveCycle : MonoBehaviour
 
     public void GetDamage(int amount)
 	{
-		if (!damaged)
+		if (!damaged || !buyedSafe)
 		{
 			Hp -= amount;
 			damaged = true;
 			FloatNumberDto dto = new FloatNumberDto() { value = this.Hp / this.maxHp };
 			this.onCounted?.Invoke(dto);
 		}
-        else
+        else if (buyedSafe)
         {
 			StartCoroutine(SafeTimer());
+            if (!buyedSafe)
+            {
+				damaged = false;
+            }
 		}
 	}
 

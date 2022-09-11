@@ -19,6 +19,7 @@ public class Puddle : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 			StartCoroutine(DamageTimer(other.gameObject));
+			exited = false;
         }
     }
 

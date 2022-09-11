@@ -140,12 +140,13 @@ public class Enemy : MonoBehaviour
                 {
                     animator.SetBool("isPunching", true);
                     yield return new WaitForSeconds(0.5f);
-                    item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+                    item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
+                    Debug.Log("HIT");
                     break;
                 }
                 yield return new WaitForSeconds(attackSpeed);
             }
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.1f);
         }
         yield return null;
     }

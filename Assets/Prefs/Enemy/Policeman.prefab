@@ -446,7 +446,7 @@ MonoBehaviour:
   scoreCounter: {fileID: 0}
   maxHP: 50
   hp: 50
-  enemyDamage: 15
+  enemyDamage: 30
   canSeePlayer: 0
   targetMask:
     serializedVersion: 2
