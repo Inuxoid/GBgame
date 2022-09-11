@@ -29,7 +29,11 @@ public class LiveCycle : MonoBehaviour
             {
 				hp = maxHp;
             }
-            
+            if (value <= 0)
+            {
+				Death();
+				hp = 0;
+			}
         }
     }
 
@@ -46,13 +50,6 @@ public class LiveCycle : MonoBehaviour
         {
 			StartCoroutine(SafeTimer());
 		}
-			
-		Debug.Log($"Damaged {amount}");
-
-		if (Hp <= 0)
-        {
-			Death();
-        }
 	}
 
 	public void GetHeart(int addHp)
@@ -67,6 +64,7 @@ public class LiveCycle : MonoBehaviour
 		//Debug.Log($"Dead");
         this.onDeath?.Invoke();
         Destroy(gameObject.GetComponent<Collider>());
+		Destroy(this);
     }
 
 	IEnumerator SafeTimer()
