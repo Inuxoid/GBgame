@@ -126,6 +126,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         strikesNow = false;
+        // Когда отключается
     }
 
     private IEnumerator StrikeTimer()
@@ -134,10 +135,13 @@ public class Enemy : MonoBehaviour
         {
             if (Math.Abs(rb.velocity.x) < 1f)
             {
+                // Мб тут задержать?
+                // Оверлап по дубинке
                 foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
                         new Vector3(1, 1, 1),
                         Quaternion.identity, 8))
                 {
+                    // Проверка на рэнж
                     animator.SetBool("isPunching", true);
                     yield return new WaitForSeconds(0.5f);
                     item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);

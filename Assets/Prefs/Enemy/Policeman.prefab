@@ -491,7 +491,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 124
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &6372621597176399016
 BoxCollider:
@@ -2430,6 +2430,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: dd976f37e6c27664895531bcb711cc8d, type: 2}
+    - target: {fileID: 5866666021909216657, guid: f08c5fc70d2394141b1b1f4bffc6b7c3,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6000407479487422213, guid: f08c5fc70d2394141b1b1f4bffc6b7c3,
         type: 3}
       propertyPath: m_LocalPosition.x
