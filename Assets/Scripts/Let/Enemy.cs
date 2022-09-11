@@ -102,6 +102,7 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        animator.SetBool("isDead", true);//добавил
         scoreCounter.CountScore(300);
         Destroy(this.gameObject);
     }
@@ -115,7 +116,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !strikesNow)
+        if (other.CompareTag("Player") && !strikesNow && hp > 0)//изменил
         {
             strikesNow = true;
             Strike();
