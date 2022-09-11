@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.161
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.007029748, g: 0.0072168875, b: 0.00958905, a: 0.161}
+  m_IndirectSpecularColor: {r: 0.0070287916, g: 0.0072158356, b: 0.009587671, a: 0.161}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10104,7 +10104,7 @@ Transform:
   - {fileID: 296654897}
   - {fileID: 76705068}
   m_Father: {fileID: 1821005575}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &196662159
 PrefabInstance:
@@ -11522,7 +11522,7 @@ Transform:
   - {fileID: 1363039739}
   - {fileID: 717420604}
   m_Father: {fileID: 1821005575}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &298255189
 PrefabInstance:
@@ -16524,7 +16524,7 @@ Transform:
   - {fileID: 2075761266}
   - {fileID: 31239231}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &614443717
 PrefabInstance:
@@ -19397,7 +19397,7 @@ Transform:
   - {fileID: 791945849}
   - {fileID: 1989143972}
   m_Father: {fileID: 1821005575}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &825105284
 PrefabInstance:
@@ -20811,7 +20811,7 @@ RectTransform:
   - {fileID: 2137713064}
   - {fileID: 870570780}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22686,7 +22686,7 @@ Transform:
   m_Children:
   - {fileID: 1137935452}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1071503308
 PrefabInstance:
@@ -33891,7 +33891,7 @@ RectTransform:
   - {fileID: 1245581829}
   - {fileID: 599056593}
   m_Father: {fileID: 1821005575}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -40477,12 +40477,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -40521,10 +40521,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 179002718}
   - {fileID: 297991543}
   - {fileID: 819351924}
   - {fileID: 1555734912}
-  - {fileID: 179002718}
   - {fileID: 2042722668}
   - {fileID: 8810812}
   - {fileID: 30299398}

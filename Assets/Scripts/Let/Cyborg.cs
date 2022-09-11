@@ -152,7 +152,7 @@ public class Cyborg : MonoBehaviour
                                         new Vector3(1, 1, 1),
                                         Quaternion.identity, 8))
                 {
-                    item.GetComponentInParent<LiveCycle>().GetDamage(enemyDamage);
+                    item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
                     break;
                 }
                 yield return new WaitForSeconds(attackSpeed);

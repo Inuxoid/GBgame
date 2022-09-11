@@ -31,6 +31,11 @@ public class Climb : MonoBehaviour
     {
         if (target != Vector3.zero)
         {
+            //Скорость
+            // Точки
+            // На ренж
+            // В корутину
+            // Другие климбы
             //player.transform.position = target.position;
             player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(target.x, target.y, target.z), Time.deltaTime * speed);
 
