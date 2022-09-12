@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject heart;
     [SerializeField] private Animator animator;
     [SerializeField] private ScoreCounter scoreCounter;
+    [SerializeField] private GameObject body;
+    [SerializeField] private GameObject gun;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -76,12 +78,14 @@ public class Enemy : MonoBehaviour
         Debug.Log(Math.Abs(player.transform.position.x - transform.position.x));
         if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
         {
+            Debug.Log(player.transform.position.x - transform.position.x);
             rb.AddForce((new Vector3((player.transform.position.x - transform.position.x),
-                transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Impulse);
+                0, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
             animator.SetBool("isPunching", false);
         }
         else
         {
+            Debug.Log("Zero1");
             rb.velocity = Vector3.zero;
         }
     }
@@ -96,6 +100,7 @@ public class Enemy : MonoBehaviour
         {
             //transform.position = placed.transform.position;
             rb.velocity = Vector3.zero;
+            Debug.Log("Zero2");
             //transform.position = Vector3.MoveTowards(transform.position, placed.transform.position, Time.deltaTime);
         }
     }
@@ -130,22 +135,24 @@ public class Enemy : MonoBehaviour
     }
 
     private IEnumerator StrikeTimer()
-    { 
+    {
+        yield return new WaitForSeconds(attackSpeed);
         while (strikesNow)
         {
             if (Math.Abs(rb.velocity.x) < 1f)
             {
-                // Мб тут задержать?
                 // Оверлап по дубинке
-                foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y),
+                foreach (var item in Physics.OverlapBox(gun.transform.position,
                         new Vector3(1, 1, 1),
                         Quaternion.identity, 8))
                 {
-                    // Проверка на рэнж
-                    animator.SetBool("isPunching", true);
-                    yield return new WaitForSeconds(0.5f);
-                    item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
-                    Debug.Log("HIT");
+                    if (player.transform.position.x - gun.transform.position.x < xRange)
+                    {
+                        animator.SetBool("isPunching", true);
+                        yield return new WaitForSeconds(0.5f);
+                        item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
+                        Debug.Log("HIT");
+                    }
                     break;
                 }
                 yield return new WaitForSeconds(attackSpeed);

@@ -29,6 +29,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private float attackSpeed;
     [SerializeField] private int flip = 1;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
+    [SerializeField] private UnityEvent onShooted;
+    [SerializeField] private UnityEvent onDestroyed;
     [SerializeField] private float bulletSpeed;
     [SerializeField] private float rotateSpeed;
 
@@ -76,6 +78,7 @@ public class Turret : MonoBehaviour
         scoreCounter.CountScore(300);
         mainObj.transform.Rotate(new Vector3(0, 0, -40));
         lens.SetColor("_EmissionColor", new Color(0, 0, 0, 1.0F));
+        onDestroyed?.Invoke();
         Destroy(this);
     }
 
@@ -109,6 +112,7 @@ public class Turret : MonoBehaviour
             GameObject go = Instantiate(bullet, transform.position, Quaternion.identity);
             go.GetComponent<Rigidbody>().AddForce(new Vector3((player.transform.position.x - transform.position.x),
                                                               0, 0).normalized * bulletSpeed, ForceMode.Impulse);
+            onShooted?.Invoke();
             yield return new WaitForSeconds(attackSpeed);
         }
         isStrikes = false;

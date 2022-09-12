@@ -250,13 +250,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181158348545081033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.662, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 1.6619992, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4181158349216750772}
-  m_Father: {fileID: 4181158349304976214}
+  m_Father: {fileID: 2670024329390311423}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4181158348545081039
@@ -275,8 +275,8 @@ MonoBehaviour:
   bullet: {fileID: 2529304585084616814, guid: 886c46e17385da3438216d49836ee97c, type: 3}
   turRotate: {fileID: 7080111705336302722}
   mainObj: {fileID: 926988146935496287}
-  canHp: {fileID: 0}
   lens: {fileID: 2100000, guid: 24030d36c6ef6b94ca062cdde8472818, type: 2}
+  scoreCounter: {fileID: 0}
   canRotate: 1
   checkTimer: 2
   maxHP: 19
@@ -309,6 +309,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onShooted:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
   bulletSpeed: 8
   rotateSpeed: 3
 --- !u!65 &1135525045337351722
@@ -460,7 +466,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 578887504873649524}
-  - {fileID: 4181158348545081032}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -579,6 +584,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6808360046014029232}
+  - {fileID: 4181158348545081032}
   m_Father: {fileID: 640758155971334298}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

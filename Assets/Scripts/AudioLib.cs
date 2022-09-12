@@ -14,7 +14,7 @@ public class AudioLib : MonoBehaviour
 
     public void PlayOnce(AudioClip clip)
     {
-        audioSource.PlayOneShot(clip);
+        audioSource?.PlayOneShot(clip);
     }
 
     public void StopPlaying()
