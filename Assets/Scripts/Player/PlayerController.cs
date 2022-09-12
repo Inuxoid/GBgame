@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject Ragdoll;
     public GameObject Player;
+    public GameObject PlayerModel;
     [SerializeField] private GameObject deathPanel;
     [SerializeField] private bool isDead;
     [SerializeField] private PlayerMovement playerMovement;
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("I'm dead");
         Ragdoll.SetActive(true);
-        Instantiate(Ragdoll, Player.transform.position, Player.transform.rotation);
+        Instantiate(Ragdoll, PlayerModel.transform.position, PlayerModel.transform.rotation);
         Destroy(playerMovement);
         Destroy(liveCycle);
         Destroy(model);

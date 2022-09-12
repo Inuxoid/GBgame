@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-				Debug.Log("Не туда лезешь");
+				Debug.Log("пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ");
             }
 			//this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 			//Debug.Log($"Target - {go.transform.position.x} Player - {transform.position.x}");
@@ -304,8 +304,8 @@ public class PlayerMovement : MonoBehaviour
 		{
 			EndCrouch();
 		}
-
-	}
+    
+    }
 	void FixedUpdate()
 	{
 		Move(horizontalMove * Time.fixedDeltaTime, Crouch, jump);

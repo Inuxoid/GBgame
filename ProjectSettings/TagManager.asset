@@ -10,6 +10,7 @@ TagManager:
   - Ceil
   - MainPlayer
   - Cyborg
+  - Items
   layers:
   - Default
   - TransparentFX
