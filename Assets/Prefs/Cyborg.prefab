@@ -820,11 +820,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: LP@Unarmed Walk Forward
       objectReference: {fileID: 0}
+    - target: {fileID: 970921723407592114, guid: 5b6495eba09d6f3409031d7760a58eb0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: adcdb271edd3dce49b9eb0c59c79d020, type: 2}
     - target: {fileID: 5866666021909216657, guid: 5b6495eba09d6f3409031d7760a58eb0,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 85e74a025bf706740aef92eae96abb13, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 5b6495eba09d6f3409031d7760a58eb0,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6495eba09d6f3409031d7760a58eb0, type: 3}
 --- !u!95 &843865109160831913 stripped
