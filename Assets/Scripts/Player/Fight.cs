@@ -23,7 +23,7 @@ public class Fight : MonoBehaviour
     {
         animator.SetBool("isPunching", true);
         Debug.Log("punched");
-        foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + flip, this.transform.position.y), 
+        foreach (var item in Physics.OverlapBox(new Vector3(this.transform.position.x + (float)flip / 3, this.transform.position.y, this.transform.position.z), 
                                                 new Vector3 (0.7f, 0.7f, 0.7f), 
                                                 Quaternion.identity, 128))
         {
@@ -36,7 +36,8 @@ public class Fight : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(new Vector3(this.transform.position.x + flip, this.transform.position.y), new Vector3(0.7f, 0.7f, 0.7f));
+        Gizmos.DrawWireCube(new Vector3(this.transform.position.x + (float)flip / 3, this.transform.position.y, this.transform.position.z),
+                                                new Vector3(0.7f, 0.7f, 0.7f));
     }
 
     //private bool StateCheck()
