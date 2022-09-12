@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private Fight fight;
 	[SerializeField] private Settings settings;
 	[SerializeField] private GameObject pausePanel;
+	[SerializeField] private GameObject body;
 
 	[Header("Settings")]
 	[SerializeField] private bool facingRight = true;
@@ -220,9 +221,11 @@ public class PlayerMovement : MonoBehaviour
 		this.flip?.Invoke();
 		facingRight = !facingRight;
 
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
+		//Vector3 theScale = transform.localScale;
+		//theScale.x *= -1;
+		//transform.localScale = theScale;
+
+		body.transform.Rotate(0, 180, 0);
 	}
 
 	void Update()

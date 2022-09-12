@@ -20,12 +20,12 @@ public class ClimbData : MonoBehaviour
     public Vector3 Point1 { get => point1; set => point1 = value; }
     public Vector3 Point2 { get => point2; set => point2 = value; }
 
-    private void Update() 
+    private void Start() 
     {
         if (fromTransform)
         {
-            point1 = new Vector3(transform.position.x + trans1.localPosition.x * mult, transform.position.y + trans1.localPosition.y, z);
-            point2 = new Vector3(transform.position.x + trans2.localPosition.x * mult, transform.position.y + trans2.localPosition.y, z);
+            point1 = new Vector3(trans1.position.x * mult, trans1.position.y, z);
+            point2 = new Vector3(trans2.position.x * mult, trans2.position.y, z);
         }
         else
         {

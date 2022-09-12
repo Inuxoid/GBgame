@@ -13,9 +13,15 @@ public class Climb : MonoBehaviour
     [SerializeField] private Vector3 target;
     [SerializeField] private Transform colTransform;
     [SerializeField] private Transform playerModel;
+    [SerializeField] private Rigidbody rb;
 
     public Vector3 Point1 { get => point1; set => point1 = value; }
     public Vector3 Point2 { get => point2; set => point2 = value; }
+
+    private void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+    }
 
     public void FirstMove()
     {
@@ -38,7 +44,7 @@ public class Climb : MonoBehaviour
             // Другие климбы
             //player.transform.position = target.position;
             player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(target.x, target.y, target.z), Time.deltaTime * speed);
-
+            rb.velocity = Vector3.zero;
 
             //colTransform.position = Vector3.MoveTowards(player.transform.position, target.position, Time.deltaTime * speed);
         }
