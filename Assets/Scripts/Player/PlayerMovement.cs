@@ -304,12 +304,28 @@ public class PlayerMovement : MonoBehaviour
 		{
 			EndCrouch();
 		}
-    
     }
+
+	public void PickUP()
+    {
+		animator.SetBool("isPunching", false);
+		StartCoroutine(Pick());
+    }
+
 	void FixedUpdate()
 	{
 		Move(horizontalMove * Time.fixedDeltaTime, Crouch, jump);
 		jump = false;
+	}
+
+	IEnumerator Pick()
+    {
+		speedMod = 0;
+		animator.SetBool("PickUp", true);
+		yield return new WaitForSeconds(2f);
+		speedMod = 1;
+		animator.SetBool("PickUp", false);
+		yield return null;
 	}
 
 	IEnumerator JumpTimer()

@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float maxStrikeTimer;
     [SerializeField] private int enemySpeed;
     [SerializeField] private bool strikesNow;
+    [SerializeField] private bool needRun;
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
 
@@ -69,25 +70,33 @@ public class Enemy : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
-        {
-            Flip();
-        }
+
 
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
         Debug.Log(Math.Abs(player.transform.position.x - transform.position.x));
         if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
         {
-            Debug.Log(player.transform.position.x - transform.position.x);
-            rb.AddForce((new Vector3((player.transform.position.x - transform.position.x),
-                0, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
+            //rb.AddForce((new Vector3((player.transform.position.x - transform.position.x),
+            //    0, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
+            needRun = true;
             animator.SetBool("isPunching", false);
         }
         else
         {
             Debug.Log("Zero1");
+            needRun = false;
             rb.velocity = Vector3.zero;
         }
+    }
+
+    public void RunTo()
+    {
+        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
+        {
+            Flip();
+        }
+        if (needRun)
+            rb.velocity = new Vector2(enemySpeed * new Vector3(player.transform.position.x - transform.position.x, 0).normalized.x, rb.velocity.y);
     }
 
     public void Controller()
@@ -165,6 +174,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         animator.SetFloat("hSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.x));
+        RunTo();
     }
 
     private IEnumerator CheckPLayer()
@@ -196,7 +206,7 @@ public class Enemy : MonoBehaviour
             }
             else if (CanSeePlayer)
                 CanSeePlayer = false;
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
         }
     }
 }

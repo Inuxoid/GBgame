@@ -17,8 +17,14 @@ public class LiveCycle : MonoBehaviour
 	[SerializeField] private UnityEvent<FloatNumberDto> onCounted;
 	[SerializeField] private Material mat;
 	[SerializeField] private bool buyedSafe;
+	[SerializeField] private PlayerMovement playerMovement;
 
-	public float Hp
+    private void Start()
+    {
+		playerMovement = FindObjectOfType<PlayerMovement>();
+    }
+
+    public float Hp
     {
         get => hp; set
         {
@@ -60,6 +66,7 @@ public class LiveCycle : MonoBehaviour
 	public void GetHeart(int addHp)
 	{
 		Hp += addHp;
+		playerMovement.PickUP();
 		FloatNumberDto dto = new FloatNumberDto() { value = this.Hp / this.maxHp };
 		this.onCounted?.Invoke(dto);
 	}

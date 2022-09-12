@@ -18,7 +18,7 @@ public class FollowHpBar : MonoBehaviour
         }
         else
         {
-            hpBar.transform.position = new Vector3(entity.transform.position.x, hpBar.transform.position.y, hpBar.transform.position.z);
+            hpBar.transform.position = new Vector3(entity.transform.position.x, entity.transform.position.y + 0.2f, hpBar.transform.position.z);
         }
     }
 }

@@ -21,7 +21,7 @@ public class Heart : MonoBehaviour
 
     IEnumerator DestroyTimer()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
         yield return null;
     }

@@ -461,8 +461,9 @@ MonoBehaviour:
   flip: 1
   currentStrikeTimer: 0
   maxStrikeTimer: 2
-  enemySpeed: 3500
+  enemySpeed: 3
   strikesNow: 0
+  needRun: 0
   xRange: 1
   onHpChanged:
     m_PersistentCalls:
