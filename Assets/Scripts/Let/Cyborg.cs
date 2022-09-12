@@ -32,6 +32,7 @@ public class Cyborg : MonoBehaviour
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
     [SerializeField] private bool tpNow;
+    bool needRun;
 
     private void Awake()
     {
@@ -92,12 +93,15 @@ public class Cyborg : MonoBehaviour
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
         if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
         {
-            rb.AddForce((new Vector3((player.transform.position.x - transform.position.x), 
-                transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
+            needRun = true;
+            animator.SetBool("isPunching", false);
+            //rb.AddForce((new Vector3((player.transform.position.x - transform.position.x), 
+            //    transform.position.y, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
         }
         else
         {
             rb.velocity = Vector3.zero;
+            needRun = false;
         }
     }
 
@@ -168,6 +172,20 @@ public class Cyborg : MonoBehaviour
         {
             GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
+        else if (needRun)
+        {
+            RunTo();
+        }
+    }
+
+    public void RunTo()
+    {
+        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
+        {
+            Flip();
+        }
+        if (needRun)
+            rb.velocity = new Vector2(enemySpeed * new Vector3(player.transform.position.x - transform.position.x, 0).normalized.x, rb.velocity.y);
     }
 
     private IEnumerator CheckPLayer()

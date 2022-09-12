@@ -608,7 +608,7 @@ MonoBehaviour:
   flip: 1
   currentStrikeTimer: 0
   maxStrikeTimer: 1
-  enemySpeed: 1200
+  enemySpeed: 3
   strikesNow: 0
   yRange: 2
   xRange: 2
@@ -642,7 +642,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 124
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!65 &6547274471903067653
 BoxCollider:
