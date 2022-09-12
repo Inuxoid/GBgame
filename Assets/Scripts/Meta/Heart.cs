@@ -7,6 +7,7 @@ public class Heart : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private int hpRes;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,7 @@ public class Heart : MonoBehaviour
 
     IEnumerator DestroyTimer()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
         yield return null;
     }

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GroundChecker groundChecker;
     [SerializeField] private LiveCycle liveCycle;
     [SerializeField] private GameObject model;
+    [SerializeField] private GameObject audioSource;
 
     public void Death()
     {
@@ -27,13 +28,14 @@ public class PlayerController : MonoBehaviour
         Destroy(model);
         Destroy(groundChecker);
         Destroy(airChecker);
+        Destroy(audioSource);
         deathPanel.SetActive(true);
         isDead = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isDead)
+        if (Input.GetKeyDown(KeyCode.F) && isDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
