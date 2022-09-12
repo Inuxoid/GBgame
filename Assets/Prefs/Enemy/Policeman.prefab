@@ -445,6 +445,7 @@ MonoBehaviour:
   animator: {fileID: 655990892276847502}
   scoreCounter: {fileID: 0}
   body: {fileID: 6102782414700942158}
+  gun: {fileID: 6301970779712122901}
   maxHP: 50
   hp: 50
   enemyDamage: 10
@@ -2781,19 +2782,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6372621597614616095}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6372621597954636050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6102782414700942158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f51f910df227b3243bef07cc286aeb57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 655990892276847502}
 --- !u!114 &1670635671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,6 +2795,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
+--- !u!114 &6372621597954636050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102782414700942158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f51f910df227b3243bef07cc286aeb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 655990892276847502}
+--- !u!1 &6301970779712122901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: f08c5fc70d2394141b1b1f4bffc6b7c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6372621597614616095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6916017101097421300 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f08c5fc70d2394141b1b1f4bffc6b7c3,
