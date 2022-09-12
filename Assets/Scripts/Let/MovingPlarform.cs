@@ -11,6 +11,8 @@ public class MovingPlarform : MonoBehaviour
     [SerializeField] private float passDistance;
     [SerializeField] private int next;
 
+    public Transform[] Points { get => points; set => points = value; }
+
     void Update()
     {
         Move();
@@ -18,10 +20,10 @@ public class MovingPlarform : MonoBehaviour
 
     public void Move()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, points[next].position, Time.deltaTime * speed);
-        if (Vector3.Distance(this.transform.position, points[next].position) < passDistance)
+        this.transform.position = Vector3.MoveTowards(this.transform.position, Points[next].position, Time.deltaTime * speed);
+        if (Vector3.Distance(this.transform.position, Points[next].position) < passDistance)
         {
-            if (next == points.Length - 1)
+            if (next == Points.Length - 1)
             {
                 next = 0;
             }
