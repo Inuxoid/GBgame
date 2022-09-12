@@ -31,7 +31,7 @@ public class Fight : MonoBehaviour
             item?.GetComponent<Turret>()?.GetStrike(damage);
             item?.GetComponent<Cyborg>()?.GetStrike(damage);
         }
-    }
+    }   
 
     private void OnDrawGizmosSelected()
     {

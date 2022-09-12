@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public bool Crouch { get => crouch; set => crouch = value; }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
+    public float SpeedMod { get => speedMod; set => speedMod = value; }
 
     public void AirGroundCollision(GameObject go)
 	{
@@ -71,17 +72,17 @@ public class PlayerMovement : MonoBehaviour
 		if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - this.transform.position.x) > 0)
 		{
 			currentSpeed = 0;
-			speedMod = 0;
+			SpeedMod = 0;
 		}
         else
         {
             if (IsGrounded)
             {
-				speedMod = 1;
+				SpeedMod = 1;
             }
             else
             {
-				speedMod = airSpeed;
+				SpeedMod = airSpeed;
 			}
 			
             if (Crouch)
@@ -102,11 +103,11 @@ public class PlayerMovement : MonoBehaviour
 			currentSpeed = crouchSpeed;
 			if (IsGrounded)
 			{
-				speedMod = 1;
+				SpeedMod = 1;
 			}
 			else
 			{
-				speedMod = airSpeed;
+				SpeedMod = airSpeed;
 			}
 		}
 		else
@@ -114,11 +115,11 @@ public class PlayerMovement : MonoBehaviour
 			currentSpeed = runSpeed;
 			if (IsGrounded)
 			{
-				speedMod = 1;
+				SpeedMod = 1;
 			}
 			else
 			{
-				speedMod = airSpeed;
+				SpeedMod = airSpeed;
 			}
 		}
 	}
@@ -128,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
 		IsGrounded = true;
 		WReleased = false;
 		animator.SetBool("isJumping", false);
-		speedMod = 1;
+		SpeedMod = 1;
         if (!Crouch)
         {
 			bodyCollider.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -144,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		IsGrounded = false;
 		animator.SetBool("isJumping", true);
-		speedMod = airSpeed;
+		SpeedMod = airSpeed;
 		bodyCollider.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 	}
 
@@ -238,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 		}
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * speedMod;
+		horizontalMove = Input.GetAxisRaw("Horizontal") * SpeedMod;
 
 		animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
 		animator.SetFloat("vSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.y));	
@@ -320,10 +321,10 @@ public class PlayerMovement : MonoBehaviour
 
 	IEnumerator Pick()
     {
-		speedMod = 0;
+		SpeedMod = 0;
 		animator.SetBool("PickUp", true);
 		yield return new WaitForSeconds(2f);
-		speedMod = 1;
+		SpeedMod = 1;
 		animator.SetBool("PickUp", false);
 		yield return null;
 	}
