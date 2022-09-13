@@ -58,6 +58,7 @@ public class Climb : MonoBehaviour
         {
             target = Vector3.zero;
             animator.SetBool("isClimbing", false);
+            playerModel.localPosition = new Vector3(0, -0.949f, 0);
         }
 
         if (target != Vector3.zero && Vector3.Distance(player.transform.position, Point1) < passDistance && !second)
