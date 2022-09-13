@@ -7,6 +7,7 @@ public class UnAlarmButton : MonoBehaviour
     [Header("Components")]
     [SerializeField] private GameObject[] door;
     [SerializeField] private GameObject camColor;
+    [SerializeField] private Cam[] cams;
     [Header("Settings")]
     [SerializeField] private bool isOpened;
     [SerializeField] private bool isTrying;
@@ -43,6 +44,10 @@ public class UnAlarmButton : MonoBehaviour
     public void StopAlarm()
     {
         allarm.EndAlarm();
+        foreach (var item in cams)
+        {
+            item.PauseCam();
+        }
     }
 
     private void Update()

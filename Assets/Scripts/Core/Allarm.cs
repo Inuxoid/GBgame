@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Allarm : MonoBehaviour
 {
-    public bool IsAlarming;
+    private bool isAlarming;
 
     [SerializeField] private UnAlarmButton unAlarmButton;
     [SerializeField] private Spawner[] spawners;
+
+    public bool IsAlarming { get => isAlarming; set => isAlarming = value; }
 
     public void StartAlarm()
     {

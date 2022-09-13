@@ -1,21 +1,25 @@
 using Dto;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Cam : MonoBehaviour
 {
     [SerializeField] private Allarm allarm;
+    [SerializeField] private Cam[] others;
     [SerializeField] private float maxTimer;
     [SerializeField] private float timer;
     [SerializeField] private bool inZone;
-    [SerializeField] private bool done;
+    [SerializeField] private bool paused;
     [SerializeField] private float pause;
     [SerializeField] private UnityEvent<FloatNumberDto> onTimerChanged;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+
     public float Timer { get => timer; set => timer = value; }
+    public bool Paused { get => paused; set => paused = value; }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,7 +39,7 @@ public class Cam : MonoBehaviour
 
     private void Update()
     {
-        if (Timer >= 0 && inZone && !done && !allarm.IsAlarming)
+        if (Timer >= 0 && inZone && !allarm.IsAlarming && !CheckPause())
         {
             Timer -= Time.deltaTime;
             FloatNumberDto dto = new FloatNumberDto { value = Timer / maxTimer };
@@ -44,35 +48,41 @@ public class Cam : MonoBehaviour
 
         if (Timer <= maxTimer && !inZone && !allarm.IsAlarming)
         {
-            Timer += Time.deltaTime;
+            Timer += Time.deltaTime * 2;
             FloatNumberDto dto = new FloatNumberDto { value = Timer / maxTimer };
             onTimerChanged?.Invoke(dto);
         }
 
-        if (Timer <= 0 && !done)
+        if (Timer <= 0 && !allarm.IsAlarming && !CheckPause())
         {
-            done = true;
-            Timer = maxTimer;
             allarm.StartAlarm();
         }
+    }
 
-        if (Timer >= maxTimer && done && !allarm.IsAlarming)
+    private bool CheckPause()
+    {
+        foreach (var item in others)
         {
-            StartCoroutine(PauseCamTimer());
+            if (item.Paused == true)
+            {
+                return true;
+            }
         }
+        return false;
+    }
 
-        if (allarm.IsAlarming)
-        {
-            
-        }
+    public void PauseCam()
+    {
+        StartCoroutine(PauseCamTimer());
     }
 
     IEnumerator PauseCamTimer()
     {
+        Paused = true;
         spriteRenderer.enabled = false;
         yield return new WaitForSeconds(pause);
         spriteRenderer.enabled = true;
-        done = false;
+        Paused = false;
         yield return null;
     }
 }
