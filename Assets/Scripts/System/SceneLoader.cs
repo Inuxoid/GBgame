@@ -23,7 +23,7 @@ public class SceneLoader : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.Play();
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(209f);
         }
         SceneManager.LoadScene(sceneId);
 
