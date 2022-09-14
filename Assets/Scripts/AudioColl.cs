@@ -46,9 +46,9 @@ public class AudioColl : MonoBehaviour
 
     IEnumerator soundUnTimer(AudioSource item, int newI)
     {
-        for (int i = 0; i < 5; i++)
+        while (item.volume < audioVolumes[newI] / 2)
         {
-            item.volume += item.volume * 4;
+            item.volume += item.volume * 2;
             yield return new WaitForSeconds(0.6f);
         }
         item.volume = audioVolumes[newI];
