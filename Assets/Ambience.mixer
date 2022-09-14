@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!244 &-8861218462687416561
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1e7d27997b6ae4e4d8311e9b755666a6
+  m_EffectName: Attenuation
+  m_MixLevel: 7a7ea137d99dc1247aeaee7a30b64e07
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-6438615657494983726
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -84,6 +98,7 @@ AudioMixerController:
     - b7b44662d4c7ee44e9b699051ee49eba
     - 43486d08ea8b4a242ab0f112912744cf
     - 002de4d7b5e830246b42ed64f4c51e55
+    - a5772f3ee060aeb408ca31bc3a44a418
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -99,6 +114,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -5313707098104059379}
   - {fileID: 1255186827785617421}
+  - {fileID: 783422676831270120}
   - {fileID: 5381068568057818420}
   - {fileID: 8985591902155278288}
   m_Volume: be86c80f97081d846a8efcc0aecd6653
@@ -137,18 +153,38 @@ AudioMixerSnapshotController:
     7b82a4b624ad46244b331d3dc8b254c3: -0.7045173
     b9e2bff692cc9404183a832c4bd5979b: 5.1526923
     4146fd7798859394bb5d2bae55176f84: 4.648096
+    d6362858f78308247a25bf624bc816b8: -2.2889833
     496b320e67977c340a5538a3c2bae0d1: 3.704152
     e5b2c51e2cf6b4a43ae62d6798bdea8a: 17
     f555adae64071b246921b93da01b55a2: -11
     be86c80f97081d846a8efcc0aecd6653: 0.10800299
   m_TransitionOverrides: {}
+--- !u!243 &783422676831270120
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: City_2
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a5772f3ee060aeb408ca31bc3a44a418
+  m_Children: []
+  m_Volume: d6362858f78308247a25bf624bc816b8
+  m_Pitch: 96e7ea7e6f5041d479c0fbd98cc82b2a
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -8861218462687416561}
+  m_UserColorIndex: 6
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &1255186827785617421
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: City
+  m_Name: City_1
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: b7b44662d4c7ee44e9b699051ee49eba
   m_Children: []
@@ -157,7 +193,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -6438615657494983726}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 6
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
