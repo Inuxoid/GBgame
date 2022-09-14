@@ -5,10 +5,11 @@ using UnityEngine;
 public class AudioColl : MonoBehaviour
 {
     [SerializeField] private AudioSource[] audioSources;
+    [SerializeField] private List<float> audioVolumes;
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
+        {    
             foreach (var item in audioSources)
             {
                 StartCoroutine(soundTimer(item));
@@ -20,9 +21,13 @@ public class AudioColl : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            int i = 0;
             foreach (var item in audioSources)
             {
-                StartCoroutine(soundUnTimer(item));
+
+                audioVolumes.Add(item.volume);
+                StartCoroutine(soundUnTimer(item, i));
+                i++;
                 item.Play();
             }
         }
@@ -39,14 +44,14 @@ public class AudioColl : MonoBehaviour
         yield return null;
     }
 
-    IEnumerator soundUnTimer(AudioSource item)
+    IEnumerator soundUnTimer(AudioSource item, int newI)
     {
         for (int i = 0; i < 5; i++)
         {
-            item.volume -= item.volume * 4;
+            item.volume += item.volume * 4;
             yield return new WaitForSeconds(0.6f);
         }
-        item.volume = 0;
+        item.volume = audioVolumes[newI];
         yield return null;
     }
 }
