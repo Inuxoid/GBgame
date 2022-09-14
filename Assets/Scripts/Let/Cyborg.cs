@@ -100,8 +100,8 @@ public class Cyborg : MonoBehaviour
         }
         else
         {
-            rb.velocity = Vector3.zero;
             needRun = false;
+            rb.velocity = Vector3.zero;
         }
     }
 
@@ -184,8 +184,7 @@ public class Cyborg : MonoBehaviour
         {
             Flip();
         }
-        if (needRun)
-            rb.velocity = new Vector2(enemySpeed * new Vector3(player.transform.position.x - transform.position.x, 0).normalized.x, rb.velocity.y);
+        rb.velocity = new Vector2(enemySpeed * new Vector3(player.transform.position.x - transform.position.x, 0).normalized.x, rb.velocity.y);
     }
 
     private IEnumerator CheckPLayer()
