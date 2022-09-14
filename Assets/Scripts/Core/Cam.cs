@@ -17,7 +17,6 @@ public class Cam : MonoBehaviour
     [SerializeField] private UnityEvent<FloatNumberDto> onTimerChanged;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-
     public float Timer { get => timer; set => timer = value; }
     public bool Paused { get => paused; set => paused = value; }
 
@@ -73,7 +72,8 @@ public class Cam : MonoBehaviour
 
     public void PauseCam()
     {
-        StartCoroutine(PauseCamTimer());
+        if (!Paused)
+            StartCoroutine(PauseCamTimer());
     }
 
     IEnumerator PauseCamTimer()
