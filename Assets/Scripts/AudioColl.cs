@@ -6,6 +6,7 @@ public class AudioColl : MonoBehaviour
 {
     [SerializeField] private AudioSource[] audioSources;
     [SerializeField] private List<float> audioVolumes;
+    [SerializeField] private bool cached;
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -24,12 +25,13 @@ public class AudioColl : MonoBehaviour
             int i = 0;
             foreach (var item in audioSources)
             {
-
-                audioVolumes.Add(item.volume);
+                if (!cached)
+                    audioVolumes.Add(item.volume);
                 StartCoroutine(soundUnTimer(item, i));
                 i++;
                 item.Play();
             }
+            cached = true;
         }
     }
 
@@ -48,7 +50,7 @@ public class AudioColl : MonoBehaviour
     {
         while (item.volume < audioVolumes[newI] / 2)
         {
-            item.volume += item.volume * 2;
+            item.volume += 0.1f + item.volume * 2;
             yield return new WaitForSeconds(0.6f);
         }
         item.volume = audioVolumes[newI];
