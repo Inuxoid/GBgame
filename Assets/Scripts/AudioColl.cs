@@ -22,6 +22,7 @@ public class AudioColl : MonoBehaviour
         {
             foreach (var item in audioSources)
             {
+                StartCoroutine(soundUnTimer(item));
                 item.Play();
             }
         }
@@ -32,6 +33,17 @@ public class AudioColl : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             item.volume -= item.volume / 4;
+            yield return new WaitForSeconds(0.6f);
+        }
+        item.volume = 0;
+        yield return null;
+    }
+
+    IEnumerator soundUnTimer(AudioSource item)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            item.volume -= item.volume * 4;
             yield return new WaitForSeconds(0.6f);
         }
         item.volume = 0;
