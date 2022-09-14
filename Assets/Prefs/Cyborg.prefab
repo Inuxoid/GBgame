@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3836496930911363058}
   entity: {fileID: 6205395827321285481}
+  yD: 0.9
 --- !u!1 &2683802082459629299
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,7 +834,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 5b6495eba09d6f3409031d7760a58eb0,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b6495eba09d6f3409031d7760a58eb0, type: 3}
