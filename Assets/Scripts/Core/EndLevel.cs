@@ -39,7 +39,6 @@ public class EndLevel : MonoBehaviour
         }
 
         items[lvl + 1].lvlOpen = true;
-        items[lvl].indSpritesBattery = progress.spriteInd;
 
         string jsonString = JsonConvert.SerializeObject(items);
         using (StreamWriter outputFile = new StreamWriter("Levels.json"))

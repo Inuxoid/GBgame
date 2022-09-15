@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Dto;
 using UnityEngine.Events;
+using Newtonsoft.Json;
+using static UnityEditor.Progress;
+using System.IO;
 
 public class Gate : MonoBehaviour
 {
@@ -13,6 +16,7 @@ public class Gate : MonoBehaviour
     [SerializeField] private UnityEvent<IntNumberDto> onScoreOutputed;
     [SerializeField] private UnityEvent<IntNumberDto> onTotalScoreOutputed;
     [SerializeField] private UnityEvent<IntNumberDto> onVHSOutputed;
+    [SerializeField] private List<Levels> items;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -26,6 +30,31 @@ public class Gate : MonoBehaviour
             this.onTotalScoreOutputed?.Invoke(scoreTotal);
             this.onVHSOutputed?.Invoke(VHS);
             settings.Pause();
+            WriteProgress();
         }
     }
+    private void Start()
+    {
+        settings.Unpause();
+    }
+
+    public void WriteProgress()
+    {
+        using (StreamReader r = new StreamReader("Levels.json"))
+        {
+            string json = r.ReadToEnd();
+            items = JsonConvert.DeserializeObject<List<Levels>>(json);
+        }
+
+        items[0].lvlOpen = true;
+        items[0].VHS = scoreCounter.VHSCount;
+        items[0].Score = scoreCounter.ScoreCount;
+
+        string jsonString = JsonConvert.SerializeObject(items);
+        using (StreamWriter outputFile = new StreamWriter("Levels.json"))
+        {
+            outputFile.WriteLine(jsonString);
+        }
+    }
+
 }

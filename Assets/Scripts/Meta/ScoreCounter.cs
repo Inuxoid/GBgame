@@ -28,4 +28,12 @@ public class ScoreCounter : MonoBehaviour
         IntNumberDto dto = new IntNumberDto() { value = this.VHSCount };
         this.onVHSCounted?.Invoke(dto);
     }
+
+    public void LoadVHS(int VHS)
+    {
+        VHSCount += VHS;
+        IntNumberDto dto = new IntNumberDto() { value = this.VHSCount };
+        this.onVHSCounted?.Invoke(dto);
+    }
 }
+    

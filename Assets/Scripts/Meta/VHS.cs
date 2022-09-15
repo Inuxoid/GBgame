@@ -5,14 +5,13 @@ using UnityEngine.Events;
 
 public class VHS : MonoBehaviour
 {
-    [SerializeField] private UnityEvent onCoinTaken;
     [SerializeField] private ScoreCounter scoreCounter;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             scoreCounter.CountScore(100);
-            this.onCoinTaken?.Invoke();
+            scoreCounter.CountVHS();
             Destroy(this.gameObject);
         }
     }
