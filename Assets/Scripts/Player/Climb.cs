@@ -79,6 +79,11 @@ public class Climb : MonoBehaviour
             playerMovement.SpeedMod = 1;
             second = false;
         }
+
+        if (Math.Abs(player.transform.position.x - target.x) > 1.5f)
+        {
+            playerMovement.AirControl = true;
+        }
     }
 
     public void StartClimb()
@@ -95,7 +100,7 @@ public class Climb : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         second = false;
         FirstMove();
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         StartedClimbing = false;
         playerMovement.AirControl = true;
         yield return null;
