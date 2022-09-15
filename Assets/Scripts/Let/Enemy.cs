@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
                     if (player.transform.position.x - gun.transform.position.x < xRange)
                     {
                         animator.SetBool("isPunching", true);
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.25f);
                         item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
                         onPunch?.Invoke();
                     }
