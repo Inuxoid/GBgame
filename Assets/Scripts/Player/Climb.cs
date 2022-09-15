@@ -95,7 +95,7 @@ public class Climb : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         second = false;
         FirstMove();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         StartedClimbing = false;
         playerMovement.AirControl = true;
         yield return null;
