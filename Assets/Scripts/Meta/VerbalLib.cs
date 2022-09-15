@@ -43,7 +43,8 @@ class VerbalLib
         Lvl2_FinalLift2,
         Lvl2_FinalLift3,
         Lvl2_FinalLift4,
-        Lvl2_LiftControl
+        Lvl2_LiftControl,
+        Lvl2_WTF
     };
 
     public static char[] FirstVHS = "Да не умер он в конце фильма".ToCharArray();
@@ -73,4 +74,6 @@ class VerbalLib
     public static char[] Lvl2_FinalLift3 = "Не лезть на рожон, не переходить ему дорогу...".ToCharArray();
     public static char[] Lvl2_FinalLift4 = "Но ничего не вернуть. И мне с этим жить.".ToCharArray();
     public static char[] Lvl2_LiftControl = "В работе лифта что-то изменится?".ToCharArray();
+    public static char[] Lvl2_WTF = "Поздравляем! Вы добились своего, тут обязательно должен был быть баг и вы его нашли. Можете перезапустить игру или подойти к триггеру и начать сначала, либо живите дальше в этом проклятом мире который сами и создали".ToCharArray();
+
 }
