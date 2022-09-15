@@ -8,12 +8,14 @@ public class Allarm : MonoBehaviour
 
     [SerializeField] private UnAlarmButton unAlarmButton;
     [SerializeField] private Spawner[] spawners;
+    [SerializeField] private GameObject hz;
 
     public bool IsAlarming { get => isAlarming; set => isAlarming = value; }
 
     public void StartAlarm()
     {
         IsAlarming = true;
+        hz.SetActive(true);
         unAlarmButton.IsOpened = true;
         foreach (Spawner spawner in spawners)
         {
@@ -24,6 +26,7 @@ public class Allarm : MonoBehaviour
     public void EndAlarm()
     {
         IsAlarming = false;
+        hz.SetActive(false);
         unAlarmButton.IsOpened = false;
         foreach (Spawner spawner in spawners)
         {

@@ -46546,16 +46546,18 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.33333334
-    functionName: 
+    functionName: PlayOnce
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 8300000, guid: 689b3768256004d44ba225b64977dbe5,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.78333336
-    functionName: 
+    functionName: PlayOnce
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 8300000, guid: 6423a79cec4291644aba559665a0e2a8,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
