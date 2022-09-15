@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool needRun;
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
+    [SerializeField] private UnityEvent onPunch;
 
     public bool CanSeePlayer { get => canSeePlayer;
         set
@@ -160,7 +161,7 @@ public class Enemy : MonoBehaviour
                         animator.SetBool("isPunching", true);
                         yield return new WaitForSeconds(0.5f);
                         item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
-                        Debug.Log("HIT");
+                        onPunch?.Invoke();
                     }
                     break;
                 }

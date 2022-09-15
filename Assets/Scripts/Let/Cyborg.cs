@@ -31,6 +31,7 @@ public class Cyborg : MonoBehaviour
     [SerializeField] private float yRange;
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
+    [SerializeField] private UnityEvent onPunch;
     [SerializeField] private bool tpNow;
     bool needRun;
 
@@ -157,6 +158,7 @@ public class Cyborg : MonoBehaviour
                                         Quaternion.identity, 8))
                 {
                     item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
+                    onPunch?.Invoke();
                     break;
                 }
                 yield return new WaitForSeconds(attackSpeed);
