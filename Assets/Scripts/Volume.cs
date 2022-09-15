@@ -8,9 +8,10 @@ public class Volume : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider slider;
+    [SerializeField] private string mix;
 
     public void Change()
     {
-
+        audioMixer.SetFloat(mix, slider.value);
     }
 }

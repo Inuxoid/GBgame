@@ -4,7 +4,6 @@ using UnityEngine;
 using Dto;
 using UnityEngine.Events;
 using Newtonsoft.Json;
-using static UnityEditor.Progress;
 using System.IO;
 
 public class Gate : MonoBehaviour
