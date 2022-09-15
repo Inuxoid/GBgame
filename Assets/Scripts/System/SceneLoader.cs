@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private int sceneId;
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private Settings settings;
+    [SerializeField] private bool skip;
     //[SerializeField] private GameObject img;
 
     public void LoadLevel()
@@ -23,10 +24,26 @@ public class SceneLoader : MonoBehaviour
         if (videoPlayer != null)
         {
             videoPlayer.Play();
-            yield return new WaitForSeconds(209f);
+            for (int i = 0; i < 209; i++)
+            {
+                yield return new WaitForSeconds(1f);
+                if (skip)
+                {
+                    break;
+                }
+            }
+
         }
         SceneManager.LoadScene(sceneId);
 
         settings?.Unpause();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            skip = true;
+        }
     }
 }
