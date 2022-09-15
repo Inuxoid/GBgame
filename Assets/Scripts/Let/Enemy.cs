@@ -194,7 +194,7 @@ public class Enemy : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 Debug.Log($"{Physics.Raycast(transform.position, directionToTarget, out hit, distanceToTarget * 2f, obstructionMask)} + {hit.collider}");
                 if (Physics.Raycast(transform.position, directionToTarget, distanceToTarget * 2f, obstructionMask) && 
-                                    Mathf.Abs(transform.position.y - target.position.y) < 1.5f)
+                                    Mathf.Abs(transform.position.y - target.position.y) < .5f)
                 {
                     CanSeePlayer = true;
                     Debug.Log("Can see u");
