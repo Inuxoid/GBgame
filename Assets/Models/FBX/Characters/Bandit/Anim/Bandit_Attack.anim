@@ -52755,10 +52755,11 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.16666667
     functionName: PlayOnce
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 8300000, guid: c1b33fddfc916494e89a084ba0af1004,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
