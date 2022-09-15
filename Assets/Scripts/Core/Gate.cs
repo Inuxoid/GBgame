@@ -5,6 +5,7 @@ using Dto;
 using UnityEngine.Events;
 using Newtonsoft.Json;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour
 {
