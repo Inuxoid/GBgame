@@ -22,6 +22,7 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator ClipTimer()
     {
+        settings?.Unpause();
         if (videoPlayer != null)
         {
             videoPlayer.Play();
@@ -35,7 +36,6 @@ public class SceneLoader : MonoBehaviour
             }
 
         }
-        settings?.Unpause();
         SceneManager.LoadScene(sceneId);
     }
 
