@@ -17,6 +17,12 @@ public class LevelOpenCheck : MonoBehaviour
             items = JsonConvert.DeserializeObject<List<Levels>>(json);
         }
         buttonLvl1.interactable = items[0].lvlOpen;
+        Debug.Log(items[0].lvlOpen);
+    }
+
+    private void Start()
+    {
+        CheckLevels();
     }
 }
 
