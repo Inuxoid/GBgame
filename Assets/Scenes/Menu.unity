@@ -17300,6 +17300,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 0}
   settings: {fileID: 0}
   skip: 1
+  amount: 0
 --- !u!1001 &663300321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19685,6 +19686,7 @@ MonoBehaviour:
   videoPlayer: {fileID: 129646468}
   settings: {fileID: 0}
   skip: 0
+  amount: 208
 --- !u!1 &819351923
 GameObject:
   m_ObjectHideFlags: 0
