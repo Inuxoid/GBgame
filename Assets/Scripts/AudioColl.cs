@@ -4,10 +4,29 @@ using UnityEngine;
 
 public class AudioColl : MonoBehaviour
 {
+    [SerializeField] private bool muteOnStart;
     [SerializeField] private AudioSource[] audioSources;
     [SerializeField] private List<float> audioVolumes;
     [SerializeField] private bool cached;
     [SerializeField] private bool isInc;
+
+    private void Start()
+    {
+        if (muteOnStart)
+        {
+            foreach (var item in audioSources)
+            {
+                audioVolumes.Add(item.volume);
+            }
+            cached = true;
+
+            foreach (var item in audioSources)
+            {
+                StartCoroutine(soundTimer(item));
+            }
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
