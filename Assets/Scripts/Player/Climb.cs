@@ -80,7 +80,7 @@ public class Climb : MonoBehaviour
             second = false;
         }
 
-        if (Math.Abs(player.transform.position.x - target.x) > 1.5f)
+        if (Math.Abs(player.transform.position.x - target.x) > 2.5f)
         {
             playerMovement.AirControl = true;
         }
