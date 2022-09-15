@@ -60,11 +60,11 @@ class VerbalLib
     public static char[] StartDoor = "Они отрезали мне путь...\nСбежал из одной клетки, чтобы быть запертым в другой...\nнадо же...".ToCharArray();
     public static char[] Police = "Ты что-нибудь слышал?".ToCharArray();
     public static char[] Lvl2_Back = "Я не могу пойти обратно".ToCharArray();
-    public static char[] Lvl2_Finish = "Соседняя башня - моя цель. \nИменно там мы и встретимся, чудовище. \n \nА это что еще? \nЯ обязательно разнесу тебя на куски. \nНо чуть позже".ToCharArray();
+    public static char[] Lvl2_Finish = "Соседняя башня - моя цель. \nИменно там мы и встретимся, чудовище.       \nА это еще что?       \nБосс - вертолет?!      \nОни действительно сделали это?".ToCharArray();
     public static char[] Lvl2_Phone1 = "Что-то мне подсказывает - надо взять трубку".ToCharArray();
     public static char[] Lvl2_Phone2 = "Поддержка незнакомца не повредит".ToCharArray();
     public static char[] Lvl2_Street = "Проникнуть внутрь. Потом на самый верх..".ToCharArray();
-    public static char[] Lvl2_Camera_first = "Выключить. Выключить. Где терминал?!".ToCharArray();
+    public static char[] Lvl2_Camera_first = "Камеры.. Как я и думал".ToCharArray();
     public static char[] Lvl2_Camera_terminal = "Ключ доступа пригодился".ToCharArray();
     public static char[] Lvl2_Cyborg_replick = "Ненавижу киборгов. Самая мерзкая охранная система".ToCharArray();
     public static char[] Lvl2_ventilation = "Склад оружия, замаскированный под офисное здание – он даже не старается это скрыть".ToCharArray();
