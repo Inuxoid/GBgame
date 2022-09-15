@@ -291,21 +291,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0301b11d8bd8c4d8f0f1d141cf8e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onCoinTaken:
+  scoreCounter: {fileID: 0}
+  onPick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScoreCounter, Assembly-CSharp
-        m_MethodName: CountVHS
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -319,7 +308,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  scoreCounter: {fileID: 0}
 --- !u!135 &6658614984513965900
 SphereCollider:
   m_ObjectHideFlags: 0

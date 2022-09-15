@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnAlarmButton : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UnAlarmButton : MonoBehaviour
     [SerializeField] private bool isOpening;
     [SerializeField] private float y;
     [SerializeField] private float x;
+    [SerializeField] private UnityEvent onPressed;
 
     [SerializeField] private Allarm allarm;
 
@@ -55,6 +57,7 @@ public class UnAlarmButton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             isTrying = true;
+            onPressed?.Invoke();
         }
 
         if (Input.GetKeyUp(KeyCode.E))
