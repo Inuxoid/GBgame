@@ -57,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 				climb.Point1 = go.GetComponent<ClimbData>().Point1;
 				climb.Point2 = go.GetComponent<ClimbData>().Point2;
 				animator.SetBool("isClimbing", true);
+				climb.StartedClimbing = true;
             }
 			//this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 			//Debug.Log($"Target - {go.transform.position.x} Player - {transform.position.x}");

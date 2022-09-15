@@ -17,9 +17,11 @@ public class Climb : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private bool second;
+    [SerializeField] private bool startedClimbing;
 
     public Vector3 Point1 { get => point1; set => point1 = value; }
     public Vector3 Point2 { get => point2; set => point2 = value; }
+    public bool StartedClimbing { get => startedClimbing; set => startedClimbing = value; }
 
     private void Start()
     {
@@ -57,8 +59,9 @@ public class Climb : MonoBehaviour
         else
         {
             target = Vector3.zero;
-            animator.SetBool("isClimbing", false);
+            //animator.SetBool("isClimbing", false);
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
+            StartedClimbing = false;
         }
 
         if (target != Vector3.zero && Vector3.Distance(player.transform.position, Point1) < passDistance && !second)
