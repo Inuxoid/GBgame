@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 	public bool Crouch { get => crouch; set => crouch = value; }
     public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
     public float SpeedMod { get => speedMod; set => speedMod = value; }
+    public bool AirControl { get => airControl; set => airControl = value; }
 
     public void AirGroundCollision(GameObject go)
 	{
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 				climb.Point1 = go.GetComponent<ClimbData>().Point1;
 				climb.Point2 = go.GetComponent<ClimbData>().Point2;
 				animator.SetBool("isClimbing", true);
-				climb.StartedClimbing = true;
+				climb.StartClimb();
             }
 			//this.transform.position = new Vector3(go.transform.position.x, go.transform.position.y + 2f, this.transform.position.z);
 			//Debug.Log($"Target - {go.transform.position.x} Player - {transform.position.x}");
@@ -158,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
-		if (IsGrounded || airControl)
+		if (IsGrounded || AirControl)
 		{
 			// Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
 			// rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);

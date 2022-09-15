@@ -8,6 +8,6 @@ public class UnClimb : MonoBehaviour
 
     public void EndClimb()
     {
-        animator.SetBool("isClimbing", false);
+        //animator.SetBool("isClimbing", false);
     }
 }

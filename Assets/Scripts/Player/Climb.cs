@@ -50,8 +50,8 @@ public class Climb : MonoBehaviour
             // В корутину
             // Другие климбы
             //player.transform.position = target.position;
-            Debug.Log("First");
-            Debug.Log(Vector3.Distance(player.transform.position, target));
+            Debug.Log("upd");
+            //Debug.Log(Vector3.Distance(player.transform.position, target));
             playerMovement.SpeedMod = 0;
             player.transform.position = Vector3.MoveTowards(player.transform.position, new Vector3(target.x, target.y, target.z), Time.deltaTime * speed);
             //colTransform.position = Vector3.MoveTowards(player.transform.position, target.position, Time.deltaTime * speed);
@@ -59,25 +59,45 @@ public class Climb : MonoBehaviour
         else
         {
             target = Vector3.zero;
-            //animator.SetBool("isClimbing", false);
+            animator.SetBool("isClimbing", false);
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
-            StartedClimbing = false;
+            second = false;
         }
 
-        if (target != Vector3.zero && Vector3.Distance(player.transform.position, Point1) < passDistance && !second)
+        if (target != Vector3.zero && Vector3.Distance(player.transform.position, Point1) < passDistance)
         {
-            Debug.Log("Second");
+            Debug.Log("First");
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
             SecondMove();
         }
         else if (target != Vector3.zero && Vector3.Distance(player.transform.position, Point2) < passDistance && second)
         {
-            Debug.Log("Third");
+            Debug.Log("Second");
             animator.SetBool("isClimbing", false);
             playerModel.localPosition = new Vector3(0, -0.949f, 0);
             target = Vector3.zero;
             playerMovement.SpeedMod = 1;
             second = false;
         }
+    }
+
+    public void StartClimb()
+    {
+        if (!startedClimbing)
+            StartCoroutine(ClimbTimer());
+    }
+
+    IEnumerator ClimbTimer()
+    {
+        playerMovement.AirControl = false;
+        Debug.Log("ASFasfasf");
+        StartedClimbing = true;
+        yield return new WaitForSeconds(0.3f);
+        second = false;
+        FirstMove();
+        yield return new WaitForSeconds(1f);
+        StartedClimbing = false;
+        playerMovement.AirControl = true;
+        yield return null;
     }
 }
