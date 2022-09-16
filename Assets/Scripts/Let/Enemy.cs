@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        animator.SetBool("isDead", true);//добавил
+        animator.SetBool("isDead", true);//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         scoreCounter.CountScore(300);
         Destroy(this.gameObject);
     }
@@ -131,7 +131,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !strikesNow && hp > 0)//изменил
+        if (other.CompareTag("Player") && !strikesNow && hp > 0)//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         {
             strikesNow = true;
             Strike();
@@ -141,7 +141,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         strikesNow = false;
-        // Когда отключается
+        // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     }
 
     private IEnumerator StrikeTimer()
@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour
         {
             if (Math.Abs(rb.velocity.x) < 1f)
             {
-                // Оверлап по дубинке
+                // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                 foreach (var item in Physics.OverlapBox(gun.transform.position,
                         new Vector3(1, 1, 1),
                         Quaternion.identity, 8))
