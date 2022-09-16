@@ -6212,6 +6212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ragdoll: {fileID: 8658733711102699894, guid: dfe033bb7691ff64f8cdcfd4f5128ad0, type: 3}
   Player: {fileID: 3373121636018572933}
+  PlayerModel: {fileID: 0}
   deathPanel: {fileID: 0}
   isDead: 0
   playerMovement: {fileID: 3373121636018572928}
@@ -6219,6 +6220,7 @@ MonoBehaviour:
   groundChecker: {fileID: 3373121637051030023}
   liveCycle: {fileID: 3373121636018572988}
   model: {fileID: 3373121636392127285}
+  audioSource: {fileID: 0}
 --- !u!114 &3373121636018572928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6239,6 +6241,7 @@ MonoBehaviour:
   fight: {fileID: 3373121636018572931}
   settings: {fileID: 0}
   pausePanel: {fileID: 0}
+  body: {fileID: 0}
   facingRight: 1
   runSpeed: 40
   crouchSpeed: 10
@@ -6412,6 +6415,7 @@ MonoBehaviour:
         m_CallState: 2
   mat: {fileID: 2100000, guid: a2258d56bd3ea484cb721dee765b48f6, type: 2}
   buyedSafe: 0
+  playerMovement: {fileID: 0}
 --- !u!1 &3373121636248332240
 GameObject:
   m_ObjectHideFlags: 0
@@ -6614,7 +6618,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 41963e1eabda14c4392d744c6040f36b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -6656,13 +6660,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3373121636392127286}
   player: {fileID: 3373121636018572930}
-  point1: {x: 0, y: 0, z: 0}
-  point2: {x: 0, y: 0, z: 0}
-  passDistance: 0.01
-  speed: 25
-  target: {x: 0, y: 0, z: 0}
-  colTransform: {fileID: 3373121635455045642}
-  playerModel: {fileID: 3373121636392127284}
+  maxOffsetToStartClimb: 1.5
+  offsetWhileClimb: 0.3
+  secondsToClimb:
+  - 1.5
+  - 1.5
+  - 1.5
+  - 1.5
+  rb: {fileID: 3373121636018572934}
+  playerMovement: {fileID: 3373121636018572928}
+  startedClimbing: 0
+  climbCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8463944
+      value: 0.2601425
+      inSlope: 0.100714326
+      outSlope: 0.100714326
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.5499363
+      value: 0.13548794
+      inSlope: -0.03582469
+      outSlope: -0.03582469
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 2
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  playerCollider: {fileID: 0}
 --- !u!114 &3373121636392127281
 MonoBehaviour:
   m_ObjectHideFlags: 0

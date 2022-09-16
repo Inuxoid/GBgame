@@ -1,36 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ClimbData : MonoBehaviour
 {
-    [SerializeField] private bool fromTransform;
-    [SerializeField] private Transform trans1;
-    [SerializeField] private Transform trans2;
-    [SerializeField] private Vector3 point1;
-    [SerializeField] private Vector3 point2;
-    [SerializeField] private float x1;
-    [SerializeField] private float y1;
-    [SerializeField] private float x2;
-    [SerializeField] private float y2;
-    [SerializeField] private float z;
-    [SerializeField] private float mult;
+  [SerializeField] private Transform[] points;
+  [SerializeField] private AnimationCurve climbCurve;
 
-    public Vector3 Point1 { get => point1; set => point1 = value; }
-    public Vector3 Point2 { get => point2; set => point2 = value; }
+  private Vector3[] pointsPosition;
+  private Vector3[] reversePointsPosition;
 
-    private void Start() 
+  private void Awake()
+  {
+    pointsPosition = new Vector3[points.Length];
+    reversePointsPosition = new Vector3[points.Length];
+    
+    for (int i = 0; i < points.Length; i++)
     {
-        if (fromTransform)
-        {
-            point1 = new Vector3(trans1.position.x * mult, trans1.position.y, z);
-            point2 = new Vector3(trans2.position.x * mult, trans2.position.y, z);
-        }
-        else
-        {
-            point1 = new Vector3(transform.position.x + x1 * mult, transform.position.y + y1, z);
-            point2 = new Vector3(transform.position.x + x2 * mult, transform.position.y + y2, z);
-        }
+      pointsPosition[i] = points[i].position;
     }
+    
+    for (int i = points.Length-1; i >= 0; i--)
+    {
+      reversePointsPosition[points.Length-1-i] = points[i].position;
+    }
+  }
+
+  public Vector3 FirstPoint(bool isPlayerLeft)
+  {
+    if (isPlayerLeft)
+      return pointsPosition[0];
+    return reversePointsPosition[0];
+  }
+
+  public Vector3[] Points(bool isPlayerLeft)
+  {
+    if (isPlayerLeft)
+      return pointsPosition;
+    return reversePointsPosition;
+  }
 }
