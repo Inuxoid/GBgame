@@ -36,7 +36,7 @@ public class MovingPlarform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.GetComponentInParent<PlayerController>())
         {
             collision.collider.gameObject.transform.parent.parent = this.transform;
         }
@@ -44,7 +44,7 @@ public class MovingPlarform : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.GetComponentInParent<PlayerController>())
         {
             collision.collider.gameObject.transform.parent.parent = null;
         }
