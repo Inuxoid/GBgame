@@ -66,7 +66,6 @@ public class LiveCycle : MonoBehaviour
 	public void GetHeart(int addHp)
 	{
 		Hp += addHp;
-		playerMovement.PickUP();
 		FloatNumberDto dto = new FloatNumberDto() { value = this.Hp / this.maxHp };
 		this.onCounted?.Invoke(dto);
 	}

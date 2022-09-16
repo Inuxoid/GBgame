@@ -288,21 +288,6 @@ public class PlayerMovement : MonoBehaviour
     body.transform.Rotate(0, 180, 0);
   }
 
-  public void PickUP()
-  {
-    animator.SetBool("isPunching", false);
-    StartCoroutine(Pick());
-  }
-
-  private IEnumerator Pick()
-  {
-    SpeedMod = 0;
-    animator.SetBool("PickUp", true);
-    yield return new WaitForSeconds(2f);
-    SpeedMod = 1;
-    animator.SetBool("PickUp", false);
-    yield return null;
-  }
 
   private IEnumerator JumpTimer()
   {

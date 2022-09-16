@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private ScoreCounter scoreCounter;
     [SerializeField] private GameObject body;
     [SerializeField] private GameObject gun;
+    [SerializeField] private GameObject canvas;
 
     [Header("Settings")]
     [SerializeField] private float maxHP;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
     [SerializeField] private UnityEvent onPunch;
+    [SerializeField] private bool dead;
 
     public bool CanSeePlayer { get => canSeePlayer;
         set
@@ -49,7 +51,7 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         FloatNumberDto dto = new FloatNumberDto() { value = this.hp / this.maxHP };
         this.onHpChanged?.Invoke(dto);
-        if (hp <= 0)
+        if (hp <= 0 && !dead)
         {
             Instantiate(heart, this.transform.position, Quaternion.identity);
             Death();
@@ -71,11 +73,9 @@ public class Enemy : MonoBehaviour
 
     public void MoveToPlayer()
     {
-
-
         //this.transform.Translate((player.transform.position - this.transform.position) * 0.02f, Space.World);
         Debug.Log(Math.Abs(player.transform.position.x - transform.position.x));
-        if (Math.Abs(player.transform.position.x - transform.position.x) > xRange)
+        if (Math.Abs(player.transform.position.x - transform.position.x) > xRange && !dead)
         {
             //rb.AddForce((new Vector3((player.transform.position.x - transform.position.x),
             //    0, transform.position.z).normalized) * enemySpeed, ForceMode.Force);
@@ -92,17 +92,17 @@ public class Enemy : MonoBehaviour
 
     public void RunTo()
     {
-        if (flip * (player.transform.position.x - this.transform.position.x) < 0)
+        if (flip * (player.transform.position.x - this.transform.position.x) < 0 && !dead )
         {
             Flip();
         }
-        if (needRun)
+        if (needRun && !dead )
             rb.velocity = new Vector2(enemySpeed * new Vector3(player.transform.position.x - transform.position.x, 0).normalized.x, rb.velocity.y);
     }
 
     public void Controller()
     {
-        if (CanSeePlayer)
+        if (CanSeePlayer && !dead)
         {
             MoveToPlayer();
         }
@@ -117,9 +117,15 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        animator.SetBool("isDead", true);//�������
-        scoreCounter.CountScore(300);
-        Destroy(this.gameObject);
+        if (!dead)
+        {
+            animator.SetBool("isDead", true);//�������
+            scoreCounter.CountScore(300);
+            GetComponent<Collider>().transform.gameObject.layer = LayerMask.NameToLayer("dead");
+            canvas.SetActive(false);
+        }
+        dead = true;
+        //Destroy(this.gameObject);
     }
 
     private void Start()
@@ -131,7 +137,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && !strikesNow && hp > 0)//�������
+        if (other.CompareTag("Player") && !strikesNow && hp > 0 && !dead)//�������
         {
             strikesNow = true;
             Strike();
@@ -147,7 +153,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator StrikeTimer()
     {
         yield return new WaitForSeconds(attackSpeed);
-        while (strikesNow)
+        while (strikesNow && !dead)
         {
             if (Math.Abs(rb.velocity.x) < 1f)
             {
