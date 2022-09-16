@@ -292,17 +292,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpRes: 35
-  onPickUp:
+  OnTake:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5893742784545067802}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 487e095a95e836643a84712876790d8b,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

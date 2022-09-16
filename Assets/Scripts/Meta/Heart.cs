@@ -7,12 +7,14 @@ public class Heart : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private int hpRes;
-    
+    [SerializeField] private UnityEvent OnTake;
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            OnTake?.Invoke();
             other.GetComponentInParent<LiveCycle>().GetHeart(hpRes);
             Destroy(GetComponent<Collider>());
             StartCoroutine(DestroyTimer());
