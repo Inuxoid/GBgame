@@ -21,13 +21,10 @@ public class FInalCutscene : MonoBehaviour
 
     IEnumerator EndTimer()
     {
-
         yield return new WaitForSeconds(10f);
-        settings.Pause();
-
         slide.SetActive(true);
         yield return new WaitForSeconds(5f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(0);
         yield return null;
     }
 }
