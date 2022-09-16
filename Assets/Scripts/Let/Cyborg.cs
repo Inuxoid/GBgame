@@ -32,6 +32,7 @@ public class Cyborg : MonoBehaviour
     [SerializeField] private float xRange;
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
     [SerializeField] private UnityEvent onPunch;
+    [SerializeField] private UnityEvent onTP;
     [SerializeField] private bool tpNow;
     bool needRun;
 
@@ -222,6 +223,7 @@ public class Cyborg : MonoBehaviour
 
     private IEnumerator TpTimer(Transform newTransform, bool start)
     {
+        onTP?.Invoke();
         tpNow = true;
         strikesNow = false;
         if (!start)
