@@ -12,7 +12,7 @@ public class Heart : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetComponentInParent<LiveCycle>().Hp == 100)
         {
             OnTake?.Invoke();
             other.GetComponentInParent<LiveCycle>().GetHeart(hpRes);
