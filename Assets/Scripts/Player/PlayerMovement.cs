@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] private Vector3 velocity = Vector3.zero;
   [SerializeField] private float speedMod;
   [SerializeField] private float airSpeed;
+  [SerializeField] private float intFlip = 1;
 
   public bool Crouch
   {
@@ -137,15 +138,21 @@ public class PlayerMovement : MonoBehaviour
 
   public void AirGroundCollision(GameObject go)
   {
-    if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0)
-      if (go.TryGetComponent(out ClimbData climbData) && climb.IsCanClimb(climbData.FirstPoint(true)))
-      {
-        SpeedMod = 0;
-        AirControl = false;
-        climb.StartClimb(climbData.Points(true));
-      }
-    
-  }
+        bool left = true;
+        if ((go.transform.position.x - transform.position.x) < 0)
+        {
+            left = false;
+        }
+        if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0 && intFlip * Input.GetAxisRaw("Horizontal") > 0)
+        {
+            if (go.TryGetComponent(out ClimbData climbData) && climb.IsCanClimb(climbData.FirstPoint(left)))
+            {
+                SpeedMod = 0;
+                AirControl = false;
+                climb.StartClimb(climbData.Points(left));
+            }
+        }
+    }
 
   public void AirWallCollision(GameObject go)
   {
@@ -205,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
     IsGrounded = false;
     animator.SetBool("isJumping", true);
     SpeedMod = airSpeed;
-    bodyCollider.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+    bodyCollider.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
   }
 
   public void CanStandUp()
@@ -272,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
   {
     flip?.Invoke();
     facingRight = !facingRight;
-
+    intFlip *= -1;
     //Vector3 theScale = transform.localScale;
     //theScale.x *= -1;
     //transform.localScale = theScale;
