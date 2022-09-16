@@ -34,7 +34,7 @@ public class ClimbData : MonoBehaviour
     return reversePointsPosition[0];
   }
 
-  public Vector3[] Points(bool isPlayerLeft)
+  public Vector3[] Points(bool isPlayerLeft)    
   {
     if (isPlayerLeft || !twoSides)
       return pointsPosition;
