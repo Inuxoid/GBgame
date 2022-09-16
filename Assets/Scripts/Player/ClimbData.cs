@@ -5,6 +5,7 @@ public class ClimbData : MonoBehaviour
 {
   [SerializeField] private Transform[] points;
   [SerializeField] private AnimationCurve climbCurve;
+    [SerializeField] private bool twoSides;
 
   private Vector3[] pointsPosition;
   private Vector3[] reversePointsPosition;
@@ -27,14 +28,15 @@ public class ClimbData : MonoBehaviour
 
   public Vector3 FirstPoint(bool isPlayerLeft)
   {
-    if (isPlayerLeft)
+    if (isPlayerLeft || !twoSides)
       return pointsPosition[0];
+        Debug.Log($"{reversePointsPosition[0]}, {reversePointsPosition[1]}, {reversePointsPosition[2]}, {reversePointsPosition[3]}");
     return reversePointsPosition[0];
   }
 
   public Vector3[] Points(bool isPlayerLeft)
   {
-    if (isPlayerLeft)
+    if (isPlayerLeft || !twoSides)
       return pointsPosition;
     return reversePointsPosition;
   }

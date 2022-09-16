@@ -46,8 +46,9 @@ public class PlayerMovement : MonoBehaviour
   [SerializeField] private float speedMod;
   [SerializeField] private float airSpeed;
   [SerializeField] private float intFlip = 1;
+    [SerializeField] private bool left;
 
-  public bool Crouch
+    public bool Crouch
   {
     get => crouch;
     set => crouch = value;
@@ -138,12 +139,12 @@ public class PlayerMovement : MonoBehaviour
 
   public void AirGroundCollision(GameObject go)
   {
-        bool left = true;
+        left = true;
         if ((go.transform.position.x - transform.position.x) < 0)
         {
             left = false;
         }
-        if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0 && intFlip * Input.GetAxisRaw("Horizontal") > 0)
+        if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0)
         {
             if (go.TryGetComponent(out ClimbData climbData) && climb.IsCanClimb(climbData.FirstPoint(left)))
             {
