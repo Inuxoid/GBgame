@@ -57,7 +57,7 @@ public class UnAlarmButton : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             isTrying = true;
-            onPressed?.Invoke();
+
         }
 
         if (Input.GetKeyUp(KeyCode.E))
@@ -70,6 +70,7 @@ public class UnAlarmButton : MonoBehaviour
     {
         if (other.CompareTag("Player") && isTrying && !isOpening && allarm.IsAlarming)
         {
+            onPressed?.Invoke();
             StartCoroutine(ButtonTimer());
         }
     }
