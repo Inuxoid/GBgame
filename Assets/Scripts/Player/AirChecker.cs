@@ -72,17 +72,26 @@ public class AirChecker : MonoBehaviour
         Debug.Log(colliders.Count);
         if (colliders.Count != 0)
         {
+            bool _isFounded = false;
             foreach (var item in colliders)
             {
                 if (item.CompareTag("Ground"))
                 {
                     playerMovement.AirGroundCollision(item.gameObject);
+                    _isFounded = true;
                     break;
                 }
-                if (item.CompareTag("Wall"))
+            }
+
+            if (!_isFounded)
+            {
+                foreach (var item in colliders)
                 {
-                    playerMovement.AirWallCollision(item.gameObject);
-                    break;
+                    if (item.CompareTag("Wall"))
+                    {
+                        playerMovement.AirWallCollision(item.gameObject);
+                        break;
+                    }
                 }
             }
         }
