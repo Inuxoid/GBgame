@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
 
     public void GetStrike(int damage)
     {
+        animator.SetBool("isHited", true);
+        animator.SetBool("isPunching", false);
         hp -= damage;
         FloatNumberDto dto = new FloatNumberDto() { value = this.hp / this.maxHP };
         this.onHpChanged?.Invoke(dto);
@@ -155,6 +157,11 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(attackSpeed);
         while (strikesNow && !dead)
         {
+            if (animator.GetBool("isHited"))
+            {
+                strikesNow = false;
+                break;
+            }
             if (Math.Abs(rb.velocity.x) < 1f)
             {
                 // ������� �� �������
@@ -165,9 +172,17 @@ public class Enemy : MonoBehaviour
                     if (player.transform.position.x - gun.transform.position.x < xRange)
                     {
                         animator.SetBool("isPunching", true);
-                        yield return new WaitForSeconds(0.25f);
-                        item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
-                        onPunch?.Invoke();
+                        yield return new WaitForSeconds(0.5f);
+                        if (!animator.GetBool("isHited"))
+                        {
+                            item.GetComponentInParent<LiveCycle>()?.GetDamage(enemyDamage);
+                            onPunch?.Invoke();
+                        }
+                        else
+                        {
+                            yield return new WaitForSeconds(0.5f);
+                            animator.SetBool("isHited", false);
+                        }
                     }
                     break;
                 }

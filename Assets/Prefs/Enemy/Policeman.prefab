@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 6372621596870122541}
   entity: {fileID: 6372621597176399019}
+  yD: 0
 --- !u!1 &6372621596923232183
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,6 +447,7 @@ MonoBehaviour:
   scoreCounter: {fileID: 0}
   body: {fileID: 6102782414700942158}
   gun: {fileID: 6301970779712122901}
+  canvas: {fileID: 0}
   maxHP: 50
   hp: 50
   enemyDamage: 10
@@ -480,6 +482,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPunch:
+    m_PersistentCalls:
+      m_Calls: []
+  dead: 0
 --- !u!54 &6372621597176399017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2806,6 +2812,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f51f910df227b3243bef07cc286aeb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 655990892276847502}
+--- !u!114 &6795330460127252935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102782414700942158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ae2c417e08ba94a81b70cc9ba5e991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 655990892276847502}
