@@ -29,7 +29,7 @@ public class AirChecker : MonoBehaviour
             curCast = smallCast;
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(new Vector3(this.transform.position.x +
-                            (float)playerMovement.IntFlip / 5,
+                            (float)playerMovement.IntFlip / 3,
                             this.transform.position.y - 0.18f,
                             this.transform.position.z),
                             curCast);
@@ -37,7 +37,7 @@ public class AirChecker : MonoBehaviour
 
     private void Update()
     {
-        if (playerMovement.Crouch)
+        if (playerMovement.Crouch)  
             curCast = nullCast;
         else if (playerMovement.IsGrounded)
             curCast = bigCast;
@@ -49,7 +49,7 @@ public class AirChecker : MonoBehaviour
                                                                   (float)playerMovement.IntFlip / 3, 
                                                                   this.transform.position.y - 0.18f, 
                                                                   this.transform.position.z),
-                                                                  curCast).Where(x => (x.GetComponent<ClimbData>() != null || x.CompareTag("Wall")) && 
+                                                                  curCast / 2).Where(x => (x.GetComponent<ClimbData>() != null || x.CompareTag("Wall")) && 
                                                                   Math.Abs(x.transform.position.x - transform.position.x) > 0.6f).ToList();
 
 
