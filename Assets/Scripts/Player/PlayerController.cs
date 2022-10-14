@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject audioSource;
 
+    public bool IsDead { get => isDead; set => isDead = value; }
+
     public void Death()
     {
         Debug.Log("I'm dead");
@@ -30,12 +32,12 @@ public class PlayerController : MonoBehaviour
         Destroy(airChecker);
         Destroy(audioSource);
         deathPanel.SetActive(true);
-        isDead = true;
+        IsDead = true;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isDead)
+        if (Input.GetKeyDown(KeyCode.F) && IsDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
