@@ -6,7 +6,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: button 1
+  m_Name: button select
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 12badd8253423c349b7f58f0f5ac865f
   m_Children: []
@@ -109,7 +109,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: button 2
+  m_Name: button push
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 9c48b6876a43c2a46932311cfe81dd70
   m_Children: []
