@@ -18,6 +18,8 @@ public class Foe : MonoBehaviour
     [SerializeField] private UnityEvent<FloatNumberDto> onHpChanged;
     [SerializeField] private UnityEvent onDamaged;
     [SerializeField] private Heart heart;
+    [SerializeField] private ScoreCounter scoreCounter;
+    [SerializeField] private GameObject canvas;
 
 
     [Header("Settings")]
@@ -38,8 +40,6 @@ public class Foe : MonoBehaviour
 
     [SerializeField] private float enemySpeed;
 
-
-
     enum FoeState { Idle, Death, Seek, Move, Fight }
     FoeState foeState;
     enum FoeMovementState { MoveTo, MoveFrom, DontMove }
@@ -51,6 +51,7 @@ public class Foe : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("MainPlayer");
         playerController = GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<PlayerController>();
         liveCycle = GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<LiveCycle>();
+        animator = GetComponentInChildren<Animator>();
         foeState = FoeState.Seek;
         foeMovementState = FoeMovementState.DontMove;
     }
@@ -64,7 +65,6 @@ public class Foe : MonoBehaviour
                 break;
             case FoeState.Death:
                 Debug.Log(foeState);
-                Death();
                 break;
             case FoeState.Seek:
                 Debug.Log(foeState);
@@ -196,7 +196,7 @@ public class Foe : MonoBehaviour
             else if (!animator.GetBool("isPunching"))
             {
                 var curClip = animator.GetCurrentAnimatorClipInfo(0);
-                if (curClip[0].clip.name != "Sword And Shield Slash")
+                if (curClip[0].clip.name != "Sword And Shield Slash" && curClip[0].clip.name != "Bandit_Attack")
                 {
                     animator.SetBool("isPunching", true);
                 }   
@@ -211,6 +211,7 @@ public class Foe : MonoBehaviour
 
     public void GetDamage(int damage)
     {
+        animator.SetBool("isHited", true);
         currentHealth -= damage;
         FloatNumberDto dto = new FloatNumberDto() { value = currentHealth / maxHealth };
         onHpChanged?.Invoke(dto);
@@ -225,6 +226,9 @@ public class Foe : MonoBehaviour
 
     public void Death()
     {
-        Destroy(this);
+        foeState = FoeState.Death;
+        scoreCounter.CountScore(300);
+        GetComponent<Collider>().transform.gameObject.layer = LayerMask.NameToLayer("dead");
+        canvas.SetActive(false);
     }
 }

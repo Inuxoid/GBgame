@@ -149,7 +149,6 @@ public class Enemy : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         strikesNow = false;
-        // ����� �����������
     }
 
     private IEnumerator StrikeTimer()

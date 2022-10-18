@@ -27,7 +27,7 @@ public class Fight : MonoBehaviour
                                                 new Vector3 (0.7f, 0.7f, 0.7f), 
                                                 Quaternion.identity, 128))
         {
-            item?.GetComponent<Enemy>()?.GetStrike(damage);
+            item?.GetComponent<Foe>()?.GetDamage(damage);
             item?.GetComponent<Turret>()?.GetStrike(damage);
             item?.GetComponent<Cyborg>()?.GetStrike(damage);
         }

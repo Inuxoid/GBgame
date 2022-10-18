@@ -2448,7 +2448,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8107208112381451733}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.67, y: -3.588, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 0
@@ -2929,6 +2929,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   heart: {fileID: 0}
+  scoreCounter: {fileID: 0}
+  canvas: {fileID: 8107208114216044079}
   enemyDamage: 10
   maxHealth: 50
   currentHealth: 50
@@ -3457,6 +3459,7 @@ GameObject:
   - component: {fileID: 2950578241842051816}
   - component: {fileID: 8107208113200784237}
   - component: {fileID: 8556648301488294840}
+  - component: {fileID: 4877680468883023225}
   m_Layer: 0
   m_Name: LPIdle
   m_TagString: Untagged
@@ -3545,6 +3548,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2443206624654100977}
+--- !u!114 &4877680468883023225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954280871967197489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31929f678cc84b418f6d7ca6c11eb70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foe: {fileID: 8107208113993588432}
 --- !u!1 &8954280872371788317
 GameObject:
   m_ObjectHideFlags: 0
