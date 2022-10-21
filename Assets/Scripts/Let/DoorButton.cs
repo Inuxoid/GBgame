@@ -9,6 +9,7 @@ public class DoorButton : MonoBehaviour
     [SerializeField] private GameObject door;
     [SerializeField] private DoorButton otherButton;
     [Header("Settings")]
+    [SerializeField] private bool isNotWorking;
     [SerializeField] private bool isOpened;
     [SerializeField] private bool isTrying;
     [SerializeField] private bool isOpening;
@@ -35,6 +36,11 @@ public class DoorButton : MonoBehaviour
         else
         {
             GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
+        }
+
+        if (isNotWorking)
+        {
+            GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
         }
     }
 
@@ -65,7 +71,7 @@ public class DoorButton : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("MainPlayer") && isTrying && !isOpening)
+        if (other.CompareTag("Player") && isTrying && !isOpening)
         {
             StartCoroutine(ButtonTimer());
         }
@@ -73,6 +79,7 @@ public class DoorButton : MonoBehaviour
 
     IEnumerator ButtonTimer()
     {
+        Debug.Log("asfas");
         isOpening = true;
         IsOpened = !IsOpened;
         otherButton.IsOpened = !otherButton.IsOpened;
