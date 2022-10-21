@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class AudioLib : MonoBehaviour
 {
-    [SerializeField] private AudioSource audioSource;
-
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip, AudioSource audioSource)
     {
         audioSource.clip = clip;
         audioSource.Play();
     }
 
-    public void PlayOnce(AudioClip clip)
+    public void PlayOnce(AudioClip clip, AudioSource audioSource)
     {
         audioSource?.PlayOneShot(clip);
     }
 
-    public void StopPlaying()
+    public void StopPlaying(AudioSource audioSource)
     {
         audioSource.Stop();
     }
