@@ -65,7 +65,7 @@ public class DoorButton : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && isTrying && !isOpening)
+        if (other.CompareTag("MainPlayer") && isTrying && !isOpening)
         {
             StartCoroutine(ButtonTimer());
         }
@@ -82,3 +82,5 @@ public class DoorButton : MonoBehaviour
         yield return null;
     }
 }
+
+
