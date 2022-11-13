@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class DoorButton : MonoBehaviour
 {
@@ -16,6 +17,12 @@ public class DoorButton : MonoBehaviour
     [SerializeField] private float y;
     [SerializeField] private float x;
     [SerializeField] private UnityEvent onPushed;
+    [SerializeField] private PlayerInput playerInput;
+
+    private void Start()
+    {
+        playerInput = FindObjectOfType<PlayerInput>();
+    }
 
     public bool IsOpened
     {
@@ -58,12 +65,12 @@ public class DoorButton : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (playerInput.actions["Action"].IsPressed())
         {
             isTrying = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (!playerInput.actions["Action"].IsPressed())
         {
             isTrying = false;
         }

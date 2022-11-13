@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody rb;
 
+    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Collider bodyCollider;
     [SerializeField] private Collider visionCollider;
     [SerializeField] private Animator animator;
@@ -84,18 +86,24 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 DeltCol { get => deltCol; set => deltCol = value; }
     public Vector3 NullCol { get => nullCol; set => nullCol = value; }
 
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Input.GetAxisRaw("Horizontal") == 0 && !animator.GetBool("isPunching"))
+        if (playerInput.actions["Attack"].IsPressed() && playerInput.actions["Move"].ReadValue<Vector2>().x == 0 && !animator.GetBool("isPunching"))
             if (!Crouch)
                 fight.Strike();
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * SpeedMod;
+        //horizontalMove = Input.GetAxisRaw("Horizontal") * SpeedMod;
+        horizontalMove = playerInput.actions["Move"].ReadValue<Vector2>().x * SpeedMod;
 
-        animator.SetFloat("hSpeed", Math.Abs(Input.GetAxisRaw("Horizontal")));
+        animator.SetFloat("hSpeed", playerInput.actions["Move"].ReadValue<Vector2>().x);
         animator.SetFloat("vSpeed", Math.Abs(GetComponent<Rigidbody>().velocity.y));
 
-        if (Math.Abs(Input.GetAxisRaw("Horizontal")) > 0)
+        if (Math.Abs(playerInput.actions["Move"].ReadValue<Vector2>().x) > 0)
         {
             if (deltaSpeed < currentSpeed * 10) deltaSpeed += Time.deltaTime * deltaSpeedMult;
         }
@@ -108,22 +116,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat("hSpeed", deltaSpeed);
-
-        if (Input.GetKeyDown(KeyCode.W))
+        
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y > 0.5f)
         {
             jump = true;
             WReleased = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.W)) WReleased = true;
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y is < 0.1f and > -0.1f) WReleased = true;
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y < -0.5f)
         {
             StartCrouch();
             SReleased = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.S)) SReleased = true;
+        if (playerInput.actions["Move"].ReadValue<Vector2>().y  is < 0.1f and > -0.1f) SReleased = true;
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -156,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
         {
             left = false;
         }
-        if (!Crouch && Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0)
+        if (!Crouch && playerInput.actions["Move"].ReadValue<Vector2>().x  * (go.transform.position.x - transform.position.x) > 0)
         {
             if (go.TryGetComponent(out ClimbData climbData) && climb.IsCanClimb(climbData.FirstPoint(left)))
             {
@@ -169,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void AirWallCollision(GameObject go)
     {
-        if (Input.GetAxisRaw("Horizontal") * (go.transform.position.x - transform.position.x) > 0)
+        if (playerInput.actions["Move"].ReadValue<Vector2>().x  * (go.transform.position.x - transform.position.x) > 0)
         {
             currentSpeed = 0;
             SpeedMod = 0;
