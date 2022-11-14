@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -17,8 +18,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LiveCycle liveCycle;
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject audioSource;
+    [SerializeField] private PlayerInput playerInput;
 
     public bool IsDead { get => isDead; set => isDead = value; }
+
+    private void Start()
+    {
+        playerInput = FindObjectOfType<PlayerInput>();
+    }
 
     public void Death()
     {
@@ -37,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && IsDead)
+        if (playerInput.actions["F"].IsPressed() && isDead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
