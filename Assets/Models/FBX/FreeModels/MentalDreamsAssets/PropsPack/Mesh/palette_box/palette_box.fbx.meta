@@ -1,121 +1,282 @@
 fileFormatVersion: 2
 guid: 198c1753a601ab546a1ce34b3b36cc6b
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: koliler
-    100002: kutu
-    100004: kutu2
-    100006: kutu3
-    100008: kutu4
-    100010: //RootNode
-    100012: palet1
-    100014: palet2
-    100016: Object001
-    100018: Object002
-    100020: Object003
-    100022: Object004
-    400000: koliler
-    400002: kutu
-    400004: kutu2
-    400006: kutu3
-    400008: kutu4
-    400010: //RootNode
-    400012: palet1
-    400014: palet2
-    400016: Object001
-    400018: Object002
-    400020: Object003
-    400022: Object004
-    2300000: koliler
-    2300002: kutu
-    2300004: kutu2
-    2300006: kutu3
-    2300008: kutu4
-    2300010: palet1
-    2300012: palet2
-    2300014: Object001
-    2300016: Object002
-    2300018: Object003
-    2300020: Object004
-    3300000: koliler
-    3300002: kutu
-    3300004: kutu2
-    3300006: kutu3
-    3300008: kutu4
-    3300010: palet1
-    3300012: palet2
-    3300014: Object001
-    3300016: Object002
-    3300018: Object003
-    3300020: Object004
-    4300000: kutu4
-    4300002: kutu3
-    4300004: kutu2
-    4300006: kutu
-    4300008: palet2
-    4300010: koliler
-    4300012: palet1
-    4300014: Object001
-    4300016: Object002
-    4300018: Object003
-    4300020: Object004
-    7400000: Take 001
-    9500000: //RootNode
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: koliler
+  - first:
+      1: 100002
+    second: kutu
+  - first:
+      1: 100004
+    second: kutu2
+  - first:
+      1: 100006
+    second: kutu3
+  - first:
+      1: 100008
+    second: kutu4
+  - first:
+      1: 100010
+    second: //RootNode
+  - first:
+      1: 100012
+    second: palet1
+  - first:
+      1: 100014
+    second: palet2
+  - first:
+      1: 100016
+    second: Object001
+  - first:
+      1: 100018
+    second: Object002
+  - first:
+      1: 100020
+    second: Object003
+  - first:
+      1: 100022
+    second: Object004
+  - first:
+      4: 400000
+    second: koliler
+  - first:
+      4: 400002
+    second: kutu
+  - first:
+      4: 400004
+    second: kutu2
+  - first:
+      4: 400006
+    second: kutu3
+  - first:
+      4: 400008
+    second: kutu4
+  - first:
+      4: 400010
+    second: //RootNode
+  - first:
+      4: 400012
+    second: palet1
+  - first:
+      4: 400014
+    second: palet2
+  - first:
+      4: 400016
+    second: Object001
+  - first:
+      4: 400018
+    second: Object002
+  - first:
+      4: 400020
+    second: Object003
+  - first:
+      4: 400022
+    second: Object004
+  - first:
+      23: 2300000
+    second: koliler
+  - first:
+      23: 2300002
+    second: kutu
+  - first:
+      23: 2300004
+    second: kutu2
+  - first:
+      23: 2300006
+    second: kutu3
+  - first:
+      23: 2300008
+    second: kutu4
+  - first:
+      23: 2300010
+    second: palet1
+  - first:
+      23: 2300012
+    second: palet2
+  - first:
+      23: 2300014
+    second: Object001
+  - first:
+      23: 2300016
+    second: Object002
+  - first:
+      23: 2300018
+    second: Object003
+  - first:
+      23: 2300020
+    second: Object004
+  - first:
+      33: 3300000
+    second: koliler
+  - first:
+      33: 3300002
+    second: kutu
+  - first:
+      33: 3300004
+    second: kutu2
+  - first:
+      33: 3300006
+    second: kutu3
+  - first:
+      33: 3300008
+    second: kutu4
+  - first:
+      33: 3300010
+    second: palet1
+  - first:
+      33: 3300012
+    second: palet2
+  - first:
+      33: 3300014
+    second: Object001
+  - first:
+      33: 3300016
+    second: Object002
+  - first:
+      33: 3300018
+    second: Object003
+  - first:
+      33: 3300020
+    second: Object004
+  - first:
+      43: 4300000
+    second: kutu4
+  - first:
+      43: 4300002
+    second: kutu3
+  - first:
+      43: 4300004
+    second: kutu2
+  - first:
+      43: 4300006
+    second: kutu
+  - first:
+      43: 4300008
+    second: palet2
+  - first:
+      43: 4300010
+    second: koliler
+  - first:
+      43: 4300012
+    second: palet1
+  - first:
+      43: 4300014
+    second: Object001
+  - first:
+      43: 4300016
+    second: Object002
+  - first:
+      43: 4300018
+    second: Object003
+  - first:
+      43: 4300020
+    second: Object004
+  - first:
+      74: 7400000
+    second: Take 001
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 1
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
