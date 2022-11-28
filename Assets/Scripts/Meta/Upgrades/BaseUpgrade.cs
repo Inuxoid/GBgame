@@ -9,6 +9,7 @@ namespace Meta.Upgrades
         public string name;
         public string iconPath;
         public bool isBought;
+        public bool isSelected;
         public int level;
         public BaseUpgrade[] requirements;
         public bool ultimate;

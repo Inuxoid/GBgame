@@ -51,7 +51,7 @@ public class AirChecker : MonoBehaviour
                                                                   curCast / 2).Where(x => (x.GetComponent<ClimbData>() != null || x.CompareTag("Wall")) && 
                                                                   Math.Abs(x.transform.position.x - transform.position.x) > 0.6f).ToList();
 
-        Debug.Log(colliders.Count);
+        //Debug.Log(colliders.Count);
         if (colliders.Count != 0)
         {
             bool _isFounded = false;
