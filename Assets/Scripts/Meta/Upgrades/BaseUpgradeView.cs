@@ -8,6 +8,7 @@ namespace Meta.Upgrades
     public class BaseUpgradeView : MonoBehaviour
     {
         private UpgradeShop upgradeShop;
+        [SerializeField] private GameObject board;
         [SerializeField] private int id;
         [SerializeField] private Button buttonUpgrade;
         [SerializeField] private Button buttonSet;
@@ -57,6 +58,7 @@ namespace Meta.Upgrades
             upgradeShop.SetUpgrade(baseUpgrade);
             buttonSet.onClick.RemoveListener(SetThis);
             buttonSet.onClick.AddListener(UnsetThis);
+            board.SetActive(true);
             Debug.Log($"Set {baseUpgrade.id}");
         }
 
@@ -65,6 +67,7 @@ namespace Meta.Upgrades
             upgradeShop.UnsetUpgrade(baseUpgrade);
             buttonSet.onClick.RemoveListener(UnsetThis);
             buttonSet.onClick.AddListener(SetThis);
+            board.SetActive(false);
             Debug.Log($"Unset {baseUpgrade.id}");
         }
     }

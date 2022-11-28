@@ -31,7 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8215245527647856028}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ RectTransform:
   m_Children:
   - {fileID: 1925586962581915823}
   m_Father: {fileID: 8215245527647856028}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -365,9 +365,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2002629360093937173}
   - {fileID: 5978008328999266622}
   - {fileID: 9173190488652436659}
-  - {fileID: 2002629360093937173}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -482,6 +482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff4fd01b7164ae0bde28c9ae83527ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  board: {fileID: 59238673754285353}
+  id: 0
   buttonUpgrade: {fileID: 1603438462021475057}
   buttonSet: {fileID: 7216252407606039652}
   buttonBuy: {fileID: 9084440365673232069}
@@ -662,7 +664,7 @@ RectTransform:
   m_Children:
   - {fileID: 2064082731252097977}
   m_Father: {fileID: 8215245527647856028}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
