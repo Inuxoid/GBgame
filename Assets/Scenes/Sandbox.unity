@@ -1797,10 +1797,10 @@ GameObject:
   m_Component:
   - component: {fileID: 178493454}
   - component: {fileID: 178493459}
-  - component: {fileID: 178493458}
   - component: {fileID: 178493457}
   - component: {fileID: 178493456}
   - component: {fileID: 178493455}
+  - component: {fileID: 178493460}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1935,6 +1935,7 @@ MonoBehaviour:
   audioSourceRun: {fileID: 0}
   audioSourceClimb: {fileID: 0}
   audioSourceCrouch: {fileID: 0}
+  audioSourceTestFmod: {fileID: 0}
 --- !u!114 &178493457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1969,14 +1970,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &178493458
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 178493453}
-  m_Enabled: 1
 --- !u!20 &178493459
 Camera:
   m_ObjectHideFlags: 0
@@ -2020,6 +2013,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &178493460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178493453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &186063082
 GameObject:
   m_ObjectHideFlags: 0
@@ -6958,7 +6964,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1111112, y: 1}
+    m_SensorSize: {x: 2.0141845, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10841,6 +10847,7 @@ MonoBehaviour:
   audioSourceRun: {fileID: 0}
   audioSourceClimb: {fileID: 0}
   audioSourceCrouch: {fileID: 0}
+  audioSourceTestFmod: {fileID: 0}
 --- !u!114 &853156542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10915,14 +10922,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 853156539}
---- !u!81 &853156544
-AudioListener:
+--- !u!114 &853156544
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853156538}
-  m_Enabled: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 857542491
+      Data2: 1092202761
+      Data3: 1567010238
+      Data4: 871462900
+    Path: event:/New Folder/test
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &853156545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853156538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &863075856
 GameObject:
   m_ObjectHideFlags: 0
@@ -22491,7 +22533,7 @@ Transform:
   - {fileID: 965338694}
   - {fileID: 805068872}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1529282930
 MonoBehaviour:
@@ -27046,7 +27088,7 @@ Transform:
   - {fileID: 1911995063}
   - {fileID: 428324545}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &2029262619
 GameObject:
