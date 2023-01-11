@@ -8,6 +8,7 @@ public class AudioLib : MonoBehaviour
     [SerializeField] private AudioSource audioSourceRun;
     [SerializeField] private AudioSource audioSourceClimb;
     [SerializeField] private AudioSource audioSourceCrouch;
+    [SerializeField] private AudioSource audioSourceTestFmod;
 
     public void PlaySound(AudioClip clip)
     {
@@ -39,4 +40,10 @@ public class AudioLib : MonoBehaviour
     {
         audioSource.Stop();
     }
+
+    public void PlayFmodSound()
+    {
+       FMODUnity.RuntimeManager.PlayOneShot("event:/test");
+    }
+    
 }
