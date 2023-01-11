@@ -6964,7 +6964,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9609929, y: 1}
+    m_SensorSize: {x: 2.0141845, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10941,7 +10941,7 @@ MonoBehaviour:
       Data2: 1092202761
       Data3: 1567010238
       Data4: 871462900
-    Path: event:/test
+    Path: event:/New Folder/test
   Event: 
   PlayEvent: 0
   StopEvent: 0
@@ -22533,7 +22533,7 @@ Transform:
   - {fileID: 965338694}
   - {fileID: 805068872}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1529282930
 MonoBehaviour:
@@ -23154,7 +23154,7 @@ Transform:
   - {fileID: 1162560850}
   - {fileID: 5476208552926742882}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1576703889
 GameObject:
@@ -27575,7 +27575,7 @@ Transform:
   - {fileID: 432799263}
   - {fileID: 2020739668}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2086123191
 GameObject:
@@ -38358,7 +38358,7 @@ Transform:
   - {fileID: 1924173751}
   - {fileID: 1706260785}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &7456788676233790662
 MeshFilter:

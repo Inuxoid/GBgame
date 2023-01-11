@@ -43,7 +43,7 @@ public class AudioLib : MonoBehaviour
 
     public void PlayFmodSound()
     {
-       FMODUnity.RuntimeManager.PlayOneShot("event:/test");
+       FMODUnity.RuntimeManager.PlayOneShot("event:/New Folder/test");
     }
     
 }

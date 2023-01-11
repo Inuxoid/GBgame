@@ -47608,7 +47608,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.2
-    functionName: PlayOnceRun
+    functionName: PlayFmodSound
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 2d8df887244d824478a6c06804260f61,
       type: 3}
@@ -47616,7 +47616,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.6333333
-    functionName: PlayOnceRun
+    functionName: PlayFmodSound
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: d17a1b8978a91ce49955b3190a44e38d,
       type: 3}
