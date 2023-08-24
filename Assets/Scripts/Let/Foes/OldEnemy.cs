@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour
+public class OldEnemy : MonoBehaviour 
 {
     [Header("Components")]
     [SerializeField] private GameObject player;
