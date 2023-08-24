@@ -18,7 +18,8 @@ public class RestartProgress : MonoBehaviour
         foreach (Levels items in items)
         {
             items.lvlOpen = false;
-            items.indSpritesBattery = 0;
+            items.VHS = 0;
+            items.Score = 0;
         }
 
         items[0].lvlOpen = true;

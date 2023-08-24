@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: f41bd26db069ca24eab3bb092deb5dcd
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Graphity3_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 392
+        width: 252
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f6d48e4df84ef4e9d9af50836ce1bf
+      internalID: 2082731684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_4
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 441
+        width: 118
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a7050a71c62f540a3c564862ec314b
+      internalID: 261181058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_12
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 380
+        width: 162
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82377d9727b08c8418e8b41d881d40e2
+      internalID: 1571139359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_13
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 298
+        width: 237
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b696ef4820081140809aea7752c5f37
+      internalID: -96049790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_16
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 312
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0bf24258afc05647acae651a46d1082
+      internalID: -674960920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_22
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 170
+        width: 189
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e6f4a72c55053489822e398901b743
+      internalID: -288254289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_23
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 172
+        width: 108
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f554e2d330a6a1439f59fda4544fec3
+      internalID: 2084092001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_34
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 38
+        width: 173
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7337574d10cf3204d9a9c13f56f65daf
+      internalID: -657415114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Graphity3_36
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 3
+        width: 166
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2020b53284bb9af43bc6c0ebc5b0c7ee
+      internalID: -1983319783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d137fad7bd80ef04e800e0b6112df950
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Graphity3_5: 1016538625
+      Graphity3_23: 2084092001
+      Graphity3_40: 817112629
+      Graphity3_49: -178541786
+      Graphity3_6: 808340771
+      Graphity3_45: 166837375
+      Graphity3_2: 1504944
+      Graphity3_48: -93593682
+      Graphity3_0: 2082731684
+      Graphity3_28: -201466253
+      Graphity3_43: 1400794465
+      Graphity3_9: -603853714
+      Graphity3_36: -1983319783
+      Graphity3_31: 1337478604
+      Graphity3_34: -657415114
+      Graphity3_44: -1551886833
+      Graphity3_22: -288254289
+      Graphity3_46: 76454507
+      Graphity3_13: -96049790
+      Graphity3_42: -517445394
+      Graphity3_1: 22466740
+      Graphity3_20: 619678896
+      Graphity3_37: -527308083
+      Graphity3_15: 793165943
+      Graphity3_30: -1735558116
+      Graphity3_26: -1785279484
+      Graphity3_39: 149302420
+      Graphity3_38: 504286320
+      Graphity3_12: 1571139359
+      Graphity3_8: -431365022
+      Graphity3_4: 261181058
+      Graphity3_21: 1154891645
+      Graphity3_33: 621133661
+      Graphity3_19: 664571114
+      Graphity3_10: 346754519
+      Graphity3_16: -674960920
+      Graphity3_18: 212351751
+      Graphity3_11: -826147243
+      Graphity3_27: 678886459
+      Graphity3_32: -231872187
+      Graphity3_35: 983635719
+      Graphity3_25: -1400828797
+      Graphity3_47: 918462636
+      Graphity3_24: 542225068
+      Graphity3_3: -617104674
+      Graphity3_17: 1861361110
+      Graphity3_7: -688102781
+      Graphity3_14: -2058934600
+      Graphity3_41: 547957891
+      Graphity3_29: 1350597881
+      Graphity3_50: -1874528366
+      Graphity3_51: 2071216104
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,6 +8,7 @@ public class FollowHpBar : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Canvas hpBar;
     [SerializeField] private GameObject entity;
+    [SerializeField] private float yD;
 
 
     void Update()
@@ -18,7 +19,7 @@ public class FollowHpBar : MonoBehaviour
         }
         else
         {
-            hpBar.transform.position = new Vector3(entity.transform.position.x, hpBar.transform.position.y);
+            hpBar.transform.position = new Vector3(entity.transform.position.x, entity.transform.position.y + 0.2f + yD, hpBar.transform.position.z);
         }
     }
 }

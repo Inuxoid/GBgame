@@ -11,40 +11,44 @@ namespace TMPro
     {
         public TextMeshProUGUI text;
 
-        public void Highlight()
+        public void Highlight(Button button)
         {
             var highlight = typeof(TextMeshProUGUI).GetMethod("SetOutlineThickness",
                                                               BindingFlags.Instance |
                                                               BindingFlags.Public |
                                                               BindingFlags.NonPublic);
-            highlight?.Invoke(text, parameters: new object[] { 0.3f });
+            if (button.interactable)
+                highlight?.Invoke(text, parameters: new object[] { 0.3f });
         }
 
-        public void Downlight()
+        public void Downlight(Button button)
         {
             var highlight = typeof(TextMeshProUGUI).GetMethod("SetOutlineThickness",
                                                               BindingFlags.Instance |
                                                               BindingFlags.Public |
                                                               BindingFlags.NonPublic);
-            highlight?.Invoke(text, parameters: new object[] { 0.055f });
+            if (button.interactable)
+                highlight?.Invoke(text, parameters: new object[] { 0.055f });
         }
 
-        public void Down()
+        public void Down(Button button)
         {
             var highlight = typeof(TextMeshProUGUI).GetMethod("SetFaceColor",
                                                               BindingFlags.Instance |
                                                               BindingFlags.Public |
                                                               BindingFlags.NonPublic);
-            highlight?.Invoke(text, parameters: new object[] { new Color32(135, 0, 166, 255) });
+            if (button.interactable)
+                highlight?.Invoke(text, parameters: new object[] { new Color32(135, 0, 166, 255) });
         }
 
-        public void Up()
+        public void Up(Button button)
         {
             var highlight = typeof(TextMeshProUGUI).GetMethod("SetFaceColor",
                                                               BindingFlags.Instance |
                                                               BindingFlags.Public |
                                                               BindingFlags.NonPublic);
-            highlight?.Invoke(text, parameters: new object[] { new Color32(216, 0, 255, 255) });
+            if (button.interactable)
+                highlight?.Invoke(text, parameters: new object[] { new Color32(216, 0, 255, 255) });
         }
     }
 }

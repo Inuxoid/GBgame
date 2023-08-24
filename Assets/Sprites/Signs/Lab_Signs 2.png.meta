@@ -1,0 +1,364 @@
+fileFormatVersion: 2
+guid: 8bdc3837ef341d148a98814b6e827c6e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Lab_Signs 2_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 463
+        width: 157
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce4abda0d0bbc4e48b3ad0e270380018
+      internalID: -1381517114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 376
+        width: 310
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee48c7e919647ee4396c9f108a532b31
+      internalID: -808842880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_22
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 461
+        width: 237
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c5ffe4dc7a320546b2a79a3a29350e6
+      internalID: 1654997123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_26
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 376
+        width: 4
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0232680b2bfd39149822b875892b6bb9
+      internalID: -125530337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_29
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 290
+        width: 205
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb2d51e026a6be4b86fbb26b6ec359a
+      internalID: -1703856552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_37
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 203
+        width: 310
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b0b33c4b583a44aa8be26d18a2ca77
+      internalID: 1012448444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_50
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 117
+        width: 261
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9198d3475787ab14d820e5bad2ea2dd8
+      internalID: -1000735500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lab_Signs 2_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 463
+        width: 157
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224c587ba7c28a24294cea8c1876fb74
+      internalID: 1307548442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: ec69c5aa7d62e754b882181400cbdc66
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Lab_Signs 2_44: -1323349044
+      Lab_Signs 2_28: 591763485
+      Lab_Signs 2_45: 634311090
+      Lab_Signs 2_42: -574689856
+      Lab_Signs 2_55: 1153286752
+      Lab_Signs 2_4: 867348994
+      Lab_Signs 2_11: 632046220
+      Lab_Signs 2_0: -1381517114
+      Lab_Signs 2_22: 1654997123
+      Lab_Signs 2_6: -2081389844
+      Lab_Signs 2_7: -1179963987
+      Lab_Signs 2_32: 2142825205
+      Lab_Signs 2_17: -1316493025
+      Lab_Signs 2_39: 2032898571
+      Lab_Signs 2_61: 732280239
+      Lab_Signs 2_13: -555386501
+      Lab_Signs 2_10: -1604542309
+      Lab_Signs 2_15: -1203566111
+      Lab_Signs 2_36: -761297048
+      Lab_Signs 2_26: -125530337
+      Lab_Signs 2_46: 1935669671
+      Lab_Signs 2_57: 1491295847
+      Lab_Signs 2_21: 1676808925
+      Lab_Signs 2_37: 1012448444
+      Lab_Signs 2_48: 778500281
+      Lab_Signs 2_2: 1181046670
+      Lab_Signs 2_16: -808842880
+      Lab_Signs 2_31: -896357512
+      Lab_Signs 2_38: -1595862467
+      Lab_Signs 2_30: 520634304
+      Lab_Signs 2_9: -616998453
+      Lab_Signs 2_54: 1950436012
+      Lab_Signs 2_18: -1370244998
+      Lab_Signs 2_29: -1703856552
+      Lab_Signs 2_59: 624548874
+      Lab_Signs 2_41: -1803330616
+      Lab_Signs 2_47: 33357273
+      Lab_Signs 2_40: -2056863984
+      Lab_Signs 2_43: 1029788142
+      Lab_Signs 2_53: -79877182
+      Lab_Signs 2_3: 1943728321
+      Lab_Signs 2_8: -241009694
+      Lab_Signs 2_49: 1835666785
+      Lab_Signs 2_35: 451401452
+      Lab_Signs 2_14: 1851002441
+      Lab_Signs 2_1: 1307548442
+      Lab_Signs 2_27: 1678222524
+      Lab_Signs 2_56: -1788657517
+      Lab_Signs 2_19: 821634460
+      Lab_Signs 2_25: 1465564145
+      Lab_Signs 2_24: -534050371
+      Lab_Signs 2_20: -1216787972
+      Lab_Signs 2_58: -2016376236
+      Lab_Signs 2_5: 753441939
+      Lab_Signs 2_33: 1664374964
+      Lab_Signs 2_50: -1000735500
+      Lab_Signs 2_23: 1071233994
+      Lab_Signs 2_52: 1656296169
+      Lab_Signs 2_51: -1183180332
+      Lab_Signs 2_60: 538848042
+      Lab_Signs 2_12: -1271048650
+      Lab_Signs 2_34: -239948828
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
