@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using StateMachines.PlayerSM;
 using TMPro;
 using UnityEngine;
 
@@ -17,15 +18,15 @@ public class EndLevel : MonoBehaviour
     [SerializeField] private List<Levels> items;
     public int Score { get => score; set => score = value; }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (other.GetComponentInParent<PlayerSM>())
         {
             scorePanel.SetActive(true);
-            Score = scoreCounter.ScoreCount * 3 + (int)liveCycle.Hp * 10;
-            textScore.text = Score.ToString();
-            progress.GetSprite();
-            CheckLevels();
+            //Score = scoreCounter.VHSCount * 3 + (int)liveCycle.Hp * 10;
+            //textScore.text = Score.ToString();
+            //progress.GetSprite();
+            //CheckLevels();
         }
     }
 
@@ -39,7 +40,6 @@ public class EndLevel : MonoBehaviour
         }
 
         items[lvl + 1].lvlOpen = true;
-        items[lvl].indSpritesBattery = progress.spriteInd;
 
         string jsonString = JsonConvert.SerializeObject(items);
         using (StreamWriter outputFile = new StreamWriter("Levels.json"))

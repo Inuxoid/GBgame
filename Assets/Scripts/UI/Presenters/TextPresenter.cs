@@ -15,7 +15,8 @@ namespace Presenters
         [SerializeField] private string suffix;
 
         public void Draw(IntNumberDto dto) => this.uiText.text = dto.value.ToString();
+        public void DrawIntSuf(IntNumberDto dto) => this.uiText.text = dto.value.ToString() + this.suffix;
         public void DrawWithSuffix(FloatNumberDto dto) => this.uiText.text = dto.value.ToString() + this.suffix;
-        public void DrawHP(FloatNumberDto dto) => this.uiText.text = (dto.value * 100).ToString();
+        public void DrawHP(FloatNumberDto dto) => this.uiText.text = (dto.value).ToString();
     }
 }

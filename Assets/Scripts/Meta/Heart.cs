@@ -7,14 +7,24 @@ public class Heart : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private int hpRes;
+    [SerializeField] private UnityEvent OnTake;
+
 
     private void OnTriggerEnter(Collider other)
     {
-        LiveCycle liveCycle = other.GetComponentInParent<LiveCycle>();
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetComponentInParent<LiveCycle>().Hp != 100)
         {
-            other.GetComponentInParent<LiveCycle>().GetHeart(hpRes);
-            Destroy(gameObject);
+            OnTake?.Invoke();
+            other.GetComponentInParent<LiveCycle>().Heal(hpRes);
+            Destroy(GetComponent<Collider>());
+            StartCoroutine(DestroyTimer());
         }
+    }
+
+    IEnumerator DestroyTimer()
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+        yield return null;
     }
 }

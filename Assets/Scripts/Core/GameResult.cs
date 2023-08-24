@@ -8,13 +8,13 @@ public class GameResult : MonoBehaviour
     [SerializeField] private bool alreadyWon = false;
     public void Victory()
     {
-        Debug.Log("Victory!");
+        //Debug.Log("Victory!");
         alreadyWon = true;
     }
 
     public void Defeat()
     {
         if (alreadyWon) return;
-        Debug.Log("Defeat!");
+        //Debug.Log("Defeat!");
     }
 }
