@@ -13,6 +13,27 @@ public class UnPunch : MonoBehaviour
         animator.SetBool("isStrongPunchingFinish", false);
         animator.SetBool("isPunchingWeak", false);
         animator.SetBool("isShooting", false);
-        animator.SetBool("secondPunch", !animator.GetBool("secondPunch"));
+        
+        if (animator.GetBool("secondPunch") && animator.GetBool("FirstCombo"))
+        {
+            animator.SetInteger("punchStreak", 1);
+            animator.SetBool("secondPunch", false);
+        }
+        else
+        {
+            animator.SetBool("secondPunch", !animator.GetBool("secondPunch"));
+            animator.SetInteger("punchStreak", 0);
+        }
+
+        if (animator.GetBool("SecondCombo") && animator.GetInteger("punchStreak") == 1)
+        {
+            animator.SetInteger("punchStreak", 2);
+        }
+        
+        if (animator.GetBool("FinishCombo") && animator.GetInteger("punchStreak") == 2)
+        {
+            animator.SetInteger("punchStreak", 3);
+        }
+        
     }
 }

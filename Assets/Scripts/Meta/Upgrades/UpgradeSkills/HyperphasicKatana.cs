@@ -28,7 +28,6 @@ namespace Meta.Upgrades.UpgradeSkills
             playerSm.attackRange *= curGrade.Item1;
             playerSm.critRate = curGrade.Item2;
             playerSm.critValue = curGrade.Item3;
-            Debug.LogError("Activate");
         }
 
         public override void Deactivate(PlayerSM playerSm)
@@ -38,7 +37,6 @@ namespace Meta.Upgrades.UpgradeSkills
             playerSm.attackRange /= curGrade.Item1;
             playerSm.critRate = curGrade.Item2;
             playerSm.critValue = curGrade.Item3;
-            Debug.LogError("Deactivate");
         }
     }
 }
