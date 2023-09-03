@@ -50,12 +50,12 @@ namespace Meta.Upgrades.View.Shop
             {
                 Debug.LogError("Failed to load sprite from path: " + upgrade.IconPath);
             }
-            cost.text = $"Buy cost: {upgrade.BuyCost.ToString()}";
+            cost.text = $"Buy cost: \n{upgrade.BuyCost.ToString()}";
             
             if (upgrade.UpgradeState != Upgrade.UpgradeStates.InInventory) return;
             if (upgrade.Level <= 2)
             {
-                cost.text = $"Upgrade cost: {upgrade.UpgCost[upgrade.Level].ToString()}";
+                cost.text = $"Upgrade cost: \n{upgrade.UpgCost[upgrade.Level].ToString()}";
             }
             else
             {
@@ -74,7 +74,7 @@ namespace Meta.Upgrades.View.Shop
             //cost.fontSize = 12;
             if (upgrade.Level <= 2)
             {
-                cost.text = $"Upgrade cost: {upgrade.UpgCost[upgrade.Level].ToString()}";
+                cost.text = $"Upgrade cost: \n{upgrade.UpgCost[upgrade.Level].ToString()}";
             }
             else
             {
@@ -99,8 +99,8 @@ namespace Meta.Upgrades.View.Shop
             buttonUpgrade.gameObject.SetActive(upgrade.UpgradeState != Upgrade.UpgradeStates.InShop && upgrade.Level < 3);
             upgradeShopView.Description.text = upgrade.Description;
             board.SetActive(true);
-            if (upgrade.UpgradeState != Upgrade.UpgradeStates.InInventory) return;
             cost.gameObject.SetActive(true);
+            if (upgrade.UpgradeState != Upgrade.UpgradeStates.InInventory) return;
             upgradePanel.SetActive(true);
             DrawUpgrade(upgrade);
         }
@@ -109,7 +109,7 @@ namespace Meta.Upgrades.View.Shop
         {
             upgradeShopView.Select(null);
             buttonUpgrade.gameObject.SetActive(false);
-            cost.gameObject.SetActive(false);
+            //cost.gameObject.SetActive(false);
             board.SetActive(false);
         }
     }
