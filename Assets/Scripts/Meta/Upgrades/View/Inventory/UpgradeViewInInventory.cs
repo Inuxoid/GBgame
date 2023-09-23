@@ -1,5 +1,6 @@
 ﻿using Meta.Upgrades.Controller;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -46,6 +47,7 @@ namespace Meta.Upgrades.View.Inventory
         
         public void Select()
         {
+            upgradeInventoryView.Description.text = upgrade.Description;
             if (upgradeInventoryView.SelectedSocketViewInInventory is null) return;
             board.SetActive(true);
             upgradeInventoryView.Select(this);

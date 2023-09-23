@@ -11,6 +11,7 @@ namespace Meta.Upgrades.View.Inventory
         [SerializeField] private int id;
         [SerializeField] private Socket socket;
         [SerializeField] private Image icon;
+        [SerializeField] private Image backUpIcon;
         [SerializeField] private TextMeshProUGUI viewName;
         [SerializeField] private UpgradeInventoryView upgradeInventoryView;
         [SerializeField] private Button buttonSelect;
@@ -49,7 +50,7 @@ namespace Meta.Upgrades.View.Inventory
         {
             socket.Upgrade.UpgradeState = Upgrade.UpgradeStates.InInventory;
             board.SetActive(false);
-            icon.sprite = null;
+            icon.sprite = backUpIcon.sprite; // maybe change it later
             foreach (var svih in socketHUDView.socketViewsInHUD)
             {
                 if (svih.upgrade == socket.Upgrade)
