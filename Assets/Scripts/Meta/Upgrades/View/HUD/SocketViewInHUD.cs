@@ -15,6 +15,7 @@ namespace Meta.Upgrades.View.HUD
         public Upgrade upgrade;
         public PlayerSM playerSm;
         public Image icon;
+        public Image backUpIcon;
         
         public void Load(Upgrade upgrade)
         {
@@ -38,7 +39,7 @@ namespace Meta.Upgrades.View.HUD
             upgrade?.Deactivate(playerSm);
             upgrade = null;
             pressedButton.onClick.RemoveAllListeners();
-            icon.sprite = null;
+            icon.sprite = backUpIcon.sprite; 
         }
     }
 }
