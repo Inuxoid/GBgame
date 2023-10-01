@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Dto;
 using StateMachines.PlayerSM.States;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using TMPro;
+using UI;
 using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
@@ -186,6 +188,12 @@ namespace StateMachines.PlayerSM
             StrongPunchState = new StrongPunchState(this);
             foes = FindObjectsOfType<FoeSM.FoeSM>();
             StartCoroutine(StaminaRes());
+            
+            var buttonIconUpdater = FindObjectOfType<ActionButton>();
+            if (buttonIconUpdater != null)
+            {
+                AddStateObserver(buttonIconUpdater);
+            }
         }
 
         public void DeathProc()
