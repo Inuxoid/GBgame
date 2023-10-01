@@ -21,7 +21,7 @@ namespace UI
 
         public void OnPlayerStateChanged(BaseState newState)
         {
-            isIdle = newState is Idle idle;
+            isIdle = newState is Idle or Run;
             isHiding = newState is HideIdle or HideCrouch;
         }
         
