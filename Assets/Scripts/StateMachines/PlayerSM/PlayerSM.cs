@@ -170,6 +170,8 @@ namespace StateMachines.PlayerSM
         public Vector3 curCast= new Vector3(0.3f, 1.44f, 0.7f);
 
         public bool canStandUp = true;
+        
+        public GameObject[] katanaModels;
 
         private void Awake()
         {
@@ -194,6 +196,12 @@ namespace StateMachines.PlayerSM
             {
                 AddStateObserver(buttonIconUpdater);
             }
+        }
+        
+        public void UpdateKatanaModel()
+        {
+            katanaModels[0].SetActive(!katanaModels[0].activeInHierarchy);
+            katanaModels[1].SetActive(!katanaModels[1].activeInHierarchy);
         }
 
         public void DeathProc()

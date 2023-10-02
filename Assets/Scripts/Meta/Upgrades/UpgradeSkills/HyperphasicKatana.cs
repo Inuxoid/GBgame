@@ -13,7 +13,7 @@ namespace Meta.Upgrades.UpgradeSkills
             (1.2f, 0.15f, 1.5f),
             (1.2f, 0.3f, 2f)
         };
-        
+
         public (float, float, float) curGrade;
         
         private void LoadGrades()
@@ -28,6 +28,7 @@ namespace Meta.Upgrades.UpgradeSkills
             playerSm.attackRange *= curGrade.Item1;
             playerSm.critRate = curGrade.Item2;
             playerSm.critValue = curGrade.Item3;
+            playerSm.UpdateKatanaModel(); 
         }
 
         public override void Deactivate(PlayerSM playerSm)
@@ -37,6 +38,7 @@ namespace Meta.Upgrades.UpgradeSkills
             playerSm.attackRange /= curGrade.Item1;
             playerSm.critRate = curGrade.Item2;
             playerSm.critValue = curGrade.Item3;
+            playerSm.UpdateKatanaModel(); 
         }
     }
 }
