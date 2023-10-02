@@ -16,7 +16,12 @@ namespace Meta.Upgrades.View.HUD
         public PlayerSM playerSm;
         public Image icon;
         public Image backUpIcon;
-        
+
+        private void Awake()
+        {
+            playerSm = FindObjectOfType<PlayerSM>();
+        }
+
         public void Load(Upgrade upgrade)
         {
             this.upgrade = upgrade;
