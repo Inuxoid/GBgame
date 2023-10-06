@@ -29,7 +29,7 @@ namespace StateMachines.FoeSM.States
             
             if (sm.patrolPath.PathPoints.Length == 2)
             { 
-                var position = sm.lastViewedPlayerPosition.position;
+                var position = sm.transform.position;
                 var distanceToPoint1 = Vector2.Distance(position, sm.patrolPath.PathPoints[0].position);
                 var distanceToPoint2 = Vector2.Distance(position, sm.patrolPath.PathPoints[1].position);
 

@@ -9,35 +9,6 @@ namespace StateMachines
     public abstract class BaseFoeSm<T> : StateMachine where T : BaseFoeSm<T>
     {
         public FoeStatesCont<T> foeStatesCont;
-
-        protected void Awake()
-        {
-            foeStatesCont = new FoeStatesCont<T>((T)this);
-        }
-
-        public float rangeAttackDistance = 1.5f;
-        public float meleeAttackDistance = 0.7f;
-        //public new RangeFight FightState; 
-
-        public bool IsPlayerInRangeAttackZone
-        {
-            get
-            {
-                //Debug.Log($"Distance {Vector2.Distance(transform.position, player.transform.position)} < rangeAttackDistance {rangeAttackDistance}");
-                return Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < rangeAttackDistance;
-            }
-        }
-
-        public bool IsPlayerInMeleeAttackZone
-        {
-            get
-            {
-                //Debug.Log($"Distance {Vector2.Distance(foe.transform.position, player.transform.position)} < meleeAttackDistance {meleeAttackDistance}");
-                return Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < meleeAttackDistance;
-            }
-        }
-
-
         public GameObject foe;
         public PlayerSM.PlayerSM playerSm;
         public UnityEvent<FloatNumberDto> onHpChanged;
@@ -49,13 +20,10 @@ namespace StateMachines
         public ScoreCounter scoreCounter;
         public GameObject canvas;
         public GameObject vision;
-        public Transform lastViewedPlayerPosition;
         public GameObject excPoint;
         public GameObject shield;
-
         public GameObject leftBorder;
         public GameObject rightBorder;
-        
         public float currentHealth;
         public float maxHealth;
         public int flip;
@@ -68,59 +36,36 @@ namespace StateMachines
         public bool isPlayerInFrontOf;
         public Color visionColorInHide;
         public int maxShieldStrength;
+        public float rangeAttackDistance = 1.5f;
+        public float meleeAttackDistance = 0.7f;
         
-        
-        protected bool isPlayerDetectedCached;
+        public abstract CombatState<T> GetCombatState();
         public bool IsPlayerDetected => IsDetected();
+        public bool IsPlayerInRangeAttackZone => Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < rangeAttackDistance;
 
-        protected bool IsDetected()
+        public bool IsPlayerInMeleeAttackZone => Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < meleeAttackDistance;
+
+        protected void Awake()
         {
-            RaycastHit hit;
+            foeStatesCont = new FoeStatesCont<T>((T)this);
+        }
+        private bool IsDetected()
+        {
             var fromPosition = foe.transform.position;
             var toPosition = player.transform.position;
             var direction = toPosition - fromPosition;
-
-
             isPlayerInFrontOf = direction.x * flip > 0;
-            var isDetected = false;
             vision.SetActive(true);
             canvas.SetActive(false);
-            //Debug.Log($"По X {Math.Abs(direction.x)} < {detectDistance} По Y {direction.y} < 3");
-            //Debug.Log(Physics.Raycast(transform.position,direction,out hit));
-            //Debug.Log($"if({Physics.Raycast(foe.transform.position,direction,out hit)} && {isPlayerInFrontOf} && {Math.Abs(direction.x) < detectDistance} && {!playerSm.isHidden} && {Math.Abs(direction.y) < 1.5f})");
-            if(Physics.Raycast(foe.transform.position,direction,out hit)
-               && isPlayerInFrontOf 
-               && Math.Abs(direction.x) < detectDistance 
-               && !playerSm.isHidden
-               && Math.Abs(direction.y) < 1.5f)
-            {
-                //Debug.Log("Внутри124");
-                if (hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
-                {
-                    //Debug.Log("Внутри124512412421");
-                    isDetected = true;
-                    vision.SetActive(false);
-                    canvas.SetActive(true);
-                }
-                else
-                {
-                    //Debug.LogError(hit.collider);
-                }
-
-            }
-            if (!isDetected)
-            {
-                lastViewedPlayerPosition = player.transform;
-                //Debug.Log("Не детект");
-            }
-            else
-            {
-               // Debug.Log("Детект");
-            }
-
-            isPlayerDetectedCached = isDetected;        
-            
-            return isDetected;
+            if (!Physics.Raycast(foe.transform.position, direction, out var hit)
+                || !isPlayerInFrontOf
+                || !(Math.Abs(direction.x) < detectDistance)
+                || playerSm.isHidden
+                || !(Math.Abs(direction.y) < 1.5f)) return false;
+            if (!hit.collider.GetComponentInParent<PlayerSM.PlayerSM>()) return false;
+            vision.SetActive(false);
+            canvas.SetActive(true);
+            return true;
         }
 
         protected void OnCollisionEnter(Collision collision)
@@ -134,7 +79,5 @@ namespace StateMachines
                 ChangeState(GetCombatState());
             }
         }
-
-        public abstract CombatState<T> GetCombatState();
     }
 }
