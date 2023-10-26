@@ -22,6 +22,7 @@ namespace StateMachines
             CreateDeathState();
             CreatePatrolState();
             CreateSeekState();
+            CreateListenState();
         }
         
         public TState GetState<TState>() where TState : BaseState
@@ -75,6 +76,12 @@ namespace StateMachines
         private void CreateSeekState()
         {
             Seek<T> state = new Seek<T>(sm);
+            SaveState(state);
+        }
+
+        private void CreateListenState()
+        {
+            Listen<T> state = new Listen<T>(sm);
             SaveState(state);
         }
         
