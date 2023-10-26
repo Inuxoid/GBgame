@@ -1,6 +1,7 @@
 ﻿using System;
 using Dto;
 using Let.Foes;
+using StateMachines.FoeSM.States;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,7 +20,7 @@ namespace StateMachines
         public Animator animator;
         public ScoreCounter scoreCounter;
         public GameObject canvas;
-        public GameObject vision;
+        public GameObject vision;   
         public GameObject excPoint;
         public GameObject shield;
         public GameObject leftBorder;
@@ -32,6 +33,9 @@ namespace StateMachines
         public int enemyDamage;
         public int enemyRangeDamage;
         public int detectDistance;
+        public float hHearDistance = 1.6f;
+        public float vHearDistance = 2.0f;
+        public float verticalDetectDistance = 1.6f;
         public float timer;
         public bool isPlayerInFrontOf;
         public Color visionColorInHide;
@@ -40,7 +44,19 @@ namespace StateMachines
         public float meleeAttackDistance = 0.7f;
         
         public abstract CombatState<T> GetCombatState();
-        public bool IsPlayerDetected => IsDetected();
+        public bool IsPlayerDetected
+        {
+            get
+            {
+                var detected = IsPlayerSeen();
+                if(IsPlayerHeard() && !detected)
+                    TurnToPlayer();
+                detected = IsPlayerSeen();
+                UpdateVisualState(detected);
+                return detected;
+            }
+        }
+
         public bool IsPlayerInRangeAttackZone => Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < rangeAttackDistance;
 
         public bool IsPlayerInMeleeAttackZone => Vector2.Distance(foe.transform.position, playerSm.model.transform.position) < meleeAttackDistance;
@@ -49,34 +65,100 @@ namespace StateMachines
         {
             foeStatesCont = new FoeStatesCont<T>((T)this);
         }
-        private bool IsDetected()
+
+        public bool IsPlayerSeen()
         {
             var fromPosition = foe.transform.position;
             var toPosition = player.transform.position;
             var direction = toPosition - fromPosition;
             isPlayerInFrontOf = direction.x * flip > 0;
-            vision.SetActive(true);
-            canvas.SetActive(false);
-            if (!Physics.Raycast(foe.transform.position, direction, out var hit)
-                || !isPlayerInFrontOf
-                || !(Math.Abs(direction.x) < detectDistance)
-                || playerSm.isHidden
-                || !(Math.Abs(direction.y) < 1.5f)) return false;
-            if (!hit.collider.GetComponentInParent<PlayerSM.PlayerSM>()) return false;
-            vision.SetActive(false);
-            canvas.SetActive(true);
-            return true;
+
+            if (!isPlayerInFrontOf || Math.Abs(direction.x) >= detectDistance || playerSm.isHidden)
+            {
+                return false;
+            }
+
+            var hits = Physics.RaycastAll(fromPosition, direction, detectDistance);
+
+            // Визуализация рейкаста
+            Debug.DrawLine(fromPosition, fromPosition + direction.normalized * detectDistance, Color.red, 2f);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground"))
+                {
+                    return false;
+                }
+
+                if (hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
+                {
+                    // Визуализация успешного обнаружения игрока
+                    Debug.DrawLine(fromPosition, hit.point, Color.green, 2f);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+        public bool IsPlayerHeard()
+        {
+            var fromPosition = foe.transform.position;
+            var toPosition = player.transform.position;
+            var direction = toPosition - fromPosition;
+            isPlayerInFrontOf = direction.x * flip > 0;
+            
+            var hDistanceToPlayer = Math.Abs(fromPosition.x - toPosition.x);
+            var vDistanceToPlayer = Math.Abs(fromPosition.y - toPosition.y);
+            var inDistance = vDistanceToPlayer < vHearDistance && hDistanceToPlayer < hHearDistance;
+            var isLoud = playerSm.CurrentState == playerSm.RunState;
+            
+            if (!inDistance || !isLoud || playerSm.isHidden)
+            {
+                return false;
+            }
+
+            var hits = Physics.RaycastAll(fromPosition, direction, detectDistance);
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground"))
+                {
+                    ChangeState(foeStatesCont.GetState<Listen<T>>());
+                    return true;
+                }
+
+                if (hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        
+        private void UpdateVisualState(bool isDetected)
+        {
+            vision.SetActive(!isDetected);
+            canvas.SetActive(isDetected);
+        }
+
+        private void TurnToPlayer()
+        {
+            flip *= -1;
+            var theScale = transform.localScale;
+            theScale.z *= -1;
+            transform.localScale = theScale;
+            ChangeState(GetCombatState());
         }
 
         protected void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponentInParent<PlayerSM.PlayerSM>() && CurrentState != GetCombatState())
+            if (collision.gameObject.GetComponentInParent<PlayerSM.PlayerSM>() && CurrentState != GetCombatState() && !IsPlayerSeen())
             {
-                flip *= -1;
-                var theScale = transform.localScale;
-                theScale.z *= -1;
-                transform.localScale = theScale;
-                ChangeState(GetCombatState());
+                TurnToPlayer();
             }
         }
     }
