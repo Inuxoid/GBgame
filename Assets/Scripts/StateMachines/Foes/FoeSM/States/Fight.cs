@@ -53,10 +53,6 @@ namespace StateMachines.FoeSM.States
             sm.currentHealth -= damage;
             FloatNumberDto dto = new FloatNumberDto() { value = sm.currentHealth / sm.maxHealth };
             sm.onHpChanged?.Invoke(dto);
-            if (!sm.isPlayerInFrontOf)
-            {
-                TurnAround();
-            }
         }
         
         private void Punch()
@@ -109,20 +105,7 @@ namespace StateMachines.FoeSM.States
                                                     sm.playerSm.model.transform.position.x 
                                                     - foePosition.x, 0
                                                 ).normalized.x, 0);
-
-            if (sm.flip * (sm.playerSm.model.transform.position.x - foePosition.x) < 0)
-                TurnAround();
-        }
-        
-        private void TurnAround()
-        {
-            sm.flip *= -1;
-            var transform = sm.transform;
-            var theScale = transform.localScale;
-            theScale.z *= -1;
-            transform.localScale = theScale;
-        }
-
+        }      
 
         public override void Exit()
         {
