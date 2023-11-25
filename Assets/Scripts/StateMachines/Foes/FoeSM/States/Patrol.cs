@@ -75,7 +75,6 @@ namespace StateMachines.FoeSM.States
 
         public override void Exit()
         {
-            Debug.LogError("Exit");
             base.Exit();
         }
     }

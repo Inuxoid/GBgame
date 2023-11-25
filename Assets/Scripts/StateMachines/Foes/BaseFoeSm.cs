@@ -2,6 +2,7 @@
 using Dto;
 using Let.Foes;
 using StateMachines.FoeSM.States;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -42,6 +43,8 @@ namespace StateMachines
         public int maxShieldStrength;
         public float rangeAttackDistance = 1.5f;
         public float meleeAttackDistance = 0.7f;
+
+        public TextMeshProUGUI stateTmpro;
         
         public abstract CombatState<T> GetCombatState();
         public bool IsPlayerDetected
@@ -50,7 +53,7 @@ namespace StateMachines
             {
                 var detected = IsPlayerSeen();
                 if(IsPlayerHeard() && !detected)
-                    TurnToPlayer();
+                   TurnToPlayer();
                 detected = IsPlayerSeen();
                 UpdateVisualState(detected);
                 return detected;
@@ -66,6 +69,14 @@ namespace StateMachines
             foeStatesCont = new FoeStatesCont<T>((T)this);
         }
 
+        private new void LateUpdate()
+        {
+            base.LateUpdate();
+            var animatorinfo = animator.GetCurrentAnimatorClipInfo(0);
+            var current_animation = animatorinfo[0].clip.name;
+            stateTmpro.text = $"{CurrentState.name}\n{current_animation}";
+        }
+
         public bool IsPlayerSeen()
         {
             var fromPosition = foe.transform.position;
@@ -73,15 +84,16 @@ namespace StateMachines
             var direction = toPosition - fromPosition;
             isPlayerInFrontOf = direction.x * flip > 0;
 
-            if (!isPlayerInFrontOf || Math.Abs(direction.x) >= detectDistance || playerSm.isHidden)
-            {
+            if (!isPlayerInFrontOf || Math.Abs(direction.x) > detectDistance || playerSm.isHidden)
+            { 
+                Debug.LogError($"{playerSm.isHidden}");
                 return false;
             }
 
             var hits = Physics.RaycastAll(fromPosition, direction, detectDistance);
 
             // Визуализация рейкаста
-            Debug.DrawLine(fromPosition, fromPosition + direction.normalized * detectDistance, Color.red, 2f);
+            Debug.DrawLine(fromPosition, fromPosition + direction.normalized * detectDistance, Color.red, 0.2f);
 
             foreach (var hit in hits)
             {
@@ -93,7 +105,7 @@ namespace StateMachines
                 if (hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
                 {
                     // Визуализация успешного обнаружения игрока
-                    Debug.DrawLine(fromPosition, hit.point, Color.green, 2f);
+                    Debug.DrawLine(fromPosition, hit.point, Color.green, 0.2f);
                     return true;
                 }
             }
@@ -147,6 +159,7 @@ namespace StateMachines
 
         private void TurnToPlayer()
         {
+            if (isPlayerInFrontOf) return;
             flip *= -1;
             var theScale = transform.localScale;
             theScale.z *= -1;
@@ -156,9 +169,10 @@ namespace StateMachines
 
         protected void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponentInParent<PlayerSM.PlayerSM>() && CurrentState != GetCombatState() && !IsPlayerSeen())
+            if (collision.gameObject.GetComponentInParent<PlayerSM.PlayerSM>() && !IsPlayerSeen())
             {
-                TurnToPlayer();
+                //Debug.LogError($"{IsPlayerSeen()} {CurrentState}");
+                //TurnToPlayer();
             }
         }
     }
