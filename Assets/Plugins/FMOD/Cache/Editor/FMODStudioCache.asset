@@ -97,10 +97,10 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Props.bank
   Name: Props
   StudioPath: bank:/Props
-  lastModified: 638366294147383656
+  lastModified: 638369507792503153
   FileSizes:
   - Name: Desktop
-    Value: 9668704
+    Value: 9894016
   Exists: 1
 --- !u!114 &-8307727045227331180
 MonoBehaviour:
@@ -546,10 +546,10 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/ambience.bank
   Name: ambience
   StudioPath: bank:/ambience
-  lastModified: 638366294148123505
+  lastModified: 638369507787251979
   FileSizes:
   - Name: Desktop
-    Value: 6745440
+    Value: 6748640
   Exists: 1
 --- !u!114 &-4955215283489838073
 MonoBehaviour:
@@ -917,7 +917,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638123590622158643
+  lastModified: 638369507787311989
   FileSizes:
   - Name: Desktop
     Value: 1512
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   - {fileID: -5065948997902065643}
   - {fileID: -8924695529884861693}
   IsStream: 1
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
@@ -1186,12 +1186,13 @@ MonoBehaviour:
   - {fileID: -4655977119805026636}
   - {fileID: 7991638278698983991}
   - {fileID: -381043293358762665}
+  - {fileID: 5739035833908025282}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1706672589835785001}
   StringsBanks:
   - {fileID: 8591167857566354542}
-  cacheTime: 638366294148123505
+  cacheTime: 638369507792813229
   cacheVersion: 131601
 --- !u!114 &45806409774498016
 MonoBehaviour:
@@ -1262,10 +1263,10 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638209996599466385
+  lastModified: 638369507789572501
   FileSizes:
   - Name: Desktop
-    Value: 8427072
+    Value: 10376096
   Exists: 1
 --- !u!114 &1268775948191192618
 MonoBehaviour:
@@ -1335,7 +1336,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/test_music.bank
   Name: test_music
   StudioPath: bank:/test_music
-  lastModified: 638155077029720238
+  lastModified: 638369507792813229
   FileSizes:
   - Name: Desktop
     Value: 170432
@@ -1769,6 +1770,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5739035833908025282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/music 1-4
+  m_EditorClassIdentifier: 
+  Path: event:/music 1-4
+  Guid:
+    Data1: -361019485
+    Data2: 1287203362
+    Data3: 598522536
+    Data4: 1086213264
+  Banks:
+  - {fileID: 1090614700399262325}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 136800
 --- !u!114 &5894501576188408994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1997,12 +2025,12 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638366294146334668
+  lastModified: 638369507787331996
   FileSizes:
   - Name: Build
-    Value: 3590
+    Value: 3622
   - Name: Desktop
-    Value: 3590
+    Value: 3622
   Exists: 1
 --- !u!114 &8645725262187989681
 MonoBehaviour:
