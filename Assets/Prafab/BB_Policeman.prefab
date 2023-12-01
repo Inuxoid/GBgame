@@ -15539,7 +15539,6 @@ GameObject:
   - component: {fileID: 2575215389292985338}
   - component: {fileID: 2575215389292985340}
   - component: {fileID: 2575215389292985339}
-  - component: {fileID: 1215972756}
   - component: {fileID: 1215972759}
   m_Layer: 2
   m_Name: BB_Policeman
@@ -15618,8 +15617,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.22869238
-  m_Height: 1.8183284
+  m_Radius: 0.4
+  m_Height: 1.818
   m_Direction: 1
   m_Center: {x: 0.012454808, y: 0.90723157, z: 0.07838985}
 --- !u!114 &2575215389292985340
@@ -15634,7 +15633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2bb13dbb243e984869c3d78b932f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateText: {fileID: 0}
+  foe: {fileID: 0}
   playerSm: {fileID: 0}
   onHpChanged:
     m_PersistentCalls:
@@ -15675,6 +15674,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onShieldHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
   patrolPath: {fileID: 2575215389292985339}
   rigidbody: {fileID: 2575215389292985337}
   player: {fileID: 0}
@@ -15682,8 +15684,8 @@ MonoBehaviour:
   scoreCounter: {fileID: 0}
   canvas: {fileID: 1960765999}
   vision: {fileID: 9145992302392227264}
-  lastViewedPlayerPosition: {fileID: 0}
   excPoint: {fileID: 0}
+  shield: {fileID: 0}
   leftBorder: {fileID: 0}
   rightBorder: {fileID: 0}
   currentHealth: 100
@@ -15692,11 +15694,18 @@ MonoBehaviour:
   enemySpeed: 2
   enemyFightSpeed: 2.5
   enemyDamage: 10
+  enemyRangeDamage: 0
   detectDistance: 5
-  attackDistance: 1.5
+  hHearDistance: 1.6
+  vHearDistance: 2
+  verticalDetectDistance: 1.6
   timer: 0
   isPlayerInFrontOf: 0
   visionColorInHide: {r: 0, g: 0, b: 0, a: 0}
+  maxShieldStrength: 0
+  rangeAttackDistance: 1.5
+  meleeAttackDistance: 0.7
+  stateTmpro: {fileID: 0}
 --- !u!114 &2575215389292985339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15712,19 +15721,6 @@ MonoBehaviour:
   pathPoints:
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &1215972756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3421725339300961144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29576fb84a824f77a059dd548921f065, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  foeSm: {fileID: 2575215389292985340}
 --- !u!114 &1215972759
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16809,10 +16809,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.28456748
-  m_Height: 1.8183284
+  m_Radius: 0.4
+  m_Height: 1.818
   m_Direction: 1
-  m_Center: {x: 0.012454838, y: 0.90723157, z: 0.0021965504}
+  m_Center: {x: 0.012454808, y: 0.90723157, z: 0.07838985}
 --- !u!114 &7723528269603005731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16840,9 +16840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f094257f9841f1bb482138a7fe6d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateText: {fileID: 0}
-  rangeAttackDistance: 5
-  meleeAttackDistance: 2
   foe: {fileID: 3934172047515888312}
   playerSm: {fileID: 0}
   onHpChanged:
@@ -16870,7 +16867,6 @@ MonoBehaviour:
   scoreCounter: {fileID: 0}
   canvas: {fileID: 7723528268897149911}
   vision: {fileID: 7723528270258930062}
-  lastViewedPlayerPosition: {fileID: 0}
   excPoint: {fileID: 7723528270176344681}
   shield: {fileID: 0}
   leftBorder: {fileID: 0}
@@ -16883,10 +16879,16 @@ MonoBehaviour:
   enemyDamage: 10
   enemyRangeDamage: 20
   detectDistance: 5
+  hHearDistance: 1.6
+  vHearDistance: 2
+  verticalDetectDistance: 1.6
   timer: 1
   isPlayerInFrontOf: 0
   visionColorInHide: {r: 0, g: 0, b: 0, a: 0}
   maxShieldStrength: 0
+  rangeAttackDistance: 5
+  meleeAttackDistance: 2
+  stateTmpro: {fileID: 0}
 --- !u!114 &7723528269603005729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16926,6 +16928,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4199019116861806923}
+  resetTime: 3
 --- !u!1 &7579662016227747484
 GameObject:
   m_ObjectHideFlags: 0
