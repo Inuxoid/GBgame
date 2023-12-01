@@ -42,11 +42,11 @@ namespace StateMachines.FoeSM.States
             base.UpdatePhysics();
             if (sm.playerSm.CurrentState == sm.playerSm.DeadState) return;
             Move();
-            if (sm.IsPlayerInMeleeAttackZone)
+            if (sm.IsPlayerInMeleeAttackZone && sm.IsPlayerSeen())
             {
                 Punch();
             }    
-            else if (sm.IsPlayerInRangeAttackZone)
+            else if (sm.IsPlayerInRangeAttackZone && sm.IsPlayerSeen())
             {
                 Shoot();
             }
