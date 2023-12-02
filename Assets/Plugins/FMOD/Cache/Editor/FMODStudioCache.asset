@@ -97,7 +97,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Props.bank
   Name: Props
   StudioPath: bank:/Props
-  lastModified: 638369710325242149
+  lastModified: 638370498452174618
   FileSizes:
   - Name: Desktop
     Value: 9894016
@@ -546,7 +546,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/ambience.bank
   Name: ambience
   StudioPath: bank:/ambience
-  lastModified: 638369710326092142
+  lastModified: 638370498452644609
   FileSizes:
   - Name: Desktop
     Value: 6748640
@@ -917,7 +917,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638123590622158643
+  lastModified: 638162240433604849
   FileSizes:
   - Name: Desktop
     Value: 1512
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   - {fileID: -1706672589835785001}
   StringsBanks:
   - {fileID: 8591167857566354542}
-  cacheTime: 638369710326092142
+  cacheTime: 638370498452644609
   cacheVersion: 131601
 --- !u!114 &45806409774498016
 MonoBehaviour:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638369710324142416
+  lastModified: 638370498451504622
   FileSizes:
   - Name: Desktop
     Value: 10376096
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/test_music.bank
   Name: test_music
   StudioPath: bank:/test_music
-  lastModified: 638155077029720238
+  lastModified: 638162240435201157
   FileSizes:
   - Name: Desktop
     Value: 170432
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638369710322822820
+  lastModified: 638370498450764920
   FileSizes:
   - Name: Build
     Value: 3622
