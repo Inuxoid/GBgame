@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6885370452864413923}
+  resetTime: 3
 --- !u!114 &1073873609404222841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39330,6 +39331,7 @@ GameObject:
   - component: {fileID: 1073873609833426612}
   - component: {fileID: 1073873609833426610}
   - component: {fileID: 1073873609833426609}
+  - component: {fileID: 4059087454335311397}
   - component: {fileID: 1073873609833426611}
   - component: {fileID: 1073873609833426608}
   - component: {fileID: 1073873609833426620}
@@ -39429,6 +39431,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!114 &4059087454335311397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073873609833426613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13dc2a2d3f6f87498c47fac6b669ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHitsTaken: 0
+  currentLevelName: 1-2
 --- !u!114 &1073873609833426611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39475,10 +39491,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onChangedMaxHp:
+    m_PersistentCalls:
+      m_Calls: []
   mat: {fileID: 2100000, guid: a2258d56bd3ea484cb721dee765b48f6, type: 2}
   buyedSafe: 0
   deadScreen: {fileID: 0}
   sm: {fileID: 1073873609833426620}
+  isDead: 0
 --- !u!114 &1073873609833426608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39522,7 +39542,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a636997bdc724beca5ebff11d0734953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateText: {fileID: 0}
   foes: []
   outline: {fileID: 9162255804134425755}
   outlineColor: {r: 0.43961373, g: 0.8396226, b: 0.5865551, a: 1}
@@ -39577,6 +39596,7 @@ MonoBehaviour:
   isJumpButtonIsPressed: 0
   currentFallingHeight: 0
   maxFallingHeight: 3
+  deathFallingHeight: 15
   hardStopNeededSpeed: 0.99
   canAction: 0
   runSpeed: 5.5
@@ -39585,6 +39605,7 @@ MonoBehaviour:
   flip: 1
   facingRight: 1
   canHide: 0
+  willDead: 0
   curStamina: 100
   maxStamina: 100
   punchStaminaCost: 40
@@ -39592,12 +39613,17 @@ MonoBehaviour:
   staminaResTimer: 0.01
   unHidingSpeed: 0.5
   hidingSpeed: 1
+  underAttack: 0
   canHidePause: 1
   canUnHide: 0
   canUnHidePause: 1
   isHidden: 0
   damageAA: 33
+  damageMult: 1
   damageAAWeak: 10
+  critValue: 1
+  critRate: 0
+  attackRange: 0.7
   jumpHeight: 0.8
   jumpForwardHeight: 0.8
   jumpForwardForceForward: 7
@@ -39607,6 +39633,7 @@ MonoBehaviour:
   standDistance: 1.3
   curCast: {x: 0.3, y: 1.44, z: 0.7}
   canStandUp: 1
+  katanaModels: []
 --- !u!114 &9162255805054495348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57534,6 +57561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9162255804134425759}
+  resetTime: 3
 --- !u!114 &9162255804134425734
 MonoBehaviour:
   m_ObjectHideFlags: 0

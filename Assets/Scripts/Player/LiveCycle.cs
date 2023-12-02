@@ -86,6 +86,7 @@ public class LiveCycle : MonoBehaviour
 
 	public void Death()
 	{
+		onDeath?.Invoke();
 		deadScreen.SetActive(true);
 		sm.ChangeState(sm.DeadState);
 		//Debug.LogError(sm.CurrentState.name);

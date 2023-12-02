@@ -5,6 +5,7 @@ using System.IO;
 using StateMachines.PlayerSM;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EndLevel : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EndLevel : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private int lvl;
     [SerializeField] private List<Levels> items;
+    [SerializeField] private UnityEvent onLevelEnd;
     public int Score { get => score; set => score = value; }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +25,7 @@ public class EndLevel : MonoBehaviour
         if (other.GetComponentInParent<PlayerSM>())
         {
             scorePanel.SetActive(true);
+            onLevelEnd.Invoke();
             //Score = scoreCounter.VHSCount * 3 + (int)liveCycle.Hp * 10;
             //textScore.text = Score.ToString();
             //progress.GetSprite();
