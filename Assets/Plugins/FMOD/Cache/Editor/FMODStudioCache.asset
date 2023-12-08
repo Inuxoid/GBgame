@@ -97,10 +97,10 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Props.bank
   Name: Props
   StudioPath: bank:/Props
-  lastModified: 638370498452174618
+  lastModified: 638376479704138184
   FileSizes:
   - Name: Desktop
-    Value: 9894016
+    Value: 9894144
   Exists: 1
 --- !u!114 &-8307727045227331180
 MonoBehaviour:
@@ -546,7 +546,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/ambience.bank
   Name: ambience
   StudioPath: bank:/ambience
-  lastModified: 638370498452644609
+  lastModified: 638376479699306292
   FileSizes:
   - Name: Desktop
     Value: 6748640
@@ -710,8 +710,8 @@ MonoBehaviour:
   Is3D: 1
   IsOneShot: 0
   Parameters: []
-  MinDistance: 2
-  MaxDistance: 9.3
+  MinDistance: 2.15
+  MaxDistance: 9.400001
   Length: 10000
 --- !u!114 &-2798508249692126413
 MonoBehaviour:
@@ -917,7 +917,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638162240433604849
+  lastModified: 638376479699376298
   FileSizes:
   - Name: Desktop
     Value: 1512
@@ -1192,7 +1192,7 @@ MonoBehaviour:
   - {fileID: -1706672589835785001}
   StringsBanks:
   - {fileID: 8591167857566354542}
-  cacheTime: 638370498452644609
+  cacheTime: 638376479704440620
   cacheVersion: 131601
 --- !u!114 &45806409774498016
 MonoBehaviour:
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638370498451504622
+  lastModified: 638376479701367484
   FileSizes:
   - Name: Desktop
     Value: 10376096
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/test_music.bank
   Name: test_music
   StudioPath: bank:/test_music
-  lastModified: 638162240435201157
+  lastModified: 638376479704440620
   FileSizes:
   - Name: Desktop
     Value: 170432
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   Path: Assets/Audio/FMOD/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638370498450764920
+  lastModified: 638376479699396302
   FileSizes:
   - Name: Build
     Value: 3622
