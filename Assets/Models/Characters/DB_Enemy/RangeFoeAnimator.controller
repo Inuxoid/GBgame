@@ -123,9 +123,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.13284492
+  m_TransitionDuration: 0.12527835
   m_TransitionOffset: 0
-  m_ExitTime: 0.88848704
+  m_ExitTime: 0.7551732
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -151,7 +151,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.12944156
+  m_TransitionDuration: 0.07790774
   m_TransitionOffset: 0
   m_ExitTime: 0.80263174
   m_HasExitTime: 0
@@ -217,7 +217,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.21417522
+  m_TransitionDuration: 0.19801974
   m_TransitionOffset: 0
   m_ExitTime: 0.8224852
   m_HasExitTime: 0
@@ -239,9 +239,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.2310242
+  m_TransitionDuration: 0.23102424
   m_TransitionOffset: 0
-  m_ExitTime: 0.5760771
+  m_ExitTime: 0.3893215
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -261,9 +261,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0.23036796
   m_TransitionOffset: 0
-  m_ExitTime: 1.8
+  m_ExitTime: 0.885481
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -366,7 +366,7 @@ AnimatorState:
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
-  m_Mirror: 0
+  m_Mirror: 1
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
@@ -533,7 +533,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.18997271
+  m_TransitionDuration: 0.1698194
   m_TransitionOffset: 0
   m_ExitTime: 0.026980618
   m_HasExitTime: 0
