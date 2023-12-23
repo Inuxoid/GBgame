@@ -27,6 +27,8 @@ namespace StateMachines.FoeSM.States
                 return;                                                    
             }
             
+
+            // TODO изменить на бег до крайней точки
             if (sm.patrolPath.PathPoints.Length == 2)
             { 
                 var position = sm.transform.position;

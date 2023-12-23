@@ -7,6 +7,11 @@ namespace StateMachines.PlayerSM
     {
         public PlayerSM sm;
 
+        private void Awake()
+        {
+            sm = GetComponentInParent<PlayerSM>();
+
+        }
         public void UnFallM()
         {
             sm.canMoveAfterFalling = true;

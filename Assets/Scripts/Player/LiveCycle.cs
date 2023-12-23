@@ -9,10 +9,10 @@ using UnityEngine.Events;
 public class LiveCycle : MonoBehaviour
 {
     [Header("Settings")]
-	[SerializeField] private float maxHp;
-	[SerializeField] private float hp;
+	[SerializeField] private float maxHp = 100;
+	[SerializeField] private float hp = 100;
 	[SerializeField] private bool damaged;
-	[SerializeField] private float safeTime;
+	[SerializeField] private float safeTime = 1;
 	[SerializeField] private UnityEvent onDeath;
 	[SerializeField] private UnityEvent<FloatNumberDto> onCounted;
 	[SerializeField] private UnityEvent<FloatNumberDto> onChangedMaxHp;
@@ -21,8 +21,21 @@ public class LiveCycle : MonoBehaviour
 	[SerializeField] public GameObject deadScreen;
 	[SerializeField] private PlayerSM sm;
 	[SerializeField] public bool isDead;
-	
-	
+
+    private void Awake()
+    {
+        sm = GetComponent<PlayerSM>();
+
+		if (deadScreen == null)
+		{
+			Debug.LogError("deadScreen is null");	
+		}
+
+        if (mat == null)
+        {
+            Debug.LogError("mat is null");
+        }
+    }
 
     public float Hp
     {

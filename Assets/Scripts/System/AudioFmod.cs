@@ -9,7 +9,7 @@ public class AudioFmod : MonoBehaviour
     public enum FloorType {Stone, Steel, Acid}
 
     public FloorType curFloorType = FloorType.Stone;
-    
+
     public void footstepsRun()
     {
         switch (curFloorType)

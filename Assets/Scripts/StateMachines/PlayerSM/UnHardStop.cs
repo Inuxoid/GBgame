@@ -6,6 +6,11 @@ namespace StateMachines.PlayerSM
     {
         [SerializeField] private PlayerSM sm;
 
+        private void Awake()
+        {
+            sm = GetComponentInParent<PlayerSM>();
+        }
+
         public void UnStop()
         {
             sm.animator.SetBool("isHardStopped", false);

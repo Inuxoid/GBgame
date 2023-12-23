@@ -8,6 +8,11 @@ public class UnPunch : MonoBehaviour
     [SerializeField] private float resetTime = 3.0f;
     private Coroutine punchTimerCoroutine;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if (animator.GetBool("isPunching"))

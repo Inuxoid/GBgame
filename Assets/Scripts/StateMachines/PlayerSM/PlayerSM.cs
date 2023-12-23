@@ -40,7 +40,6 @@ namespace StateMachines.PlayerSM
         public PlayerInput playerInput;
         public CustomGravity customGravity;
         public GroundChecker groundChecker;
-        public AirChecker airChecker;
 
         public Collider bodyCollider;
         public Collider visionCollider;
@@ -188,14 +187,28 @@ namespace StateMachines.PlayerSM
             FallingState = new Falling(this);
             DeadState = new Dead(this);
             StrongPunchState = new StrongPunchState(this);
-            foes = FindObjectsOfType<FoeSM.FoeSM>();
             StartCoroutine(StaminaRes());
-            
+
+            // Find components
+            foes = FindObjectsOfType<FoeSM.FoeSM>();
+
+            outline = GetComponentInChildren<Outline>();
+            outlineColor = new Color(112, 214, 150, 255);
+            liveCycle = GetComponent<LiveCycle>();
+            rb = GetComponent<Rigidbody>();
+            animator = GetComponentInChildren<Animator>();
+            playerInput = GetComponent<PlayerInput>();
+            customGravity = GetComponent<CustomGravity>();
+            groundChecker = GetComponentInChildren<GroundChecker>();
+            bodyCollider = GetComponentInChildren<Collider>();
+            visionCollider = GetComponentInChildren<Collider>();
+            climb = GetComponentInChildren<Player.Climb>();
+
             var buttonIconUpdater = FindObjectOfType<ActionButton>();
-            if (buttonIconUpdater != null)
-            {
-                AddStateObserver(buttonIconUpdater);
-            }
+                if (buttonIconUpdater != null)
+                {
+                    AddStateObserver(buttonIconUpdater);
+                }
         }
         
         public void UpdateKatanaModel()
