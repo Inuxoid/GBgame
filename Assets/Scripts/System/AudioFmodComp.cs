@@ -30,7 +30,7 @@ if (_parentParticleSystem.particleCount > _currentNumberOfParticles)
 
 {
 
-FMODUnity.RuntimeManager.PlayOneShotAttached("event:/death1-1", gameObject);
+FMODUnity.RuntimeManager.PlayOneShotAttached("event:/Computer", gameObject);
 
 }
 
