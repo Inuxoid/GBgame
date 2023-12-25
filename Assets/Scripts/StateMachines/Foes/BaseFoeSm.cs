@@ -74,7 +74,8 @@ namespace StateMachines
             base.LateUpdate();
             var animatorinfo = animator.GetCurrentAnimatorClipInfo(0);
             var current_animation = animatorinfo[0].clip.name;
-            stateTmpro.text = $"{CurrentState.name}\n{current_animation}";
+            if (stateTmpro != null)
+                stateTmpro.text = $"{CurrentState.name}\n{current_animation}";
         }
 
         public bool IsPlayerSeen()
@@ -86,7 +87,6 @@ namespace StateMachines
 
             if (!isPlayerInFrontOf || Math.Abs(direction.x) > detectDistance || playerSm.isHidden)
             { 
-                Debug.LogError($"{playerSm.isHidden}");
                 return false;
             }
 
