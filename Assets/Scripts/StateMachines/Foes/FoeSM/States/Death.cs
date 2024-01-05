@@ -15,7 +15,7 @@ namespace StateMachines.FoeSM.States
         public override void Enter()
         {
             base.Enter();
-            sm.scoreCounter.CountScore(300);
+            //sm.scoreCounter.CountScore(300);
             sm.GetComponent<Collider>().transform.gameObject.layer = LayerMask.NameToLayer("dead");
             sm.animator.SetBool("isDead", true);
             if (sm.GetComponentInChildren<Outline>() is not null)
