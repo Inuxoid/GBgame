@@ -1,6 +1,7 @@
 ﻿using System;
 using Dto;
 using Let.Foes;
+using Presenters;
 using StateMachines.FoeSM.States;
 using TMPro;
 using Unity.VisualScripting;
@@ -66,7 +67,8 @@ namespace StateMachines
 
         protected void Awake()
         {
-            foeStatesCont = new FoeStatesCont<T>((T)this);          
+            foeStatesCont = new FoeStatesCont<T>((T)this);
+            onHpChanged.AddListener(transform.Find("HpCanvas").Find("Image").GetComponent<BarPresenter>().DrawFloat);
         }
 
         private new void LateUpdate()

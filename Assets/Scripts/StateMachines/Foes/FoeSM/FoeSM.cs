@@ -11,12 +11,6 @@ namespace StateMachines.FoeSM
 {
     public class FoeSM : BaseFoeSm<FoeSM>
     {
-        private new void Awake()
-        {
-            base.Awake();
-
-        }
-
         protected override BaseState GetInitialState()
         {
             return foeStatesCont.GetState<Idle<FoeSM>>();
