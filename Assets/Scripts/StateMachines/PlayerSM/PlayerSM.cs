@@ -200,8 +200,8 @@ namespace StateMachines.PlayerSM
             playerInput = GetComponent<PlayerInput>();
             customGravity = GetComponent<CustomGravity>();
             groundChecker = GetComponentInChildren<GroundChecker>();
-            bodyCollider = GetComponentInChildren<Collider>();
-            visionCollider = GetComponentInChildren<Collider>();
+            bodyCollider = transform.Find("bodyCollider").GetComponent<Collider>();
+            visionCollider = transform.Find("EnemyVisionCollider").GetComponent<Collider>();
             climb = GetComponentInChildren<Player.Climb>();
 
             var buttonIconUpdater = FindObjectOfType<ActionButton>();
