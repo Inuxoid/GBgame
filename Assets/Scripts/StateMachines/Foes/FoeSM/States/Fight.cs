@@ -82,7 +82,7 @@ namespace StateMachines.FoeSM.States
 
         private void Move()
         {
-            var foePosition = sm.foe.transform.position;
+            var foePosition = sm.foeEyes.transform.position;
             var borderStop = (Math.Abs(sm.leftBorder.transform.position.x - foePosition.x) < 0.5f && sm.flip == -1)
                                || Math.Abs(sm.rightBorder.transform.position.x - foePosition.x) < 0.5f && sm.flip == 1;
 
