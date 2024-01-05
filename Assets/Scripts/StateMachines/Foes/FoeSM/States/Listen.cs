@@ -15,7 +15,7 @@
             sm.animator.SetBool("Listen", true);
             //TODO добавить вопросительный знак
         }
-
+        
         public override void UpdateLogic()
         {
             base.UpdateLogic();
