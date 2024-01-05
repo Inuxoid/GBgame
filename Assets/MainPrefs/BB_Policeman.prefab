@@ -15907,7 +15907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c2bb13dbb243e984869c3d78b932f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foeEyes: {fileID: 0}
+  foeEyes: {fileID: 526452824686002740}
   playerSm: {fileID: 0}
   onHpChanged:
     m_PersistentCalls:
@@ -15915,35 +15915,35 @@ MonoBehaviour:
   onShieldHpChanged:
     m_PersistentCalls:
       m_Calls: []
-  patrolPath: {fileID: 0}
-  rigidbody: {fileID: 0}
+  patrolPath: {fileID: 2662567250421736238}
+  rigidbody: {fileID: 2662567250421736236}
   player: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 8474019021914997613}
   scoreCounter: {fileID: 0}
-  canvas: {fileID: 0}
-  vision: {fileID: 0}
-  excPoint: {fileID: 0}
+  canvas: {fileID: 526452826621768442}
+  vision: {fileID: 8764921337461288213}
+  excPoint: {fileID: 2289854316638912815}
   shield: {fileID: 0}
   leftBorder: {fileID: 0}
   rightBorder: {fileID: 0}
-  currentHealth: 0
-  maxHealth: 0
-  flip: 0
-  enemySpeed: 0
-  enemyFightSpeed: 0
-  enemyDamage: 0
+  currentHealth: 150
+  maxHealth: 150
+  flip: 1
+  enemySpeed: 2
+  enemyFightSpeed: 2.5
+  enemyDamage: 20
   enemyRangeDamage: 0
-  detectDistance: 0
-  hHearDistance: 0
-  vHearDistance: 0
-  verticalDetectDistance: 0
-  timer: 0
+  detectDistance: 5
+  hHearDistance: 1.6
+  vHearDistance: 2
+  verticalDetectDistance: 1.6
+  timer: 3
   isPlayerInFrontOf: 0
-  visionColorInHide: {r: 0, g: 0, b: 0, a: 0}
+  visionColorInHide: {r: 49, g: 42, b: 89, a: 96}
   maxShieldStrength: 0
   rangeAttackDistance: 0
-  meleeAttackDistance: 0
-  stateTmpro: {fileID: 0}
+  meleeAttackDistance: 1
+  stateTmpro: {fileID: 526452825748258387}
 --- !u!114 &2662567250421736238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15956,7 +15956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfe3ea2f1544d15a584a9640323786a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathPoints: []
+  pathPoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &526452825743351106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16397,7 +16399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &180172372759865345
 Transform:
   m_ObjectHideFlags: 0
@@ -16406,8 +16408,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5144633193560216250}
   m_LocalRotation: {x: 0, y: -0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.03, y: 1.3949606, z: 0.22}
-  m_LocalScale: {x: 0.5000544, y: 0.5000544, z: -0.5000544}
+  m_LocalPosition: {x: -0.13, y: 1.24, z: 0.21}
+  m_LocalScale: {x: 0.3000544, y: 0.3000544, z: -0.3000544}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5401477934536842978}
@@ -21645,7 +21647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2987678514233753482
 Transform:
   m_ObjectHideFlags: 0
