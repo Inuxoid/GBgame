@@ -15911,7 +15911,19 @@ MonoBehaviour:
   playerSm: {fileID: 0}
   onHpChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 526452824702587575}
+        m_TargetAssemblyTypeName: Presenters.BarPresenter, Assembly-CSharp
+        m_MethodName: DrawFloat
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onShieldHpChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -15939,7 +15951,7 @@ MonoBehaviour:
   verticalDetectDistance: 1.6
   timer: 3
   isPlayerInFrontOf: 0
-  visionColorInHide: {r: 49, g: 42, b: 89, a: 96}
+  visionColorInHide: {r: 0.5068397, g: 0.4198113, b: 1, a: 0.31764707}
   maxShieldStrength: 0
   rangeAttackDistance: 0
   meleeAttackDistance: 1
@@ -15956,9 +15968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfe3ea2f1544d15a584a9640323786a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  pathPoints: []
 --- !u!114 &526452825743351106
 MonoBehaviour:
   m_ObjectHideFlags: 0
