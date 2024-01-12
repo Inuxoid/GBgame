@@ -13,7 +13,7 @@
         {
             base.Enter();
             sm.animator.SetBool("Listen", true);
-            //TODO добавить вопросительный знак
+            sm.excPoint.SetActive(true);
         }
         
         public override void UpdateLogic()
@@ -33,6 +33,7 @@
         public override void Exit()
         {
             sm.animator.SetBool("Listen", false);
+            sm.excPoint.SetActive(false);
             base.Exit();
         }
     }

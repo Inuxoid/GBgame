@@ -75,7 +75,7 @@ namespace StateMachines.PlayerSM.States
                 return;
             }
 
-            if (sm.playerInput.actions["Action"].IsPressed() && sm.CanHide) // TODO change to flag call from foe??
+            if (sm.playerInput.actions["Action"].IsPressed() && sm.CanHide)
             {
                 if (sm.detected)
                 {
