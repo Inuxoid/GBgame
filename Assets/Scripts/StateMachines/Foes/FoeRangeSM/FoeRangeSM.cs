@@ -1,5 +1,6 @@
 ﻿using StateMachines.FoeSM.States;
 using StateMachines.PlayerSM.States;
+using UnityEngine;
 
 namespace StateMachines.FoeRangeSM
 {

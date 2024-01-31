@@ -46,6 +46,8 @@ namespace StateMachines
         public float rangeAttackDistance = 1.5f;
         public float meleeAttackDistance = 0.7f;
         public TextMeshProUGUI stateTmpro;
+        public GameObject bulletPrefab;
+        public GameObject bulletSpawner;
 
         public abstract CombatState<T> GetCombatState();
         public bool IsPlayerDetected

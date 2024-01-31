@@ -1,5 +1,6 @@
 ﻿using System;
 using Dto;
+using StateMachines.Foes.FoeRangeSM;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -102,7 +103,15 @@ namespace StateMachines.FoeSM.States
         public override void RangeHit()
         {
             sm.excPoint.SetActive(false);
-            sm.playerSm.GetComponent<LiveCycle>().GetDamage(sm.enemyRangeDamage);
+            
+            GameObject bullet = GameObject.Instantiate(sm.bulletPrefab, sm.bulletSpawner.transform.position, Quaternion.identity);
+            
+            RangeFoeBullet bulletScript = bullet.GetComponentInChildren<RangeFoeBullet>();
+            if (bulletScript != null)
+            {
+                bulletScript.SetDirection(sm.playerSm.model.transform.position - sm.transform.position);
+                bulletScript.SetDamage(sm.enemyRangeDamage);
+            }
         }
         
 
