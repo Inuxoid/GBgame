@@ -101,8 +101,9 @@ namespace StateMachines
 
             foreach (var hit in hits)
             {
-                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground"))
+                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground") && !hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
                 {
+                    Debug.DrawLine(fromPosition, hit.transform.position, Color.yellow, 0.1f);
                     return false;
                 }
 

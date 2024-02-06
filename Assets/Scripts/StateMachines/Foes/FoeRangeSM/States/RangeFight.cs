@@ -79,6 +79,7 @@ namespace StateMachines.FoeSM.States
                                  && curClip[0].clip.name != "Sword And Shield Slash" 
                                  && curClip[0].clip.name != "Bandit_Attack";
 
+            sm.animator.SetBool("toDown", sm.transform.position.y > sm.player.transform.position.y + 1);
             sm.animator.SetBool("isShooting", isFreeAnimator && attackRangeStop);
             //Debug.Log("Shoot");
         }
