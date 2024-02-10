@@ -1,3 +1,4 @@
+using System;
 using Dto;
 using System.Collections;
 using System.Collections.Generic;
@@ -86,14 +87,14 @@ public class LiveCycle : MonoBehaviour
 	public void Heal(int addHp)
 	{
 		Hp += addHp;
-		FloatNumberDto dto = new FloatNumberDto() { value = (Hp / maxHp) * 100 };
+		FloatNumberDto dto = new FloatNumberDto() {  value = (float)Math.Round((Hp / maxHp) * 100) };
 		onCounted?.Invoke(dto);
 	}
 	
 	public void Heal(float addHp)
 	{
 		Hp += addHp;
-		FloatNumberDto dto = new FloatNumberDto() { value = (Hp / maxHp) * 100 };
+		FloatNumberDto dto = new FloatNumberDto() { value = (float)Math.Round((Hp / maxHp) * 100) };
 		onCounted?.Invoke(dto);
 	}
 
