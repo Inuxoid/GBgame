@@ -13,9 +13,9 @@ namespace Meta.Upgrades.UpgradeSkills
     {
         private readonly List<(float, float, float, float)> grades = new()
         {
-            (1.5f, 5f, 45f, 15f),
+            (1.5f, 0.5f, 45f, 15f),
             (2f, 1.5f, 40f, 15f),
-            (2.5f, 30f, 30f, 15f)
+            (2.5f, 3f, 30f, 15f)
         };
 
         public (float, float, float, float) curGrade;
@@ -48,7 +48,7 @@ namespace Meta.Upgrades.UpgradeSkills
                 Timeout.Infinite);
 
             // Запуск таймера для тиков
-            durationTimer = new System.Threading.Timer(DurationTimerCallback, playerSm, (int)curGrade.Item4 * 1000, 1000);
+            durationTimer = new System.Threading.Timer(DurationTimerCallback, playerSm, 0, 1000);
             
         }
 
@@ -60,9 +60,15 @@ namespace Meta.Upgrades.UpgradeSkills
 
         private void DurationTimerCallback(object state)
         {
+            Debug.Log("Tik1");
             PlayerSM playerSm = (PlayerSM)state;
-            playerSm.liveCycle.Heal(curGrade.Item2);
-            Debug.Log("Tik");
+            Debug.Log("Tik2");
+            MainThreadDispatcher.Enqueue(() =>
+            {
+                Debug.Log("Tik3");
+                PlayerSM playerSm = (PlayerSM)state;
+                playerSm.liveCycle.Heal(curGrade.Item2);
+            });
         }
 
         private void FinishTimerCallback(object state)
