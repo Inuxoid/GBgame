@@ -48,7 +48,7 @@ namespace Meta.Upgrades.UpgradeSkills
                 Timeout.Infinite);
 
             // Запуск таймера для тиков
-            durationTimer = new System.Threading.Timer(DurationTimerCallback, playerSm, 0, 1000);
+            durationTimer = new System.Threading.Timer(DurationTimerCallback, playerSm, (int)curGrade.Item4 * 1000, 1000);
             
         }
 
