@@ -94,23 +94,28 @@ namespace StateMachines
                 return false;
             }
 
-            var hits = Physics.RaycastAll(fromPosition, direction, detectDistance);
+            RaycastHit rhit; 
+            var hit = Physics.Raycast(fromPosition, direction, out rhit, detectDistance);
 
             // Визуализация рейкаста
             Debug.DrawLine(fromPosition, fromPosition + direction.normalized * detectDistance, Color.red, 0.2f);
 
-            foreach (var hit in hits)
+            //foreach (var hit in hits)
             {
-                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground") && !hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
+                if (hit)
                 {
-                    Debug.DrawLine(fromPosition, hit.transform.position, Color.yellow, 0.1f);
+                    
+                }
+                if ((rhit.collider.CompareTag("Wall") || rhit.collider.CompareTag("Ground")) && !rhit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
+                {
+                    Debug.DrawLine(fromPosition, rhit.transform.position, Color.yellow, 0.1f);
                     return false;
                 }
 
-                if (hit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
+                if (rhit.collider.GetComponentInParent<PlayerSM.PlayerSM>())
                 {
                     // Визуализация успешного обнаружения игрока
-                    Debug.DrawLine(fromPosition, hit.point, Color.green, 0.2f);
+                    Debug.DrawLine(fromPosition, rhit.point, Color.green, 0.2f);
                     return true;
                 }
             }
@@ -142,7 +147,7 @@ namespace StateMachines
             {
                 if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Ground"))
                 {
-                    ChangeState(foeStatesCont.GetState<Listen<T>>());
+                    //ChangeState(foeStatesCont.GetState<Listen<T>>());
                     return true;
                 }
 
