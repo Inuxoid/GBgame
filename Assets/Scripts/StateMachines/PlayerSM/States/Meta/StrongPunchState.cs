@@ -104,7 +104,7 @@ namespace StateMachines.PlayerSM.States
                 item?.GetComponent<FoeShieldSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge));
                 item?.GetComponent<Turret>()?.GetStrike((int)((float)sm.damageAA * charge));
                 item?.GetComponent<Cyborg>()?.GetStrike((int)((float)sm.damageAA * charge));
-                //Debug.Log(sm.damageAA);
+                Debug.Log(sm.damageAA);
             }
             //sm.animator.SetBool("isPunching", false);
         }
