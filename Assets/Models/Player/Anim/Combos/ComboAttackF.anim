@@ -64012,7 +64012,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.5
+  - time: 1.0666667
     functionName: EndPunch
     data: 
     objectReferenceParameter: {fileID: 0}
