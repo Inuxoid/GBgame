@@ -5,7 +5,7 @@ namespace Meta.Upgrades.Controller
     public class Wallet
     {
         private static Wallet _instance;
-        private int balance = 3000;
+        private int balance = 9999;
 
         public int Balance
         {
