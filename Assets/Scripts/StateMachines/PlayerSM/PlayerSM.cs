@@ -15,6 +15,30 @@ namespace StateMachines.PlayerSM
 {
     public class PlayerSM : StateMachines.StateMachine
     {
+        [Header("Balance Settings")] 
+
+        public float runSpeed = 40;
+        public float crouchSpeed = 15;
+        public float hideSpeed = 10;
+        public float curStamina = 100;
+        public float maxStamina = 100;
+        public float punchStaminaCost = 40;
+        public float staminaRes = 1;
+        public float staminaResTimer = 0.5f;
+        public float unHidingSpeed = 1f;
+        public float hidingSpeed = 1f;
+        public int damageAA;
+        public float damageMult = 1;
+        public int damageAAWeak = 10;
+        public float critValue = 1f;
+        public float critRate = 0f;
+        public float attackRange = 0.7f;
+        public float jumpHeight = 0.8f;
+        public float jumpForwardHeight = 0.8f;
+        public float jumpForwardForceForward = 60f;
+        public float jumpForwardForceForwardMult = 1;
+        public float fallingXSpeed = 0.8f;
+        
         [Header("States")]
         public Idle IdleState;
         public Run RunState;
@@ -51,39 +75,36 @@ namespace StateMachines.PlayerSM
         [Header("Sounds")] 
         public UnityEvent onLanding;
 
-        [Header("Settings")] 
-        
+        [Header("System Settings")] 
         public UnityEvent<FloatNumberDto> onStaminaChanged;
-        
         public bool detected;
-        
         public Vector3 halfExtents = new Vector3(0.5f, 0.8f, 0.8f);
-        
         public float cachedInput;
-        public float maxDistanceToStop = 0.5f;
         public bool canMoveAfterFalling = true;
-        
         public bool isJumpButtonWasPressed;
         public bool isJumpButtonIsPressed;
-        
         public float currentFallingHeight;
         public float maxFallingHeight;
-        public float deathFallingHeight = 15f;
-
-        public float hardStopNeededSpeed;
-    
         public bool canAction;
-        
-        public float runSpeed = 40;
-        public float crouchSpeed = 15;
-        public float hideSpeed = 10;
-        
+        public float maxDistanceToStop = 0.5f;
+        public float deathFallingHeight = 15f;
+        public float hardStopNeededSpeed;
         public int flip = 1;
         public bool facingRight = true;
-        
         public bool canHide;
         public bool willDead;
-
+        public bool underAttack = false;
+        public bool canHidePause = true;
+        public bool canUnHide;
+        public bool canUnHidePause = true;
+        public bool isHidden;
+        public bool isGrounded;
+        public float standDistance = 1.3f;
+        public Vector3 curCast= new Vector3(0.3f, 1.44f, 0.7f);
+        public bool canStandUp = true;
+        public GameObject[] katanaModels;
+        
+     
         public float CurStamina
         {
             get => curStamina;
@@ -103,34 +124,7 @@ namespace StateMachines.PlayerSM
                 }
             }
         }
-
-        public float curStamina = 100;
-        public float maxStamina = 100;
-        public float punchStaminaCost = 40;
-        public float staminaRes = 1;
-        public float staminaResTimer = 0.5f;
-        public float unHidingSpeed = 1f;
-        public float hidingSpeed = 1f;
-        public bool underAttack = false;
         
-        public bool CanHide
-        {
-            get => canHide && canHidePause && !underAttack;
-            set => canHide = value;
-        }
-
-        public bool canHidePause = true;
-        public bool canUnHide;
-        
-        public bool CanUnHide
-        {
-            get => canUnHide && canUnHidePause;
-            set => canUnHide = value;
-        }
-        
-        public bool canUnHidePause = true;
-        public bool isHidden;
-
         public bool IsHidden
         {
             get => isHidden;
@@ -149,28 +143,18 @@ namespace StateMachines.PlayerSM
                 isHidden = value;
             }
         }
-
-        public int damageAA;
-        public float damageMult = 1;
-        public int damageAAWeak = 10;
-        public float critValue = 1f;
-        public float critRate = 0f;
-        public float attackRange = 0.7f;
         
-        public float jumpHeight = 0.8f;
-        public float jumpForwardHeight = 0.8f;
-        public float jumpForwardForceForward = 60f;
-        public float jumpForwardForceForwardMult = 1;
+        public bool CanHide
+        {
+            get => canHide && canHidePause && !underAttack;
+            set => canHide = value;
+        }
         
-        public float fallingXSpeed = 0.8f;
-
-        public bool isGrounded;
-        public float standDistance = 1.3f;
-        public Vector3 curCast= new Vector3(0.3f, 1.44f, 0.7f);
-
-        public bool canStandUp = true;
-        
-        public GameObject[] katanaModels;
+        public bool CanUnHide
+        {
+            get => canUnHide && canUnHidePause;
+            set => canUnHide = value;
+        }
 
         private void Awake()
         {
