@@ -87,14 +87,14 @@ public class LiveCycle : MonoBehaviour
 	public void Heal(int addHp)
 	{
 		Hp += addHp;
-		FloatNumberDto dto = new FloatNumberDto() {  value = (float)Math.Round((Hp / maxHp) * 100) };
+		FloatNumberDto dto = new FloatNumberDto() {  value = (float)Math.Round((Hp / maxHp) * 100,1) };
 		onCounted?.Invoke(dto);
 	}
 	
 	public void Heal(float addHp)
 	{
 		Hp += addHp;
-		FloatNumberDto dto = new FloatNumberDto() { value = (float)Math.Round((Hp / maxHp) * 100) };
+		FloatNumberDto dto = new FloatNumberDto() { value = (float)Math.Round((Hp / maxHp) * 100,1) };
 		onCounted?.Invoke(dto);
 	}
 
