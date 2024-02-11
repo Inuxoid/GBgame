@@ -99,11 +99,11 @@ namespace StateMachines.PlayerSM.States
                          new Vector3 (0.7f, 0.7f, 0.7f), 
                          Quaternion.identity))
             {
-                item?.GetComponent<FoeSM.FoeSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge));
-                item?.GetComponent<FoeRangeSM.FoeRangeSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge));
-                item?.GetComponent<FoeShieldSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge));
-                item?.GetComponent<Turret>()?.GetStrike((int)((float)sm.damageAA * charge));
-                item?.GetComponent<Cyborg>()?.GetStrike((int)((float)sm.damageAA * charge));
+                item?.GetComponent<FoeSM.FoeSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge * sm.damageMult));
+                item?.GetComponent<FoeRangeSM.FoeRangeSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge * sm.damageMult));
+                item?.GetComponent<FoeShieldSM>()?.GetCombatState().GetDamage((int)((float)sm.damageAA * charge * sm.damageMult));
+                item?.GetComponent<Turret>()?.GetStrike((int)((float)sm.damageAA * charge * sm.damageMult));
+                item?.GetComponent<Cyborg>()?.GetStrike((int)((float)sm.damageAA * charge * sm.damageMult));
                 //Debug.Log(sm.damageAA);
             }
             //sm.animator.SetBool("isPunching", false);
