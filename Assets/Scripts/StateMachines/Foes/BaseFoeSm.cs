@@ -12,6 +12,24 @@ namespace StateMachines
 {
     public abstract class BaseFoeSm<T> : StateMachine where T : BaseFoeSm<T>
     {
+        [Header("Balance Settings")] 
+        public float hHearDistance = 1.6f;
+        public float vHearDistance = 2.0f;
+        public float enemySpeed;
+        public float enemyFightSpeed;
+        public int enemyDamage;
+        public int enemyRangeDamage;
+        public int detectDistance;
+        public float rangeAttackDistance = 1.5f;
+        public float meleeAttackDistance = 0.7f;
+        public float currentHealth;
+        public float maxHealth;
+        public float verticalDetectDistance = 1.6f;
+        public int maxShieldStrength;
+        public float timer;
+        
+        [Header("Other Settings")] 
+        
         public FoeStatesCont<T> foeStatesCont;
         public GameObject foeEyes;
         public PlayerSM.PlayerSM playerSm;
@@ -28,23 +46,9 @@ namespace StateMachines
         public GameObject shield;
         public GameObject leftBorder;
         public GameObject rightBorder;
-        public float currentHealth;
-        public float maxHealth;
         public int flip;
-        public float enemySpeed;
-        public float enemyFightSpeed;
-        public int enemyDamage;
-        public int enemyRangeDamage;
-        public int detectDistance;
-        public float hHearDistance = 1.6f;
-        public float vHearDistance = 2.0f;
-        public float verticalDetectDistance = 1.6f;
-        public float timer;
         public bool isPlayerInFrontOf;
         public Color visionColorInHide;
-        public int maxShieldStrength;
-        public float rangeAttackDistance = 1.5f;
-        public float meleeAttackDistance = 0.7f;
         public TextMeshProUGUI stateTmpro;
         public GameObject bulletPrefab;
         public GameObject bulletSpawner;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,9 +15,9 @@ namespace Presenters
         [Header("Settings")]
         [SerializeField] private string suffix;
 
-        public void Draw(IntNumberDto dto) => this.uiText.text = dto.value.ToString();
-        public void DrawIntSuf(IntNumberDto dto) => this.uiText.text = dto.value.ToString() + this.suffix;
-        public void DrawWithSuffix(FloatNumberDto dto) => this.uiText.text = dto.value.ToString() + this.suffix;
-        public void DrawHP(FloatNumberDto dto) => this.uiText.text = (dto.value).ToString();
+        public void Draw(IntNumberDto dto) => this.uiText.text = (Math.Round((float)dto.value, 1)).ToString();
+        public void DrawIntSuf(IntNumberDto dto) => this.uiText.text = (Math.Round((float)dto.value, 1)).ToString() + this.suffix;
+        public void DrawWithSuffix(FloatNumberDto dto) => this.uiText.text = (Math.Round(dto.value, 1)).ToString() + this.suffix;
+        public void DrawHP(FloatNumberDto dto) => this.uiText.text = (Math.Round(dto.value, 1)).ToString();
     }
 }
