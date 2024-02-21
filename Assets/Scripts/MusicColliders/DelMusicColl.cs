@@ -8,7 +8,7 @@ public class DelMusicColl : MonoBehaviour
     public void EnemyMusicOn()
         {
             var colliders = GetComponentsInChildren<Collider>(true)
-                .Where(c => c.gameObject.name == "MusicCollider")
+                .Where(c => c.gameObject.name == "MusicAgro")
                 .ToList();
 
             colliders[0]?.gameObject.SetActive(true);
@@ -18,7 +18,7 @@ public class DelMusicColl : MonoBehaviour
         public void EnemyMusicOf()
         {
             var colliders = GetComponentsInChildren<Collider>(true)
-                .Where(c => c.gameObject.name == "MusicCollider")
+                .Where(c => c.gameObject.name == "MusicAgro")
                 .ToList();
 
             colliders[0]?.gameObject.SetActive(false);
