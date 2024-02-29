@@ -38,6 +38,9 @@ namespace StateMachines.PlayerSM
         public float jumpForwardForceForward = 60f;
         public float jumpForwardForceForwardMult = 1;
         public float fallingXSpeed = 0.8f;
+        public float rollDistance;
+        public float rollStaminaCost;
+        
         
         [Header("States")]
         public Idle IdleState;
@@ -52,6 +55,7 @@ namespace StateMachines.PlayerSM
         public Attack AttackState;
         public Falling FallingState;
         public Dead DeadState;
+        public Somersault SomersaultState;
         public StrongPunchState StrongPunchState;
 
         [Header("Components")] 
@@ -171,6 +175,7 @@ namespace StateMachines.PlayerSM
             FallingState = new Falling(this);
             DeadState = new Dead(this);
             StrongPunchState = new StrongPunchState(this);
+            SomersaultState = new Somersault(this);
             StartCoroutine(StaminaRes());
 
             // Find components

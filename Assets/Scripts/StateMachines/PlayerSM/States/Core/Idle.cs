@@ -63,7 +63,6 @@ namespace StateMachines.PlayerSM.States
                 && !sm.isJumpButtonWasPressed
                 && !holdJump)
             {
-
                 sm.ChangeState(sm.JumpState);
                 return;
             }
@@ -90,11 +89,10 @@ namespace StateMachines.PlayerSM.States
                 return;
             }
 
-            // if (sm.rb.velocity.y < -0.1f && !sm.isGrounded)
-            // {
-            //     sm.ChangeState(sm.FallingState);
-            //     return;
-            // }
+            if (sm.playerInput.actions["Roll"].IsPressed())
+            {
+                sm.ChangeState(sm.SomersaultState);
+            }
         }
 
         public override void UpdatePhysics()

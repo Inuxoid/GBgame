@@ -76,6 +76,10 @@ namespace StateMachines.FoeSM.States
         
         private void MoveToSeekTarget()
         {
+            if (seekTarget == null)
+            {
+                return;
+            }
             var normalizedX = new Vector2(seekTarget.transform.position.x - sm.transform.position.x, 0).normalized.x;
             sm.rigidbody.velocity = new Vector2(sm.enemySpeed * normalizedX, 0);
             sm.animator.SetFloat("hSpeed", 1f);

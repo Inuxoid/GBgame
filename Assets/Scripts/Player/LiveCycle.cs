@@ -22,6 +22,7 @@ public class LiveCycle : MonoBehaviour
 	[SerializeField] public GameObject deadScreen;
 	[SerializeField] private PlayerSM sm;
 	[SerializeField] public bool isDead;
+	[SerializeField] public bool invulnerable;
 
     private void Awake()
     {
@@ -72,7 +73,7 @@ public class LiveCycle : MonoBehaviour
 		}
         else if (buyedSafe)
         {
-			StartCoroutine(SafeTimer());
+			StartCoroutine(SafeTimer());		
         }
 	}
 
