@@ -50,13 +50,13 @@ namespace StateMachines.FoeSM.States
                 sm.foeStatesCont.GetState<Patrol<T>>().target = sm.patrolPath.PathPoints[0];
             }
             
-            // if (sm.flip * (sm.foeStatesCont.GetState<Patrol<T>>().target.position.x - sm.transform.position.x) < 0)
-            // {
-            //     sm.flip *= -1;
-            //     var theScale = sm.transform.localScale;
-            //     theScale.z *= -1;
-            //     sm.transform.localScale = theScale;
-            // }
+            if (sm.flip * (seekTarget.position.x - sm.transform.position.x) < 0)
+            {
+                sm.flip *= -1;
+                var theScale = sm.transform.localScale;
+                theScale.z *= -1;
+                sm.transform.localScale = theScale;
+            }
             
             const float closeDistance = 0.3f; 
             if (
