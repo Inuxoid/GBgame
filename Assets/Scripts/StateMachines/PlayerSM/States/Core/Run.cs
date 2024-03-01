@@ -108,6 +108,11 @@ namespace StateMachines.PlayerSM.States
                 return;
             }
             
+            if (sm.playerInput.actions["Roll"].IsPressed())
+            {
+                sm.ChangeState(sm.SomersaultState);
+            }
+            
             CheckClimb();
         }
 

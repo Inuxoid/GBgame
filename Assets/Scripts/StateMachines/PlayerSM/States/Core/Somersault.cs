@@ -51,6 +51,20 @@ namespace StateMachines.PlayerSM.States
             
             return isEnoughStamina && canRoll;
         }
+
+        private bool CheckCeil()
+        {
+            bool toCrouch = false;
+            bool raycast = Physics.BoxCast(sm.transform.position, sm.halfExtents, 
+                new Vector3(sm.flip, 0f, 0f), out var hit, Quaternion.identity, sm.rollDistance);
+            if (raycast)
+            {
+                bool compareTag = hit.collider.CompareTag("Ceil");
+                toCrouch = !compareTag;
+            }
+
+            return toCrouch;
+        }
         
         private void PerformRoll()
         {
@@ -63,7 +77,8 @@ namespace StateMachines.PlayerSM.States
             // Отнимаем стамину
             ReduceStamina(sm.rollStaminaCost);
             
-            sm.ChangeState(sm.IdleState);
+                sm.ChangeState(sm.CrouchState);
+
         }
         
         private void ReduceStamina(float amount)
