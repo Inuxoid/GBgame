@@ -46,7 +46,7 @@ ModelImporter:
       name: Stand_To_Roll
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 0
+      firstFrame: 2.6
       lastFrame: 26
       wrapMode: 0
       orientationOffsetY: 0
