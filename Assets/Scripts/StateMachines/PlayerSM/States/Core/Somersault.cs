@@ -9,6 +9,8 @@ namespace StateMachines.PlayerSM.States
         private PlayerSM sm;
         private int originalLayer; // Для сохранения изначального слоя игрока
         private int rollLayer; // Слой для кувырка
+        private float lastRollTime; // Время с последнего кувырка
+        private readonly float rollCooldown = 0.5f; // КД кувырка
         
         public Somersault(PlayerSM stateMachine) : base("Somersault", stateMachine)
         {
@@ -21,14 +23,11 @@ namespace StateMachines.PlayerSM.States
             if (CheckAvailability())
             {
                 rollLayer = LayerMask.NameToLayer("RollLayer");
-                
-                // Сохраняем изначальный слой
                 originalLayer = sm.gameObject.layer;
-        
-                // Переключаем на слой, где нет столкновений с противниками
                 sm.gameObject.layer = rollLayer;
-
                 PerformRoll();
+                
+                lastRollTime = Time.time; // Обновляем время последнего кувырка
             }
             else
             {
@@ -38,18 +37,22 @@ namespace StateMachines.PlayerSM.States
 
         private bool CheckAvailability()
         {
+            bool isCooldownComplete = (Time.time - lastRollTime) >= rollCooldown; // Проверка кулдауна
             bool isEnoughStamina = sm.curStamina >= sm.rollStaminaCost;
-            bool canRoll = true;
+            bool canRoll = isCooldownComplete && isEnoughStamina;
             
-            bool raycast = Physics.BoxCast(sm.transform.position, sm.halfExtents, 
-                new Vector3(sm.flip, 0f, 0f), out var hit, Quaternion.identity, sm.rollDistance);
-            if (raycast)
+            if (canRoll)
             {
-                bool compareTag = hit.collider.CompareTag("Wall");
-                canRoll = !compareTag;
+                bool raycast = Physics.BoxCast(sm.transform.position, sm.halfExtents, 
+                    new Vector3(sm.flip, 0f, 0f), out var hit, Quaternion.identity, sm.rollDistance);
+                if (raycast)
+                {
+                    bool compareTag = hit.collider.CompareTag("Wall");
+                    canRoll = !compareTag;
+                }
             }
             
-            return isEnoughStamina && canRoll;
+            return canRoll;
         }
 
         private bool CheckCeil()

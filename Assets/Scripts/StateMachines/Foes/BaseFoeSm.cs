@@ -174,11 +174,18 @@ namespace StateMachines
         private void TurnToPlayer()
         {
             if (isPlayerInFrontOf) return;
+            TurnAround();
+            ChangeState(GetCombatState());
+        }
+        
+        protected void TurnAround()
+        {
+            animator.SetBool("isTurning", false);
             flip *= -1;
             var theScale = transform.localScale;
             theScale.z *= -1;
             transform.localScale = theScale;
-            ChangeState(GetCombatState());
+            //transform.Rotate(0, 180, 0);
         }
 
         protected void OnCollisionEnter(Collision collision)

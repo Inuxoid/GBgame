@@ -54,11 +54,7 @@ namespace StateMachines.FoeSM.States
         
         private void TurnAround()
         {
-            sm.flip *= -1;
-            var transform = sm.transform;
-            var theScale = transform.localScale;
-            theScale.z *= -1;
-            transform.localScale = theScale;
+            sm.animator.Play("Sword And Shield 180 Turn");
         }
     }
 }

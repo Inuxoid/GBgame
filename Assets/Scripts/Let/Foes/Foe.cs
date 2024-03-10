@@ -122,6 +122,7 @@ namespace Let.Foes
             {
                 if (flip * (player.transform.position.x - this.transform.position.x) < 0)
                 {
+                    animator.Play("Sword And Shield 180 Turn");
                     flip *= -1;
                     theScale = transform.localScale;
                     theScale.x *= -1;

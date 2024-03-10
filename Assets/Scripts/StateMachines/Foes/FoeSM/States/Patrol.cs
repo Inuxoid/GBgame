@@ -41,35 +41,45 @@ namespace StateMachines.FoeSM.States
 
         private void MoveToPatrolTarget()
         {
+            if (sm.animator.GetBool("isTurning"))
+            {
+                sm.animator.SetFloat("hSpeed", 0f);
+                sm.rigidbody.velocity = Vector2.zero;
+                return;
+            }
+            
             var normalizedX = new Vector2(target.transform.position.x - sm.transform.position.x, 0).normalized.x;
             sm.rigidbody.velocity = new Vector2(sm.enemySpeed * normalizedX, 0);
             //Debug.LogError($"Speed in MTPT: {sm.rigidbody.velocity}");
             //Debug.Log($"{Math.Abs(sm.transform.position.x - target.position.x)}");
             sm.animator.SetFloat("hSpeed", 1f);
-
+            
             if (Math.Abs(sm.transform.position.x - target.position.x) < TargetDistance
-                || (target.position.x - sm.transform.position.x) * sm.flip < 0 )
+                || (target.position.x - sm.transform.position.x) * sm.flip < 0)
+            {
                 TurnAround();
+            }
         }
         
         private void TurnAround()
         {
+            if (sm.flip * (target.position.x - sm.transform.position.x) < 0 && sm.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "Sword And Shield 180 Turn")
+            {
+                sm.animator.SetBool("isTurning", true);
+                sm.animator.Play("Sword And Shield 180 Turn");
+            }
+            
             //Debug.LogError($"Turn around");
-            if (sm.patrolPath.PathPoints.Length == 1 && sm.transform.position.x - target.position.x < TargetDistance)
+            if (sm.patrolPath.PathPoints.Length == 1 && Math.Abs(sm.transform.position.x - target.position.x) < TargetDistance)
             {
                 sm.ChangeState(sm.foeStatesCont.GetState<Idle<T>>());
                 return;
             }
-            
-            target = sm.patrolPath.PathPoints[nextTargetInd];
-            nextTargetInd = nextTargetInd == 1 ? 0 : 1;
-            
-            if (sm.flip * (target.position.x - sm.transform.position.x) < 0)
+
+            if (sm.patrolPath.PathPoints.Length == 2)
             {
-                sm.flip *= -1;
-                var theScale = sm.transform.localScale;
-                theScale.z *= -1;
-                sm.transform.localScale = theScale;
+                target = sm.patrolPath.PathPoints[nextTargetInd];
+                nextTargetInd = nextTargetInd == 1 ? 0 : 1;
             }
         }
 

@@ -182,7 +182,7 @@ namespace StateMachines.PlayerSM.States
         {
             Thread thread = new Thread(() =>
             {
-                for (int i = 0; i < 4; i++)
+                while (dump < 1f)
                 {
                     dump += 0.05f;
                     Thread.Sleep(150);
