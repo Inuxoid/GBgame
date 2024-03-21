@@ -20,6 +20,7 @@ namespace StateMachines.PlayerSM.States
         public override void Enter()
         {
             base.Enter();
+            sm.canMoveAfterFalling = true;
             if (CheckAvailability())
             {
                 rollLayer = LayerMask.NameToLayer("RollLayer");
