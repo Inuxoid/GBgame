@@ -20,6 +20,7 @@ namespace StateMachines.PlayerSM.States
         public override void Enter()
         {
             base.Enter();
+            Debug.Log($"{canRun} - {sm.canMoveAfterFalling}");
             if (sm.willDead)
             {
                 sm.liveCycle.GetDamage(100);
