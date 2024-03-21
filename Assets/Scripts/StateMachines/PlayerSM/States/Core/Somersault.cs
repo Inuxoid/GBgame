@@ -20,7 +20,6 @@ namespace StateMachines.PlayerSM.States
         public override void Enter()
         {
             base.Enter();
-            sm.canMoveAfterFalling = true;
             if (CheckAvailability())
             {
                 rollLayer = LayerMask.NameToLayer("RollLayer");
@@ -106,6 +105,7 @@ namespace StateMachines.PlayerSM.States
         {
             // Возвращаем игрока на его изначальный слой
             sm.gameObject.layer = originalLayer;
+            sm.canMoveAfterFalling = true;
             base.Exit();
         }
         
