@@ -24,6 +24,8 @@ namespace StateMachines.PlayerSM.States
             {
                 sm.liveCycle.GetDamage(100);
             }
+
+            canRun = true;
             //sm.animator.SetBool("isHardStopped", false);
            // Debug.LogError("IDLE???");
             sm.isJumpButtonIsPressed = sm.playerInput.actions["Jump"].IsPressed();

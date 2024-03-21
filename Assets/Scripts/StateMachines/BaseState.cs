@@ -1,4 +1,7 @@
-﻿namespace StateMachines
+﻿using FMOD;
+using Debug = UnityEngine.Debug;
+
+namespace StateMachines
 {
     public class BaseState
     {
@@ -11,11 +14,18 @@
             this.name = name;
             this.stateMachine = stateMachine;
         }
-        
-        
-        public virtual void Enter(){}
+
+
+        public virtual void Enter()
+        {
+            Debug.Log($"{name} enter");
+        }
         public virtual void UpdateLogic(){}
         public virtual void UpdatePhysics(){}
-        public virtual void Exit(){}
+
+        public virtual void Exit()
+        {
+            Debug.Log($"{name} exit");
+        }
     }
 }

@@ -80,10 +80,10 @@ namespace StateMachines
         private new void LateUpdate()
         {
             base.LateUpdate();
-            var animatorinfo = animator.GetCurrentAnimatorClipInfo(0);
-            var current_animation = animatorinfo[0].clip.name;
-            if (stateTmpro != null)
-                stateTmpro.text = $"{CurrentState.name}\n{current_animation}";
+            // var animatorinfo = animator.GetCurrentAnimatorClipInfo(0);
+            // var current_animation = animatorinfo[0].clip.name;
+            // if (stateTmpro != null)
+            //     stateTmpro.text = $"{CurrentState.name}\n{current_animation}";
         }
 
         public bool IsPlayerSeen()
