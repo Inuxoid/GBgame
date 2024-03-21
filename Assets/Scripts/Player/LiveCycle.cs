@@ -64,6 +64,11 @@ public class LiveCycle : MonoBehaviour
 
     public void GetDamage(int amount)
 	{
+		if (invulnerable)
+		{
+			return;
+		}
+		
 		if (!damaged || !buyedSafe)
 		{
 			Hp -= amount;

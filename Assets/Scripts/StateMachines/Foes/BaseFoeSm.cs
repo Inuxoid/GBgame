@@ -48,7 +48,7 @@ namespace StateMachines
         public GameObject rightBorder;
         public int flip;
         public bool isPlayerInFrontOf;
-        public Color visionColorInHide;
+        //public Color visionColorInHide;
         public TextMeshProUGUI stateTmpro;
         public GameObject bulletPrefab;
         public GameObject bulletSpawner;

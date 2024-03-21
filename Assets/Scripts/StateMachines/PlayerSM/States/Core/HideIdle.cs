@@ -16,11 +16,11 @@ namespace StateMachines.PlayerSM.States
         {
             base.Enter();
             sm.animator.SetBool("isHidden", true);
-            foreach (var foe in sm.foes)
-            {
-                cachedColor = foe.vision.GetComponent<SpriteRenderer>().color;
-                foe.vision.GetComponent<SpriteRenderer>().color = foe.visionColorInHide;
-            }
+            // foreach (var foe in sm.foes)
+            // {
+            //     cachedColor = foe.vision.GetComponent<SpriteRenderer>().color;
+            //     foe.vision.GetComponent<SpriteRenderer>().color = foe.visionColorInHide;
+            // }
             sm.outline.OutlineColor = sm.outlineColor;
             sm.outline.OutlineMode = 0;
             sm.IsHidden = true;

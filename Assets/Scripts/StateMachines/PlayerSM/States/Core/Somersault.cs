@@ -21,6 +21,7 @@ namespace StateMachines.PlayerSM.States
         {
             base.Enter();
             sm.canMoveAfterFalling = true;
+            sm.liveCycle.invulnerable = true;
             if (CheckAvailability())
             {
                 rollLayer = LayerMask.NameToLayer("RollLayer");
@@ -107,6 +108,7 @@ namespace StateMachines.PlayerSM.States
             // Возвращаем игрока на его изначальный слой
             sm.gameObject.layer = originalLayer;
             sm.canMoveAfterFalling = true;
+            sm.liveCycle.invulnerable = false;
             base.Exit();
         }
         
