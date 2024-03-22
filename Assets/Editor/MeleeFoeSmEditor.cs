@@ -58,7 +58,7 @@ public class MeleeFoeSmEditor : Editor
         foeSM.verticalDetectDistance = 1.6f;
         foeSM.timer = 3;
         foeSM.isPlayerInFrontOf = false;
-        foeSM.visionColorInHide = new Color(49, 42, 89, 96);
+        //foeSM.visionColorInHide = new Color(49, 42, 89, 96);
         foeSM.maxShieldStrength = 0;
         foeSM.rangeAttackDistance = 0;
         foeSM.meleeAttackDistance = 1;
