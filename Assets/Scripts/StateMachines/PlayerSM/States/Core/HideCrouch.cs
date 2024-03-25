@@ -67,10 +67,10 @@ namespace StateMachines.PlayerSM.States
         public override void Exit()
         {
             sm.animator.SetBool("isHidden", false);
-            foreach (var foe in sm.foes)
-            {
-                foe.vision.GetComponent<SpriteRenderer>().color = cachedColor;
-            }
+            //foreach (var foe in sm.foes)
+            //{
+            //    foe.vision.GetComponent<SpriteRenderer>().color = cachedColor;
+            //}
             sm.outline.OutlineColor = Color.clear;
             sm.outline.OutlineMode += 1;
             sm.IsHidden = false;
